@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,682 +8,543 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
-  :root {
-    --navy: #0a1628;
-    --navy2: #0d2140;
-    --blue: #0057a8;
-    --blue2: #1e3a5f;
-    --gold: #fbbf24;
-    --slate: #94a3b8;
-    --light: #e2e8f0;
-    --purple: #6b21a8;
-    --teal: #0891b2;
-    --green: #065f46;
-  }
+:root {
+–navy: #0a1628; –navy2: #0d2140; –blue: #0057a8; –blue2: #1e3a5f;
+–gold: #fbbf24; –slate: #94a3b8; –light: #e2e8f0;
+–purple: #6b21a8; –teal: #0891b2; –green: #065f46;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+- { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: ‘DM Sans’, sans-serif; background: linear-gradient(135deg, var(–navy) 0%, var(–navy2) 50%, var(–navy) 100%); min-height: 100vh; color: var(–light); }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 50%, var(--navy) 100%);
-    min-height: 100vh;
-    color: var(--light);
-  }
+/* HEADER */
+.header { background: linear-gradient(90deg, var(–blue), var(–blue2)); padding: 18px 36px; border-bottom: 2px solid var(–gold); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.header-brand { font-size: 12px; letter-spacing: 4px; color: var(–gold); font-weight: 700; }
+.header-title { font-family: ‘Playfair Display’, serif; font-size: 22px; margin-top: 2px; }
+.header-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px 18px; text-align: right; }
+.header-badge .hb-name { font-size: 16px; font-weight: 700; color: white; }
+.header-badge .hb-role { font-size: 12px; color: var(–slate); }
+.header-badge .hb-dp { font-size: 11px; color: var(–gold); }
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(90deg, var(--blue), var(--blue2));
-    padding: 18px 36px;
-    border-bottom: 2px solid var(--gold);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .header-brand { font-size: 12px; letter-spacing: 4px; color: var(--gold); font-weight: 700; }
-  .header-title { font-family: 'Playfair Display', serif; font-size: 22px; margin-top: 2px; }
-  .header-role-badge {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    padding: 10px 18px;
-    text-align: right;
-    min-width: 200px;
-  }
-  .header-role-badge .role-label { font-size: 10px; color: var(--slate); letter-spacing: 1px; }
-  .header-role-badge .role-name { font-size: 14px; font-weight: 600; }
-  .header-role-badge .dualpen-label { font-size: 11px; color: var(--gold); }
+/* TABS */
+.tabs { display: flex; background: #0d1f38; border-bottom: 1px solid var(–blue2); padding: 0 36px; overflow-x: auto; }
+.tab-btn { background: none; border: none; border-bottom: 3px solid transparent; color: var(–slate); padding: 14px 22px; cursor: pointer; font-size: 13px; font-family: ‘DM Sans’, sans-serif; font-weight: 500; letter-spacing: 0.5px; white-space: nowrap; transition: all 0.2s; }
+.tab-btn:hover { color: var(–light); }
+.tab-btn.active { color: var(–gold); border-bottom-color: var(–gold); font-weight: 700; }
 
-  /* TABS */
-  .tabs {
-    display: flex;
-    background: #0d1f38;
-    border-bottom: 1px solid var(--blue2);
-    padding: 0 36px;
-    overflow-x: auto;
-    gap: 0;
-  }
-  .tab-btn {
-    background: none;
-    border: none;
-    border-bottom: 3px solid transparent;
-    color: var(--slate);
-    padding: 14px 22px;
-    cursor: pointer;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-  .tab-btn:hover { color: var(--light); }
-  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); font-weight: 700; }
+/* CONTENT */
+.content { padding: 32px 36px; max-width: 1100px; margin: 0 auto; }
+.panel { display: none; }
+.panel.active { display: block; }
 
-  /* CONTENT */
-  .content { padding: 32px 36px; max-width: 1100px; margin: 0 auto; }
-  .panel { display: none; }
-  .panel.active { display: block; }
+/* TYPE */
+h2 { font-family: ‘Playfair Display’, serif; font-size: 28px; margin-bottom: 6px; }
+h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.subtitle { color: var(–slate); font-size: 15px; margin-bottom: 28px; }
+.label { font-size: 11px; color: var(–gold); letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
 
-  /* TYPOGRAPHY */
-  h2 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 6px; }
-  h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-  .subtitle { color: var(--slate); font-size: 15px; margin-bottom: 28px; }
+/* CARDS */
+.card { background: var(–navy2); border: 1px solid var(–blue2); border-radius: 12px; padding: 22px 24px; margin-bottom: 16px; }
+.card-gold { border-color: var(–gold); }
+.card-blue { border-color: var(–blue); }
 
-  /* CARDS */
-  .card {
-    background: var(--navy2);
-    border: 1px solid var(--blue2);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 16px;
-  }
-  .card-gold { border-color: var(--gold); }
-  .card-blue { border-color: var(--blue); }
+/* GRIDS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 
-  /* GRID */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+/* FORM INPUTS */
+.form-group { margin-bottom: 18px; }
+.form-label { display: block; font-size: 12px; color: var(–gold); letter-spacing: 1px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+.form-input {
+width: 100%; background: #0a1628; border: 1px solid var(–blue2);
+border-radius: 8px; padding: 12px 16px; color: var(–light);
+font-family: ‘DM Sans’, sans-serif; font-size: 15px; transition: border 0.2s;
+}
+.form-input:focus { outline: none; border-color: var(–gold); box-shadow: 0 0 0 3px rgba(251,191,36,0.1); }
+.form-input::placeholder { color: #475569; }
 
-  /* LABEL */
-  .label {
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
+/* TIMELINE */
+.timeline { display: flex; margin-bottom: 36px; flex-wrap: wrap; }
+.timeline-step { flex: 1; min-width: 160px; background: var(–navy2); border: 1px solid var(–blue2); padding: 18px 20px; position: relative; }
+.timeline-step:first-child { border-radius: 10px 0 0 10px; }
+.timeline-step:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(–blue2); }
+.timeline-step.highlight { border-color: var(–gold); }
+.ts-phase { font-size: 10px; color: var(–gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+.ts-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.ts-desc { font-size: 12px; color: var(–slate); line-height: 1.5; }
+.timeline-arrow { width: 28px; height: 28px; background: var(–gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(–navy); font-weight: 900; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); z-index: 2; }
 
-  /* TIMELINE */
-  .timeline { display: flex; margin-bottom: 36px; flex-wrap: wrap; }
-  .timeline-step {
-    flex: 1;
-    min-width: 160px;
-    background: var(--navy2);
-    border: 1px solid var(--blue2);
-    padding: 18px 20px;
-    position: relative;
-  }
-  .timeline-step:first-child { border-radius: 10px 0 0 10px; }
-  .timeline-step:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(--blue2); }
-  .timeline-step.highlight { border-color: var(--gold); }
-  .timeline-step .ts-phase { font-size: 10px; color: var(--gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
-  .timeline-step .ts-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-  .timeline-step .ts-desc { font-size: 12px; color: var(--slate); line-height: 1.5; }
-  .timeline-arrow {
-    width: 28px; height: 28px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; color: var(--navy); font-weight: 900;
-    position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
-    z-index: 2;
-  }
+/* ROLE CARDS */
+.role-card { background: var(–navy2); border: 2px solid var(–blue2); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; }
+.role-card:hover { border-color: var(–blue); transform: translateY(-2px); }
+.role-card.selected { border-color: var(–gold); transform: scale(1.02); }
+.rc-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.rc-dp { font-size: 12px; color: var(–slate); }
+.rc-dp span { color: var(–gold); font-weight: 600; }
+.rc-badge { display: inline-block; background: rgba(251,191,36,0.2); border: 1px solid var(–gold); color: var(–gold); font-size: 11px; border-radius: 6px; padding: 2px 10px; margin-top: 8px; }
 
-  /* ROLE CARDS */
-  .role-card {
-    background: var(--navy2);
-    border: 2px solid var(--blue2);
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .role-card:hover { border-color: var(--blue); transform: translateY(-2px); }
-  .role-card.selected { border-color: var(--gold); transform: scale(1.02); }
-  .role-card.selected .rc-name { color: white; }
-  .rc-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .rc-dp { font-size: 12px; color: var(--slate); }
-  .rc-dp span { color: var(--gold); font-weight: 600; }
-  .rc-badge {
-    display: inline-block;
-    background: rgba(251,191,36,0.2);
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 11px;
-    border-radius: 6px;
-    padding: 2px 10px;
-    margin-top: 8px;
-  }
+/* METRIC TABS */
+.metric-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.metric-tab-btn { background: var(–navy2); border: 1px solid var(–blue2); color: var(–light); border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 13px; font-family: ‘DM Sans’, sans-serif; font-weight: 500; transition: all 0.2s; }
+.metric-tab-btn.active { font-weight: 700; color: white; }
 
-  /* METRIC SELECTOR */
-  .metric-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
-  .metric-tab-btn {
-    background: var(--navy2);
-    border: 1px solid var(--blue2);
-    color: var(--light);
-    border-radius: 8px;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-  .metric-tab-btn.active { font-weight: 700; color: white; }
+/* SCORE LEVELS */
+.score-levels { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+.score-level { flex: 1; min-width: 110px; background: #0a1628; border: 2px solid var(–blue2); border-radius: 10px; padding: 14px; cursor: pointer; text-align: center; transition: all 0.15s; }
+.score-level:hover { border-color: var(–blue); }
+.score-level.selected { border-color: var(–gold); }
+.sl-label { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.sl-value { font-size: 12px; color: var(–slate); margin-bottom: 8px; }
+.sl-stars { font-size: 18px; color: var(–gold); }
 
-  /* SCORE LEVELS */
-  .score-levels { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
-  .score-level {
-    flex: 1;
-    min-width: 110px;
-    background: #0a1628;
-    border: 2px solid var(--blue2);
-    border-radius: 10px;
-    padding: 14px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
-  }
-  .score-level:hover { border-color: var(--blue); }
-  .score-level.selected { border-color: var(--gold); }
-  .score-level .sl-label { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-  .score-level .sl-value { font-size: 12px; color: var(--slate); margin-bottom: 8px; }
-  .score-level .sl-stars { font-size: 18px; color: var(--gold); }
+/* SCORE HERO */
+.score-hero { background: var(–navy2); border: 2px solid var(–blue2); border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 160px; }
+.score-hero .pct { font-size: 42px; font-weight: 700; font-family: ‘Playfair Display’, serif; }
+.score-hero .rating-lbl { font-size: 16px; font-weight: 600; }
+.score-hero .pts { font-size: 11px; color: #64748b; }
 
-  /* SCORE SUMMARY */
-  .score-hero {
-    background: var(--navy2);
-    border: 2px solid var(--blue2);
-    border-radius: 12px;
-    padding: 20px 28px;
-    text-align: center;
-    min-width: 160px;
-  }
-  .score-hero .pct { font-size: 42px; font-weight: 700; font-family: 'Playfair Display', serif; }
-  .score-hero .rating { font-size: 16px; font-weight: 600; }
-  .score-hero .pts { font-size: 11px; color: #64748b; }
+/* PROGRESS */
+.progress-wrap { background: #0a1628; border-radius: 6px; height: 8px; }
+.progress-bar { border-radius: 6px; height: 8px; transition: width 0.5s; }
 
-  /* PROGRESS BAR */
-  .progress-wrap { background: #0a1628; border-radius: 6px; height: 8px; }
-  .progress-bar { border-radius: 6px; height: 8px; transition: width 0.5s; }
+/* EVIDENCE */
+.ev-section-hdr { border-radius: 10px 10px 0 0; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.ev-submetric { background: var(–navy2); border-left: 3px solid; border-right: 1px solid var(–blue2); border-bottom: 1px solid var(–blue2); padding: 18px 20px; }
+.ev-submetric:last-child { border-radius: 0 0 10px 10px; }
+.prompt-box { background: #0a1628; border-radius: 8px; padding: 14px; margin-bottom: 12px; display: none; }
+.prompt-box.open { display: block; }
+.prompt-item { font-size: 13px; color: var(–slate); margin-bottom: 6px; display: flex; gap: 8px; }
+.prompt-toggle { background: var(–blue2); border: none; color: var(–gold); border-radius: 6px; padding: 4px 12px; cursor: pointer; font-size: 12px; font-family: ‘DM Sans’, sans-serif; }
+textarea { width: 100%; background: #0a1628; border: 1px solid var(–blue2); border-radius: 8px; padding: 14px; color: var(–light); font-family: ‘DM Sans’, sans-serif; font-size: 14px; line-height: 1.6; resize: vertical; min-height: 80px; }
+textarea:focus { outline: none; border-color: var(–blue); }
+textarea::placeholder { color: #475569; }
 
-  /* EVIDENCE */
-  .evidence-section-header {
-    border-radius: 10px 10px 0 0;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .evidence-submetric {
-    background: var(--navy2);
-    border-left: 3px solid;
-    border-right: 1px solid var(--blue2);
-    border-bottom: 1px solid var(--blue2);
-    padding: 18px 20px;
-  }
-  .evidence-submetric:last-child { border-radius: 0 0 10px 10px; }
-  .prompt-box {
-    background: #0a1628;
-    border-radius: 8px;
-    padding: 14px;
-    margin-bottom: 12px;
-    display: none;
-  }
-  .prompt-box.open { display: block; }
-  .prompt-item { font-size: 13px; color: var(--slate); margin-bottom: 6px; display: flex; gap: 8px; }
-  .prompt-toggle {
-    background: var(--blue2);
-    border: none;
-    color: var(--gold);
-    border-radius: 6px;
-    padding: 4px 12px;
-    cursor: pointer;
-    font-size: 12px;
-    font-family: 'DM Sans', sans-serif;
-  }
-  textarea {
-    width: 100%;
-    background: #0a1628;
-    border: 1px solid var(--blue2);
-    border-radius: 8px;
-    padding: 14px;
-    color: var(--light);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    resize: vertical;
-    min-height: 80px;
-  }
-  textarea:focus { outline: none; border-color: var(--blue); }
-  textarea::placeholder { color: #475569; }
+/* BUTTONS */
+.btn { background: var(–blue); color: white; border: none; border-radius: 8px; padding: 12px 28px; font-size: 14px; font-family: ‘DM Sans’, sans-serif; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+.btn:hover { background: #0066cc; }
+.btn-gold { background: var(–gold); color: var(–navy); }
+.btn-gold:hover { background: #f59e0b; }
+.btn-outline { background: transparent; border: 1px solid var(–blue2); color: var(–light); }
+.btn-outline:hover { border-color: var(–blue); background: rgba(0,87,168,0.1); }
+.btn-sm { padding: 8px 18px; font-size: 13px; }
+.btn-green { background: #16a34a; }
+.btn-green:hover { background: #15803d; }
 
-  /* BUTTONS */
-  .btn {
-    background: var(--blue);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 28px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 0.3px;
-    transition: background 0.2s;
-  }
-  .btn:hover { background: #0066cc; }
-  .btn-gold { background: var(--gold); color: var(--navy); }
-  .btn-gold:hover { background: #f59e0b; }
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--blue2);
-    color: var(--light);
-  }
-  .btn-outline:hover { border-color: var(--blue); }
-  .btn-sm { padding: 8px 18px; font-size: 13px; }
-  .btn-danger { background: #dc2626; }
-  .btn-danger:hover { background: #b91c1c; }
+/* EXPORT BAR */
+.export-bar { display: flex; gap: 10px; flex-wrap: wrap; padding: 14px 36px; background: #0a1f38; border-top: 1px solid var(–blue2); border-bottom: 1px solid var(–blue2); align-items: center; }
+.export-bar-label { font-size: 12px; color: var(–slate); margin-right: 2px; white-space: nowrap; }
 
-  /* EXPORT BAR */
-  .export-bar {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 16px 36px;
-    background: #0a1f38;
-    border-top: 1px solid var(--blue2);
-    border-bottom: 1px solid var(--blue2);
-    align-items: center;
-  }
-  .export-bar span { font-size: 13px; color: var(--slate); margin-right: 4px; }
+/* SUMMARY */
+.summary-metric-card { background: var(–navy2); border-radius: 12px; padding: 20px; border: 1px solid; }
+.ev-entry { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(–blue2); }
+.ev-entry:last-child { border-bottom: none; }
+.ev-meta { font-size: 12px; margin-bottom: 4px; }
+.ev-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; white-space: pre-wrap; }
+.tp-item { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
+.tp-num { color: var(–gold); flex-shrink: 0; font-weight: 700; }
 
-  /* SUMMARY */
-  .summary-metric-card {
-    background: var(--navy2);
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid;
-  }
-  .evidence-entry {
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--blue2);
-  }
-  .evidence-entry:last-child { border-bottom: none; }
-  .ev-meta { font-size: 12px; margin-bottom: 4px; }
-  .ev-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; white-space: pre-wrap; }
+/* PROFILE BANNER */
+.profile-banner { background: linear-gradient(90deg, rgba(0,87,168,0.3), rgba(30,58,95,0.3)); border: 1px solid var(–blue); border-radius: 10px; padding: 14px 20px; margin-bottom: 24px; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+.pb-item { display: flex; flex-direction: column; gap: 2px; }
+.pb-key { font-size: 10px; color: var(–slate); letter-spacing: 1px; text-transform: uppercase; }
+.pb-val { font-size: 14px; font-weight: 600; color: white; }
+.pb-empty { color: var(–slate); font-style: italic; font-weight: 400; }
 
-  /* TALKING POINTS */
-  .tp-item { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
-  .tp-num { color: var(--gold); flex-shrink: 0; font-weight: 700; }
+/* PRINT */
+@media print {
+.tabs, .export-bar, .header { display: none !important; }
+body { background: white !important; color: #1e293b !important; font-family: Arial, sans-serif !important; }
+.panel { display: none !important; }
+.panel.print-active { display: block !important; }
+.print-page { page-break-after: always; padding: 24pt; }
+.print-page:last-child { page-break-after: avoid; }
+.card, .summary-metric-card { background: #f8fafc !important; border-color: #e2e8f0 !important; box-shadow: none; }
+h2 { color: #0057a8 !important; font-family: Arial, sans-serif !important; }
+h3 { color: #1e3a5f !important; }
+.subtitle { color: #64748b !important; }
+.label { color: #0057a8 !important; }
+.ev-text, .tp-item { color: #374151 !important; }
+.progress-wrap { background: #e2e8f0 !important; }
+.profile-banner { background: #f0f7ff !important; border-color: #0057a8 !important; }
+.pb-val { color: #1e293b !important; }
+.pb-key { color: #64748b !important; }
+.grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+.summary-metric-card { border: 1px solid #e2e8f0 !important; }
+.score-hero { background: #f0f7ff !important; border-color: #0057a8 !important; }
+.ev-entry { border-bottom-color: #e2e8f0 !important; }
+}
 
-  /* PRINT / PDF */
-  @media print {
-    .tabs, .export-bar, .header { display: none !important; }
-    body { background: white !important; color: black !important; }
-    .panel { display: block !important; }
-    .panel:not(.print-target) { display: none !important; }
-    .card, .summary-metric-card { background: #f8fafc !important; border-color: #e2e8f0 !important; }
-    h2, h3 { color: #0a1628 !important; }
-    .subtitle, .ev-text, .tp-item { color: #374151 !important; }
-    .label { color: #0057a8 !important; }
-  }
+/* TOAST */
+.toast { position: fixed; bottom: 24px; right: 24px; background: #16a34a; color: white; padding: 12px 22px; border-radius: 8px; font-size: 14px; font-family: ‘DM Sans’, sans-serif; font-weight: 600; z-index: 9999; opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateY(0); }
 
-  /* NOTIFICATION */
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #16a34a;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s;
-    pointer-events: none;
-  }
-  .toast.show { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 700px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .content { padding: 20px 18px; }
-    .header { padding: 14px 18px; }
-    .tabs { padding: 0 18px; }
-    .export-bar { padding: 12px 18px; }
-  }
+@media (max-width: 700px) {
+.grid-2, .grid-3 { grid-template-columns: 1fr; }
+.content { padding: 20px 18px; }
+.header, .tabs, .export-bar { padding-left: 18px; padding-right: 18px; }
+}
 </style>
+
 </head>
 <body>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <!-- HEADER -->
+
 <div class="header">
   <div>
     <div class="header-brand">KPMG</div>
     <div class="header-title">C&amp;M Year-End Navigator</div>
   </div>
-  <div class="header-role-badge" id="headerRoleBadge" style="display:none">
-    <div class="role-label">YOUR ROLE</div>
-    <div class="role-name" id="headerRoleName">—</div>
-    <div class="dualpen-label" id="headerDualPen">—</div>
+  <div class="header-badge" id="headerBadge" style="display:none">
+    <div class="hb-name" id="hbName">—</div>
+    <div class="hb-role" id="hbRole">—</div>
+    <div class="hb-dp" id="hbDp">—</div>
   </div>
 </div>
 
 <!-- EXPORT BAR -->
+
 <div class="export-bar">
-  <span>Backup &amp; Export:</span>
+  <span class="export-bar-label">Backup &amp; Export:</span>
   <button class="btn btn-sm btn-outline" onclick="exportJSON()">⬇ Export JSON</button>
-  <label class="btn btn-sm btn-outline" style="cursor:pointer">
-    ⬆ Import JSON <input type="file" accept=".json" onchange="importJSON(event)" style="display:none">
+  <label class="btn btn-sm btn-outline" style="cursor:pointer">⬆ Import JSON
+    <input type="file" accept=".json" onchange="importJSON(event)" style="display:none">
   </label>
   <button class="btn btn-sm btn-outline" onclick="exportPDF()">🖨 Export PDF</button>
-  <button class="btn btn-sm btn-gold" onclick="exportWord()">📄 Export Word</button>
+  <button class="btn btn-sm btn-gold" onclick="exportWord()">📄 Export Word (.docx)</button>
 </div>
 
 <!-- TABS -->
+
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+  <button class="tab-btn" onclick="switchTab('profile')">My Profile</button>
   <button class="tab-btn" onclick="switchTab('role')">My Role</button>
   <button class="tab-btn" onclick="switchTab('scorecard')">Scorecard</button>
   <button class="tab-btn" onclick="switchTab('evidence')">Evidence Builder</button>
   <button class="tab-btn" onclick="switchTab('summary')">My Summary</button>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
 
-  <!-- ===== OVERVIEW ===== -->
-  <div class="panel active" id="panel-overview">
-    <h2>Your Year-End Roadmap</h2>
-    <p class="subtitle">The three-stage C&amp;M performance process and what it takes to build a compelling case.</p>
+<!-- ===== OVERVIEW ===== -->
 
-    <div class="timeline">
-      <div class="timeline-step">
-        <div class="ts-phase">NOW</div>
-        <div class="ts-title">Build Your Evidence</div>
-        <div class="ts-desc">Document achievements against each metric with specific numbers and outcomes</div>
-        <div class="timeline-arrow">›</div>
-      </div>
-      <div class="timeline-step">
-        <div class="ts-phase">PRE-JUNE</div>
-        <div class="ts-title">Dual Pen Review</div>
-        <div class="ts-desc">Your Dual Pen meets with you &amp; People Leader to review C&amp;M goals and agree indicative rating</div>
-        <div class="timeline-arrow">›</div>
-      </div>
-      <div class="timeline-step highlight">
-        <div class="ts-phase">4 JUNE 2026</div>
-        <div class="ts-title">Calibration Meeting</div>
-        <div class="ts-desc">IL &amp; Sector leads, Platinum/Priority CLPs, Growth Portfolio and Divisional C&amp;M reviewed</div>
-        <div class="timeline-arrow">›</div>
-      </div>
-      <div class="timeline-step">
-        <div class="ts-phase">POST-CALIBRATION</div>
-        <div class="ts-title">Markets Rating</div>
-        <div class="ts-desc">Formal Markets Ratings for significant C&amp;M roles (+20% time / $5M). Outcomes shared with Divisional NMPs</div>
-      </div>
+<div class="panel active" id="panel-overview">
+  <h2>Your Year-End Roadmap</h2>
+  <p class="subtitle">The three-stage C&amp;M performance process and what it takes to build a compelling case.</p>
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="ts-phase">NOW</div>
+      <div class="ts-title">Build Your Evidence</div>
+      <div class="ts-desc">Document achievements against each metric with specific numbers and outcomes</div>
+      <div class="timeline-arrow">›</div>
     </div>
-
-    <div class="grid-2" style="margin-bottom:24px">
-      <div class="card">
-        <div class="label">Divisional Focus</div>
-        <div style="font-size:13px; color:#cbd5e1; line-height:1.9">
-          Client Delivery &nbsp;•&nbsp; Revenue Targets<br>
-          People Leadership &nbsp;•&nbsp; Capability &amp; Proposition Development
-        </div>
-      </div>
-      <div class="card card-blue">
-        <div class="label">C&amp;M Focus — Your Differentiator</div>
-        <div style="font-size:13px; color:#cbd5e1; line-height:1.9">
-          Sector or Client Leadership &nbsp;•&nbsp; Sector Leadership &amp; Community<br>
-          Client Service Team &nbsp;•&nbsp; Sales Enablement &amp; BD Support
-        </div>
-      </div>
+    <div class="timeline-step">
+      <div class="ts-phase">PRE-JUNE</div>
+      <div class="ts-title">Dual Pen Review</div>
+      <div class="ts-desc">Your Dual Pen meets with you &amp; People Leader to review C&amp;M goals and agree indicative rating</div>
+      <div class="timeline-arrow">›</div>
     </div>
-
-    <div class="card card-gold">
-      <div class="label">💡 Key Principles to Evidence</div>
-      <div class="grid-2" style="gap:10px; margin-top:8px">
-        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Whole of Firm revenue accountability</div>
-        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Aligned to Partner's focus area in market</div>
-        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Support sales pipeline/conversion in home division</div>
-        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Synergies with market focus (time allocation)</div>
-        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px" style="grid-column:1/-1">› Balanced scorecard across Markets &amp; Divisional goals agreed with People Leader &amp; Dual Pen</div>
-      </div>
+    <div class="timeline-step highlight">
+      <div class="ts-phase">4 JUNE 2026</div>
+      <div class="ts-title">Calibration Meeting</div>
+      <div class="ts-desc">IL &amp; Sector leads, Platinum/Priority CLPs, Growth Portfolio and Divisional C&amp;M reviewed</div>
+      <div class="timeline-arrow">›</div>
     </div>
-
-    <button class="btn" style="margin-top:24px" onclick="switchTab('role')">Start: Select Your Role →</button>
+    <div class="timeline-step">
+      <div class="ts-phase">POST-CALIBRATION</div>
+      <div class="ts-title">Markets Rating</div>
+      <div class="ts-desc">Formal Markets Ratings for significant C&amp;M roles (+20% time / $5M). Outcomes shared with Divisional NMPs</div>
+    </div>
   </div>
-
-  <!-- ===== ROLE ===== -->
-  <div class="panel" id="panel-role">
-    <h2>Select Your C&amp;M Role</h2>
-    <p class="subtitle">Your role determines your Dual Pen and the calibration lens applied to your performance.</p>
-
-    <div class="grid-3" id="roleGrid" style="margin-bottom:24px"></div>
-
-    <div class="card card-blue" id="roleContextCard" style="display:none">
-      <div class="label">Calibration Note for Your Role</div>
-      <p id="roleContextText" style="font-size:14px; color:#cbd5e1; line-height:1.7"></p>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <div class="label">Divisional Focus</div>
+      <div style="font-size:13px;color:#cbd5e1;line-height:1.9">Client Delivery &nbsp;•&nbsp; Revenue Targets<br>People Leadership &nbsp;•&nbsp; Capability &amp; Proposition Development</div>
     </div>
-
-    <button class="btn" style="margin-top:20px" id="roleNextBtn" onclick="switchTab('scorecard')" style="display:none">Next: Rate Your Performance →</button>
+    <div class="card card-blue">
+      <div class="label">C&amp;M Focus — Your Differentiator</div>
+      <div style="font-size:13px;color:#cbd5e1;line-height:1.9">Sector or Client Leadership &nbsp;•&nbsp; Sector Leadership &amp; Community<br>Client Service Team &nbsp;•&nbsp; Sales Enablement &amp; BD Support</div>
+    </div>
   </div>
+  <div class="card card-gold">
+    <div class="label">💡 Key Principles to Evidence</div>
+    <div class="grid-2" style="gap:10px;margin-top:8px">
+      <div style="font-size:13px;color:#cbd5e1">› Whole of Firm revenue accountability</div>
+      <div style="font-size:13px;color:#cbd5e1">› Aligned to Partner's focus area in market</div>
+      <div style="font-size:13px;color:#cbd5e1">› Support sales pipeline/conversion in home division</div>
+      <div style="font-size:13px;color:#cbd5e1">› Synergies with market focus (time allocation)</div>
+      <div style="font-size:13px;color:#cbd5e1;grid-column:1/-1">› Balanced scorecard across Markets &amp; Divisional goals agreed with People Leader &amp; Dual Pen</div>
+    </div>
+  </div>
+  <button class="btn" style="margin-top:24px" onclick="switchTab('profile')">Start: Enter Your Profile →</button>
+</div>
 
-  <!-- ===== SCORECARD ===== -->
-  <div class="panel" id="panel-scorecard">
-    <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:24px">
+<!-- ===== PROFILE ===== -->
+
+<div class="panel" id="panel-profile">
+  <h2>My Profile</h2>
+  <p class="subtitle">This information appears on all your exports and keeps your documents personalised.</p>
+  <div class="card card-gold" style="max-width:600px">
+    <div class="label">Your Details</div>
+    <div class="form-group">
+      <label class="form-label">Full Name</label>
+      <input class="form-input" type="text" id="inputName" placeholder="e.g. Nicole Apostol" oninput="saveProfile()" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Industry or Account I Lead</label>
+      <input class="form-input" type="text" id="inputFocus" placeholder="e.g. Financial Services / Telstra Account" oninput="saveProfile()" />
+    </div>
+    <div class="form-group" style="margin-bottom:0">
+      <label class="form-label">My Dual Pen Name</label>
+      <input class="form-input" type="text" id="inputDualPenName" placeholder="e.g. James Smith" oninput="saveProfile()" />
+    </div>
+  </div>
+  <div style="margin-top:16px;padding:14px 20px;background:rgba(0,87,168,0.15);border:1px solid var(--blue);border-radius:10px;font-size:13px;color:var(--slate);max-width:600px">
+    💡 These fields are optional but recommended. They will appear on the cover page of your PDF and Word exports.
+  </div>
+  <button class="btn" style="margin-top:24px" onclick="switchTab('role')">Next: Select Your Role →</button>
+</div>
+
+<!-- ===== ROLE ===== -->
+
+<div class="panel" id="panel-role">
+  <h2>Select Your C&amp;M Role</h2>
+  <p class="subtitle">Your role determines your Dual Pen and the calibration lens applied to your performance.</p>
+  <div class="grid-3" id="roleGrid" style="margin-bottom:24px"></div>
+  <div class="card card-blue" id="roleContextCard" style="display:none">
+    <div class="label">Calibration Note for Your Role</div>
+    <p id="roleContextText" style="font-size:14px;color:#cbd5e1;line-height:1.7"></p>
+  </div>
+  <button class="btn" style="margin-top:20px;display:none" id="roleNextBtn" onclick="switchTab('scorecard')">Next: Rate Your Performance →</button>
+</div>
+
+<!-- ===== SCORECARD ===== -->
+
+<div class="panel" id="panel-scorecard">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:24px">
+    <div>
+      <h2>Self-Assessment Scorecard</h2>
+      <p class="subtitle" style="margin-bottom:0">Rate yourself honestly — this frames your narrative with the Dual Pen.</p>
+    </div>
+    <div class="score-hero" id="scoreHero">
+      <div class="pct" id="scorePct" style="color:#2563eb">0%</div>
+      <div class="rating-lbl" id="scoreRating" style="color:#2563eb">Not Rated</div>
+      <div class="pts" id="scorePts">0/0 points</div>
+    </div>
+  </div>
+  <div class="metric-tabs" id="metricTabs"></div>
+  <div id="metricContent"></div>
+</div>
+
+<!-- ===== EVIDENCE ===== -->
+
+<div class="panel" id="panel-evidence">
+  <h2>Evidence Builder</h2>
+  <p class="subtitle">Guided prompts for every sub-metric. Be specific — your Dual Pen will probe each area.</p>
+  <div id="evidenceContent"></div>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+
+<div class="panel" id="panel-summary">
+  <h2>Your Performance Summary</h2>
+  <p class="subtitle">Consolidated view for your Dual Pen conversation and calibration preparation.</p>
+  <div class="profile-banner" id="summaryProfileBanner"></div>
+  <div class="grid-4" id="summaryMetrics" style="margin-bottom:24px"></div>
+  <div class="card" id="summaryEvidenceCard">
+    <div class="label">Evidence Log</div>
+    <div id="evidenceLog" style="margin-top:12px"></div>
+  </div>
+  <div class="card card-blue" style="margin-top:20px">
+    <div class="label">Dual Pen Conversation Prep</div>
+    <div class="grid-2" style="margin-top:12px;gap:20px">
       <div>
-        <h2>Self-Assessment Scorecard</h2>
-        <p class="subtitle" style="margin-bottom:0">Rate yourself honestly — this frames your narrative with the Dual Pen.</p>
+        <div style="font-size:12px;color:var(--slate);margin-bottom:10px">KEY TALKING POINTS</div>
+        <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
+        <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
+        <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
+        <div class="tp-item"><span class="tp-num">4.</span> Show market presence: thought leadership, forums, community roles</div>
+        <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
       </div>
-      <div class="score-hero" id="scoreHero">
-        <div class="pct" id="scorePct" style="color:#2563eb">0%</div>
-        <div class="rating" id="scoreRating" style="color:#2563eb">Not Rated</div>
-        <div class="pts" id="scorePts">0/0 points</div>
-      </div>
-    </div>
-
-    <div class="metric-tabs" id="metricTabs"></div>
-    <div id="metricContent"></div>
-  </div>
-
-  <!-- ===== EVIDENCE ===== -->
-  <div class="panel" id="panel-evidence">
-    <h2>Evidence Builder</h2>
-    <p class="subtitle">Guided prompts for every sub-metric. Your Dual Pen will probe each area — be specific.</p>
-    <div id="evidenceContent"></div>
-  </div>
-
-  <!-- ===== SUMMARY ===== -->
-  <div class="panel print-target" id="panel-summary">
-    <h2>Your Performance Summary</h2>
-    <p class="subtitle">A consolidated view for your Dual Pen conversation and calibration preparation.</p>
-
-    <div class="grid-4" id="summaryMetrics" style="margin-bottom:28px"></div>
-
-    <div class="card" id="summaryEvidence">
-      <div class="label">Evidence Log</div>
-      <div id="evidenceLog" style="margin-top:12px"></div>
-    </div>
-
-    <div class="card card-blue" style="margin-top:20px" id="dualPenPrepCard">
-      <div class="label">Dual Pen Conversation Prep</div>
-      <div class="grid-2" style="margin-top:12px; gap:20px">
-        <div>
-          <div style="font-size:12px; color:var(--slate); margin-bottom:10px">KEY TALKING POINTS</div>
-          <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
-          <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
-          <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
-          <div class="tp-item"><span class="tp-num">4.</span> Show market presence: thought leadership, forums, community roles</div>
-          <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
+      <div>
+        <div style="font-size:12px;color:var(--slate);margin-bottom:10px">DUAL PEN &amp; KEY DATES</div>
+        <div style="background:#0a1628;border-radius:8px;padding:16px;margin-bottom:12px">
+          <div style="font-size:11px;color:var(--slate);margin-bottom:4px">DUAL PEN TITLE</div>
+          <div style="font-size:20px;font-weight:700;color:var(--gold)" id="summaryDualPenTitle">—</div>
+          <div style="font-size:11px;color:var(--slate);margin-top:8px;margin-bottom:2px">DUAL PEN NAME</div>
+          <div style="font-size:16px;font-weight:600" id="summaryDualPenName">—</div>
         </div>
-        <div>
-          <div style="font-size:12px; color:var(--slate); margin-bottom:10px">YOUR DUAL PEN &amp; KEY DATES</div>
-          <div style="background:#0a1628; border-radius:8px; padding:16px; margin-bottom:12px">
-            <div style="font-size:24px; font-weight:700; color:var(--gold)" id="summaryDualPen">—</div>
-            <div style="font-size:12px; color:var(--slate); margin-top:8px; line-height:1.6">
-              Provides formal review and checkpoint against agreed C&amp;M goals including time commitment. Inputs on your indicative performance rating prior to calibration.
-            </div>
-          </div>
-          <div style="background:#0a1628; border-radius:8px; padding:16px">
-            <div style="font-size:11px; color:var(--slate); margin-bottom:4px">CALIBRATION DATE</div>
-            <div style="font-size:20px; font-weight:700; color:var(--gold)">4 June 2026</div>
-            <div style="font-size:12px; color:var(--slate); margin-top:4px">Formal Markets Ratings for roles with +20% time / $5M threshold</div>
-          </div>
+        <div style="background:#0a1628;border-radius:8px;padding:16px">
+          <div style="font-size:11px;color:var(--slate);margin-bottom:4px">CALIBRATION DATE</div>
+          <div style="font-size:20px;font-weight:700;color:var(--gold)">4 June 2026</div>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px">Formal Markets Ratings: +20% time / $5M threshold</div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 </div><!-- /content -->
 
+<!-- ========== PRINT-ONLY LAYOUT ========== -->
+
+<div id="printContainer" style="display:none"></div>
+
 <script>
-// ============================================================
+// ─────────────────────────────────────────────
 // DATA
-// ============================================================
+// ─────────────────────────────────────────────
 const METRICS = {
   sustainable_growth: {
-    label: "Sustainable Growth", color: "#1e3a5f", accent: "#3b82f6", icon: "📈",
-    submetrics: [
-      { id: "revenue", label: "Revenue (FY26 Plan) Achieved",
-        levels: [{label:"Outperform",value:">10%",score:3},{label:"On Target",value:"+/- 5%",score:2},{label:"Below",value:"<10%",score:1}],
-        prompts: ["What was your FY26 revenue vs plan? ($ amount and %)?","Which accounts or sectors drove growth?","What new logos or expanded accounts contributed?"] },
-      { id: "gm", label: "GM% Target",
-        levels: [{label:"Improved",value:"YoY improvement",score:3},{label:"Maintained",value:"Flat",score:2},{label:"Declined",value:"Down YoY",score:1}],
-        prompts: ["What is your GM% vs prior year?","What drove margin improvement or headwinds?"] },
-      { id: "pipeline", label: "Sales Pipeline",
-        levels: [{label:"Exceeds",value:"2x+ budget",score:3},{label:"On Track",value:"~2x budget",score:2},{label:"Below",value:"<2x budget",score:1}],
-        prompts: ["What is your current weighted pipeline vs budget?","List top 3-5 opportunities with $ value and expected close"] },
-      { id: "fop", label: "Fields of Play",
-        levels: [{label:"Strong",value:"3 FoPs in pipeline",score:3},{label:"Developing",value:"1-2 FoPs",score:2},{label:"Early Stage",value:"Identifying",score:1}],
-        prompts: ["What are your top 3 Fields of Play?","What pipeline is attributed to each FoP?","What FoP activity with global SMEs?"] }
+    label:"Sustainable Growth", color:"#1e3a5f", accent:"#3b82f6", icon:"📈",
+    submetrics:[
+      {id:"revenue", label:"Revenue (FY26 Plan) Achieved",
+       levels:[{label:"Outperform",value:">10%",score:3},{label:"On Target",value:"+/- 5%",score:2},{label:"Below",value:"<10%",score:1}],
+       prompts:["What was your FY26 revenue vs plan ($ and %)?","Which accounts or sectors drove growth?","What new logos or expanded accounts contributed?"]},
+      {id:"gm", label:"GM% Target",
+       levels:[{label:"Improved",value:"YoY improvement",score:3},{label:"Maintained",value:"Flat",score:2},{label:"Declined",value:"Down YoY",score:1}],
+       prompts:["What is your GM% vs prior year?","What drove margin improvement or headwinds?"]},
+      {id:"pipeline", label:"Sales Pipeline",
+       levels:[{label:"Exceeds",value:"2x+ budget",score:3},{label:"On Track",value:"~2x budget",score:2},{label:"Below",value:"<2x budget",score:1}],
+       prompts:["What is your current weighted pipeline vs budget?","List top 3–5 opportunities with $ value and expected close date"]},
+      {id:"fop", label:"Fields of Play",
+       levels:[{label:"Strong",value:"3 FoPs in pipeline",score:3},{label:"Developing",value:"1–2 FoPs",score:2},{label:"Early Stage",value:"Identifying",score:1}],
+       prompts:["What are your top 3 Fields of Play?","What pipeline is attributed to each FoP?","What FoP activity with global SMEs?"]}
     ]
   },
   client_centred: {
-    label: "Client Centred", color: "#0057a8", accent: "#60a5fa", icon: "🤝",
-    submetrics: [
-      { id: "surveys", label: "Engagement Surveys",
-        levels: [{label:"Above Target",value:">80% surveyed",score:3},{label:"On Target",value:"~80%",score:2},{label:"Below",value:"<80%",score:1}],
-        prompts: ["What % of eligible engagements were surveyed?","What were your NPS/satisfaction scores?","Any standout client feedback to quote?"] },
-      { id: "win_loss", label: "Client Reviews & Win/Loss Debriefs",
-        levels: [{label:"Completed All",value:"All >$1m reviewed",score:3},{label:"Most Done",value:"Majority complete",score:2},{label:"Partial",value:"Some gaps",score:1}],
-        prompts: ["How many independent reviews completed on engagements >$1m?","What relationship reviews completed for Insights FY26 schedule accounts?","Key win/loss learnings applied?"] },
-      { id: "outcomes", label: "Exceptional Client Outcomes",
-        levels: [{label:"Strong",value:"Multiple case studies",score:3},{label:"Moderate",value:"1-2 examples",score:2},{label:"Building",value:"In progress",score:1}],
-        prompts: ["Describe 2-3 scaled case studies or success stories (strategic or >$1m)","What thought leadership have you delivered to clients?","What market forums have you spoken at or contributed to?","How are you building profile in market?"] }
+    label:"Client Centred", color:"#0057a8", accent:"#60a5fa", icon:"🤝",
+    submetrics:[
+      {id:"surveys", label:"Engagement Surveys",
+       levels:[{label:"Above Target",value:">80% surveyed",score:3},{label:"On Target",value:"~80%",score:2},{label:"Below",value:"<80%",score:1}],
+       prompts:["What % of eligible engagements were surveyed?","What were your NPS/satisfaction scores?","Any standout client feedback to quote?"]},
+      {id:"win_loss", label:"Client Reviews & Win/Loss Debriefs",
+       levels:[{label:"All Completed",value:"All >$1m reviewed",score:3},{label:"Most Done",value:"Majority complete",score:2},{label:"Partial",value:"Some gaps",score:1}],
+       prompts:["How many independent reviews completed on engagements >$1m?","What relationship reviews completed for Insights FY26 schedule accounts?","Key win/loss learnings applied?"]},
+      {id:"outcomes", label:"Exceptional Client Outcomes",
+       levels:[{label:"Strong",value:"Multiple case studies",score:3},{label:"Moderate",value:"1–2 examples",score:2},{label:"Building",value:"In progress",score:1}],
+       prompts:["Describe 2–3 scaled case studies or success stories (strategic or >$1m)","What thought leadership have you delivered to clients?","What market forums have you spoken at?","How are you building profile in market?"]}
     ]
   },
   inspired_people: {
-    label: "Inspired People", color: "#6b21a8", accent: "#a78bfa", icon: "⭐",
-    submetrics: [
-      { id: "cst", label: "CST Effectiveness",
-        levels: [{label:"Highly Effective",value:"All parts represented",score:3},{label:"Effective",value:"Regular CSTs",score:2},{label:"Developing",value:"In progress",score:1}],
-        prompts: ["Are all parts of the firm represented on your CST?","How often do monthly CSTs meet and what's covered?","Describe your culture of BD on the CST — who's generating leads?"] },
-      { id: "feedback360", label: "360 Feedback from IL and CST",
-        levels: [{label:"Exceptional",value:"Strong IL & CST feedback",score:3},{label:"Positive",value:"Good feedback",score:2},{label:"Mixed",value:"Areas to develop",score:1}],
-        prompts: ["Summarise key themes from Industry Leader feedback","Summarise core CST member feedback","What feedback from ALT members?","Any specific recognition or awards?"] }
+    label:"Inspired People", color:"#6b21a8", accent:"#a78bfa", icon:"⭐",
+    submetrics:[
+      {id:"cst", label:"CST Effectiveness",
+       levels:[{label:"Highly Effective",value:"All parts represented",score:3},{label:"Effective",value:"Regular CSTs held",score:2},{label:"Developing",value:"In progress",score:1}],
+       prompts:["Are all parts of the firm represented on your CST?","How often do monthly CSTs meet?","Describe your culture of BD on the CST — who's generating leads?"]},
+      {id:"feedback360", label:"360 Feedback from IL and CST",
+       levels:[{label:"Exceptional",value:"Strong IL & CST feedback",score:3},{label:"Positive",value:"Good feedback",score:2},{label:"Mixed",value:"Areas to develop",score:1}],
+       prompts:["Summarise key themes from Industry Leader feedback","Summarise core CST member feedback","What feedback from ALT members?","Any specific recognition or awards?"]}
     ]
   },
   innovation: {
-    label: "Innovation & Explore", color: "#065f46", accent: "#34d399", icon: "🚀",
-    submetrics: [
-      { id: "footprint", label: "Broadening Footprint",
-        levels: [{label:"Strong",value:"Diversified & deeper",score:3},{label:"Growing",value:"Some diversification",score:2},{label:"Focused",value:"Core accounts only",score:1}],
-        prompts: ["What whole-of-firm opportunity origination have you driven?","Revenue penetration across industry, sector and/or account?","Pipeline deepened across Fields of Play?"] },
-      { id: "ecosystem", label: "Ecosystem & GenAI",
-        levels: [{label:"Leading",value:"Active & innovative",score:3},{label:"Active",value:"Engaged",score:2},{label:"Emerging",value:"Starting",score:1}],
-        prompts: ["Which communities are you active in to identify new service offerings?","How are you adopting GenAI in client work?","Global connectivity examples (FoP, thought leadership, pursuits)?","New Partners or service offerings identified through ecosystem?"] }
+    label:"Innovation & Explore", color:"#065f46", accent:"#34d399", icon:"🚀",
+    submetrics:[
+      {id:"footprint", label:"Broadening Footprint",
+       levels:[{label:"Strong",value:"Diversified & deeper",score:3},{label:"Growing",value:"Some diversification",score:2},{label:"Focused",value:"Core accounts only",score:1}],
+       prompts:["What whole-of-firm opportunity origination have you driven?","Revenue penetration across industry, sector and/or account?","Pipeline deepened across Fields of Play?"]},
+      {id:"ecosystem", label:"Ecosystem & GenAI",
+       levels:[{label:"Leading",value:"Active & innovative",score:3},{label:"Active",value:"Engaged",score:2},{label:"Emerging",value:"Starting",score:1}],
+       prompts:["Which communities are you active in to identify new service offerings?","How are you adopting GenAI in client work?","Global connectivity examples (FoP, thought leadership, pursuits)?"]}
     ]
   }
 };
 
 const ROLES = [
-  { id: "industry_leader", label: "Industry Leader", color: "#1e3a5f", dualPen: "Divisional NMP",
-    context: "As Industry Leader, you will be in the 4 June 2026 Calibration Meeting. Your Dual Pen (Divisional NMP) will provide input on cross-divisional perspectives. Focus on firm-wide revenue origination, sector community leadership, and how you are growing the sector's pipeline across all divisions." },
-  { id: "sector_leader", label: "Sector Leader", color: "#2563eb", dualPen: "Industry Leader",
-    context: "As Sector Leader, you will be in the 4 June Calibration. Your Dual Pen is the Industry Leader. Build evidence of sector community leadership, CST effectiveness, market-facing thought leadership, and pipeline growth attributed to your sector focus." },
-  { id: "growth_portfolio", label: "Growth Portfolio Leader", color: "#0ea5e9", dualPen: "Sector Leader",
-    context: "As a Growth Portfolio Leader, your Dual Pen is the Sector Leader. Focus on new market development, pipeline diversification across Fields of Play, ecosystem engagement, and demonstrating how you are broadening the firm's footprint in your portfolio area." },
-  { id: "client_lead_platinum", label: "Client Lead Partner – Platinum Account", color: "#7c3aed", dualPen: "Sector Leader",
-    context: "As a Platinum Account Client Lead Partner, you will be reviewed at Calibration. Your Dual Pen is the Sector Leader. Emphasise client relationship depth, CST performance, revenue growth on account, exceptional client outcomes, and pipeline diversification across the account." },
-  { id: "client_lead_priority", label: "Client Lead Partner – Priority Account", color: "#9333ea", dualPen: "Sector Lead",
-    context: "As a Priority Account Client Lead Partner, your Dual Pen is the Sector Lead. Demonstrate account revenue growth, relationship breadth across the CST, strong client satisfaction scores, and how you are enabling cross-divisional opportunity on the account." },
-  { id: "divisional_cm", label: "Divisional C&M Leader", color: "#065f46", dualPen: "NMP C&M",
-    context: "As a Divisional C&M Leader, your Dual Pen is NMP C&M. You will attend Divisional Calibration meetings to provide feedback. Demonstrate whole-of-firm coordination, pipeline support across the division, divisional BD culture, and your role enabling Sector and Industry Leaders." }
+  {id:"industry_leader", label:"Industry Leader", color:"#1e3a5f", dualPen:"Divisional NMP",
+   context:"As Industry Leader, you will be in the 4 June 2026 Calibration Meeting. Your Dual Pen (Divisional NMP) provides input on cross-divisional perspectives. Focus on firm-wide revenue origination, sector community leadership, and how you are growing the sector's pipeline across all divisions."},
+  {id:"sector_leader", label:"Sector Leader", color:"#2563eb", dualPen:"Industry Leader",
+   context:"As Sector Leader, you will be in the 4 June Calibration. Your Dual Pen is the Industry Leader. Build evidence of sector community leadership, CST effectiveness, market-facing thought leadership, and pipeline growth attributed to your sector focus."},
+  {id:"growth_portfolio", label:"Growth Portfolio Leader", color:"#0ea5e9", dualPen:"Sector Leader",
+   context:"As a Growth Portfolio Leader, your Dual Pen is the Sector Leader. Focus on new market development, pipeline diversification across Fields of Play, ecosystem engagement, and demonstrating how you are broadening the firm's footprint in your portfolio area."},
+  {id:"client_lead_platinum", label:"Client Lead – Platinum Account", color:"#7c3aed", dualPen:"Sector Leader",
+   context:"As a Platinum Account Client Lead Partner, you will be reviewed at Calibration. Your Dual Pen is the Sector Leader. Emphasise client relationship depth, CST performance, revenue growth on account, exceptional client outcomes, and pipeline diversification across the account."},
+  {id:"client_lead_priority", label:"Client Lead – Priority Account", color:"#9333ea", dualPen:"Sector Lead",
+   context:"As a Priority Account Client Lead Partner, your Dual Pen is the Sector Lead. Demonstrate account revenue growth, relationship breadth across the CST, strong client satisfaction scores, and how you are enabling cross-divisional opportunity on the account."},
+  {id:"divisional_cm", label:"Divisional C&M Leader", color:"#065f46", dualPen:"NMP C&M",
+   context:"As a Divisional C&M Leader, your Dual Pen is NMP C&M. You will attend Divisional Calibration meetings to provide feedback. Demonstrate whole-of-firm coordination, pipeline support across the division, divisional BD culture, and your role enabling Sector and Industry Leaders."}
 ];
 
-// ============================================================
+const METRIC_KEYS = Object.keys(METRICS);
+
+// ─────────────────────────────────────────────
 // STATE
-// ============================================================
+// ─────────────────────────────────────────────
 let state = {
+  profile: { name:"", focus:"", dualPenName:"" },
   selectedRole: null,
   scores: {},
   evidence: {},
   activeMetric: "sustainable_growth"
 };
 
-// ============================================================
+// ─────────────────────────────────────────────
 // INIT
-// ============================================================
+// ─────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   renderRoles();
   renderMetricTabs();
   renderMetricContent();
   renderEvidenceContent();
   updateScoreHero();
-  updateSummary();
 });
 
-// ============================================================
+// ─────────────────────────────────────────────
 // TABS
-// ============================================================
+// ─────────────────────────────────────────────
+const TAB_IDS = ["overview","profile","role","scorecard","evidence","summary"];
 function switchTab(id) {
   document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
   document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-  document.getElementById("panel-" + id).classList.add("active");
-  const tabs = ["overview","role","scorecard","evidence","summary"];
-  document.querySelectorAll(".tab-btn")[tabs.indexOf(id)].classList.add("active");
+  document.getElementById("panel-"+id).classList.add("active");
+  document.querySelectorAll(".tab-btn")[TAB_IDS.indexOf(id)].classList.add("active");
   if (id === "summary") updateSummary();
   if (id === "scorecard") { renderMetricContent(); updateScoreHero(); }
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
+// PROFILE
+// ─────────────────────────────────────────────
+function saveProfile() {
+  state.profile.name      = document.getElementById("inputName").value.trim();
+  state.profile.focus     = document.getElementById("inputFocus").value.trim();
+  state.profile.dualPenName = document.getElementById("inputDualPenName").value.trim();
+  updateHeaderBadge();
+}
+
+function loadProfileInputs() {
+  document.getElementById("inputName").value        = state.profile.name || "";
+  document.getElementById("inputFocus").value       = state.profile.focus || "";
+  document.getElementById("inputDualPenName").value = state.profile.dualPenName || "";
+}
+
+function updateHeaderBadge() {
+  const { name, focus } = state.profile;
+  const role = ROLES.find(r => r.id === state.selectedRole);
+  if (name || role) {
+    document.getElementById("headerBadge").style.display = "block";
+    document.getElementById("hbName").textContent  = name || "—";
+    document.getElementById("hbRole").textContent  = role ? role.label : (focus || "—");
+    document.getElementById("hbDp").textContent    = role ? "Dual Pen: " + role.dualPen : "";
+  }
+}
+
+// ─────────────────────────────────────────────
 // ROLES
-// ============================================================
+// ─────────────────────────────────────────────
 function renderRoles() {
-  const grid = document.getElementById("roleGrid");
-  grid.innerHTML = ROLES.map(r => `
-    <div class="role-card ${state.selectedRole === r.id ? 'selected' : ''}"
-         id="rc-${r.id}"
+  document.getElementById("roleGrid").innerHTML = ROLES.map(r => `
+    <div class="role-card ${state.selectedRole===r.id?'selected':''}"
          onclick="selectRole('${r.id}')"
-         style="${state.selectedRole === r.id ? `background:${r.color}` : ''}">
+         style="${state.selectedRole===r.id?`background:${r.color}`:''}">
       <div class="rc-name">${r.label}</div>
       <div class="rc-dp">Dual Pen: <span>${r.dualPen}</span></div>
-      ${state.selectedRole === r.id ? '<div class="rc-badge">✓ Selected</div>' : ''}
-    </div>
-  `).join("");
+      ${state.selectedRole===r.id?'<div class="rc-badge">✓ Selected</div>':''}
+    </div>`).join("");
 }
 
 function selectRole(id) {
@@ -692,56 +554,44 @@ function selectRole(id) {
   document.getElementById("roleContextCard").style.display = "block";
   document.getElementById("roleContextText").textContent = role.context;
   document.getElementById("roleNextBtn").style.display = "inline-block";
-  // Update header
-  document.getElementById("headerRoleBadge").style.display = "block";
-  document.getElementById("headerRoleName").textContent = role.label;
-  document.getElementById("headerDualPen").textContent = "Dual Pen: " + role.dualPen;
-  updateSummary();
+  updateHeaderBadge();
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // SCORECARD
-// ============================================================
-const METRIC_KEYS = Object.keys(METRICS);
-
+// ─────────────────────────────────────────────
 function renderMetricTabs() {
-  const tabs = document.getElementById("metricTabs");
-  tabs.innerHTML = METRIC_KEYS.map(key => {
-    const m = METRICS[key];
-    return `<button class="metric-tab-btn ${key === state.activeMetric ? 'active' : ''}"
-      id="mtab-${key}"
-      onclick="setActiveMetric('${key}')"
-      style="${key === state.activeMetric ? `background:${m.color}; border-color:${m.color}` : ''}">
-      ${m.icon} ${m.label}
-    </button>`;
+  document.getElementById("metricTabs").innerHTML = METRIC_KEYS.map(k => {
+    const m = METRICS[k];
+    return `<button class="metric-tab-btn ${k===state.activeMetric?'active':''}"
+      onclick="setActiveMetric('${k}')"
+      style="${k===state.activeMetric?`background:${m.color};border-color:${m.color}`:''}">
+      ${m.icon} ${m.label}</button>`;
   }).join("");
 }
 
-function setActiveMetric(key) {
-  state.activeMetric = key;
+function setActiveMetric(k) {
+  state.activeMetric = k;
   renderMetricTabs();
   renderMetricContent();
 }
 
 function renderMetricContent() {
   const m = METRICS[state.activeMetric];
-  const el = document.getElementById("metricContent");
-  el.innerHTML = m.submetrics.map(sm => `
+  document.getElementById("metricContent").innerHTML = m.submetrics.map(sm => `
     <div class="card" style="border-color:${m.accent}40">
       <h3>${sm.label}</h3>
       <div class="score-levels">
         ${sm.levels.map(lv => `
-          <div class="score-level ${state.scores[sm.id] === lv.score ? 'selected' : ''}"
-               onclick="setScore('${sm.id}', ${lv.score})"
-               style="${state.scores[sm.id] === lv.score ? `background:${m.color}; border-color:var(--gold)` : ''}">
+          <div class="score-level ${state.scores[sm.id]===lv.score?'selected':''}"
+               onclick="setScore('${sm.id}',${lv.score})"
+               style="${state.scores[sm.id]===lv.score?`background:${m.color};border-color:var(--gold)`:''}">
             <div class="sl-label">${lv.label}</div>
             <div class="sl-value">${lv.value}</div>
             <div class="sl-stars">${"★".repeat(lv.score)}${"☆".repeat(3-lv.score)}</div>
-          </div>
-        `).join("")}
+          </div>`).join("")}
       </div>
-    </div>
-  `).join("");
+    </div>`).join("");
 }
 
 function setScore(id, score) {
@@ -751,14 +601,14 @@ function setScore(id, score) {
 }
 
 function updateScoreHero() {
-  const allSubs = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
-  const total = allSubs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
-  const max = allSubs.length * 3;
-  const pct = max > 0 ? Math.round((total / max) * 100) : 0;
-  const { label, color } = getRating(pct);
+  const all = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
+  const total = all.reduce((a,sm) => a+(state.scores[sm.id]||0), 0);
+  const max = all.length * 3;
+  const pct = max > 0 ? Math.round((total/max)*100) : 0;
+  const {label, color} = getRating(pct);
   const hero = document.getElementById("scoreHero");
   hero.style.borderColor = color;
-  document.getElementById("scorePct").textContent = pct + "%";
+  document.getElementById("scorePct").textContent = pct+"%";
   document.getElementById("scorePct").style.color = color;
   document.getElementById("scoreRating").textContent = label;
   document.getElementById("scoreRating").style.color = color;
@@ -766,320 +616,500 @@ function updateScoreHero() {
 }
 
 function getRating(pct) {
-  if (pct >= 85) return { label: "Exceptional", color: "#16a34a" };
-  if (pct >= 70) return { label: "Strong", color: "#2563eb" };
-  if (pct >= 50) return { label: "On Track", color: "#d97706" };
-  return { label: "Developing", color: "#dc2626" };
+  if (pct >= 85) return {label:"Exceptional",   color:"#16a34a"};
+  if (pct >= 70) return {label:"Strong",         color:"#2563eb"};
+  if (pct >= 50) return {label:"On Track",       color:"#d97706"};
+  return            {label:"Developing",       color:"#dc2626"};
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // EVIDENCE
-// ============================================================
+// ─────────────────────────────────────────────
 function renderEvidenceContent() {
-  const el = document.getElementById("evidenceContent");
-  el.innerHTML = METRIC_KEYS.map(key => {
-    const m = METRICS[key];
+  document.getElementById("evidenceContent").innerHTML = METRIC_KEYS.map(k => {
+    const m = METRICS[k];
     return `
       <div style="margin-bottom:28px">
-        <div class="evidence-section-header" style="background:${m.color}">
+        <div class="ev-section-hdr" style="background:${m.color}">
           <span style="font-size:20px">${m.icon}</span>
-          <span style="font-size:16px; font-weight:700">${m.label}</span>
+          <span style="font-size:16px;font-weight:700">${m.label}</span>
         </div>
         ${m.submetrics.map(sm => `
-          <div class="evidence-submetric" style="border-left-color:${m.accent}">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px">
+          <div class="ev-submetric" style="border-left-color:${m.accent}">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
               <h3 style="margin:0">${sm.label}</h3>
               <button class="prompt-toggle" onclick="togglePrompt('${sm.id}')">Show Prompts</button>
             </div>
             <div class="prompt-box" id="prompts-${sm.id}">
-              ${sm.prompts.map((p, i) => `<div class="prompt-item"><span style="color:var(--gold)">${i+1}.</span> ${p}</div>`).join("")}
+              ${sm.prompts.map((p,i) => `<div class="prompt-item"><span style="color:var(--gold)">${i+1}.</span> ${p}</div>`).join("")}
             </div>
-            <textarea id="ev-${sm.id}" placeholder="Document your evidence here... (be specific: numbers, names, outcomes)"
-              onchange="setEvidence('${sm.id}', this.value)"
-              oninput="setEvidence('${sm.id}', this.value)">${state.evidence[sm.id] || ""}</textarea>
-          </div>
-        `).join("")}
-      </div>
-    `;
-  }).join("");
+            <textarea id="ev-${sm.id}"
+              placeholder="Document your evidence here... (be specific: numbers, names, outcomes)"
+              oninput="setEvidence('${sm.id}',this.value)">${state.evidence[sm.id]||""}</textarea>
+
+```
+      </div>`).join("")}
+  </div>`;
+```
+
+}).join(””);
 }
 
 function togglePrompt(id) {
-  const el = document.getElementById("prompts-" + id);
-  const btn = el.previousElementSibling.querySelector(".prompt-toggle");
-  el.classList.toggle("open");
-  btn.textContent = el.classList.contains("open") ? "Hide Prompts" : "Show Prompts";
+const el = document.getElementById(“prompts-”+id);
+const btn = el.previousElementSibling.querySelector(”.prompt-toggle”);
+el.classList.toggle(“open”);
+btn.textContent = el.classList.contains(“open”) ? “Hide Prompts” : “Show Prompts”;
 }
 
 function setEvidence(id, val) {
-  state.evidence[id] = val;
+state.evidence[id] = val;
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // SUMMARY
-// ============================================================
+// ─────────────────────────────────────────────
 function updateSummary() {
-  // Metric cards
-  const grid = document.getElementById("summaryMetrics");
-  grid.innerHTML = METRIC_KEYS.map(key => {
-    const m = METRICS[key];
-    const subs = m.submetrics;
-    const total = subs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
-    const max = subs.length * 3;
-    const pct = max > 0 ? Math.round((total/max)*100) : 0;
-    const rated = subs.filter(sm => state.scores[sm.id]).length;
-    const { color } = getRating(pct);
-    return `
-      <div class="summary-metric-card" style="border-color:${m.accent}">
-        <div style="font-size:24px; margin-bottom:6px">${m.icon}</div>
-        <div style="font-size:14px; font-weight:700; margin-bottom:10px">${m.label}</div>
-        <div class="progress-wrap" style="margin-bottom:8px">
-          <div class="progress-bar" style="background:${m.accent}; width:${pct}%"></div>
-        </div>
-        <div style="font-size:26px; font-weight:700; color:${color}; font-family:'Playfair Display',serif">${pct}%</div>
-        <div style="font-size:11px; color:#64748b">${rated}/${subs.length} areas rated</div>
-      </div>
-    `;
-  }).join("");
+const role = ROLES.find(r => r.id === state.selectedRole);
+const {name, focus, dualPenName} = state.profile;
 
-  // Evidence log
-  const log = document.getElementById("evidenceLog");
-  const entries = METRIC_KEYS.flatMap(key =>
-    METRICS[key].submetrics
-      .filter(sm => state.evidence[sm.id] && state.evidence[sm.id].trim())
-      .map(sm => ({ metric: METRICS[key], sm }))
-  );
-  if (entries.length === 0) {
-    log.innerHTML = `<div style="color:#64748b; font-size:14px">No evidence documented yet. Go to the Evidence Builder tab to add your achievements.</div>`;
-  } else {
-    log.innerHTML = entries.map(({ metric, sm }) => {
-      const score = state.scores[sm.id];
-      return `
-        <div class="evidence-entry">
-          <div class="ev-meta" style="color:${metric.accent}">
-            ${metric.label} › ${sm.label}
-            ${score ? '<span style="color:var(--gold); margin-left:8px">' + "★".repeat(score) + "</span>" : ""}
-          </div>
-          <div class="ev-text">${escapeHtml(state.evidence[sm.id])}</div>
-        </div>
-      `;
-    }).join("");
-  }
+// Profile banner
+document.getElementById(“summaryProfileBanner”).innerHTML = ` <div class="pb-item"><span class="pb-key">Partner Name</span><span class="pb-val ${!name?'pb-empty':''}">${name||'Not entered'}</span></div> <div class="pb-item"><span class="pb-key">Industry / Account</span><span class="pb-val ${!focus?'pb-empty':''}">${focus||'Not entered'}</span></div> <div class="pb-item"><span class="pb-key">C&M Role</span><span class="pb-val ${!role?'pb-empty':''}">${role?role.label:'Not selected'}</span></div> <div class="pb-item"><span class="pb-key">Dual Pen Title</span><span class="pb-val ${!role?'pb-empty':''}">${role?role.dualPen:'—'}</span></div> <div class="pb-item"><span class="pb-key">Dual Pen Name</span><span class="pb-val ${!dualPenName?'pb-empty':''}">${dualPenName||'Not entered'}</span></div>`;
 
-  // Dual pen
-  const role = ROLES.find(r => r.id === state.selectedRole);
-  document.getElementById("summaryDualPen").textContent = role ? role.dualPen : "— Select your role first —";
+// Metric cards
+document.getElementById(“summaryMetrics”).innerHTML = METRIC_KEYS.map(k => {
+const m = METRICS[k];
+const total = m.submetrics.reduce((a,sm)=>a+(state.scores[sm.id]||0),0);
+const max   = m.submetrics.length * 3;
+const pct   = max > 0 ? Math.round((total/max)*100) : 0;
+const rated = m.submetrics.filter(sm=>state.scores[sm.id]).length;
+const {color} = getRating(pct);
+return ` <div class="summary-metric-card" style="border-color:${m.accent}"> <div style="font-size:24px;margin-bottom:6px">${m.icon}</div> <div style="font-size:14px;font-weight:700;margin-bottom:10px">${m.label}</div> <div class="progress-wrap" style="margin-bottom:8px"> <div class="progress-bar" style="background:${m.accent};width:${pct}%"></div> </div> <div style="font-size:26px;font-weight:700;color:${color};font-family:'Playfair Display',serif">${pct}%</div> <div style="font-size:11px;color:#64748b">${rated}/${m.submetrics.length} areas rated</div> </div>`;
+}).join(””);
+
+// Evidence log
+const entries = METRIC_KEYS.flatMap(k =>
+METRICS[k].submetrics.filter(sm=>state.evidence[sm.id]?.trim()).map(sm=>({metric:METRICS[k],sm}))
+);
+document.getElementById(“evidenceLog”).innerHTML = entries.length === 0
+? `<div style="color:#64748b;font-size:14px">No evidence documented yet. Go to the Evidence Builder tab to add your achievements.</div>`
+: entries.map(({metric:m,sm}) => {
+const score = state.scores[sm.id]||0;
+return `<div class="ev-entry"> <div class="ev-meta" style="color:${m.accent}"> ${m.label} › ${sm.label} ${score?`<span style="color:var(--gold);margin-left:8px">${“★”.repeat(score)}</span>`:""} </div> <div class="ev-text">${esc(state.evidence[sm.id])}</div> </div>`;
+}).join(””);
+
+// Dual pen
+document.getElementById(“summaryDualPenTitle”).textContent = role ? role.dualPen : “— Select your role —”;
+document.getElementById(“summaryDualPenName”).textContent  = dualPenName || “— Enter name in My Profile —”;
+document.getElementById(“summaryDualPenName”).style.color  = dualPenName ? “white” : “var(–slate)”;
 }
 
-function escapeHtml(str) {
-  return (str || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function esc(str) {
+return (str||””).replace(/&/g,”&”).replace(/</g,”<”).replace(/>/g,”>”);
 }
 
-// ============================================================
-// JSON EXPORT / IMPORT
-// ============================================================
+// ─────────────────────────────────────────────
+// JSON BACKUP
+// ─────────────────────────────────────────────
 function exportJSON() {
-  const data = {
-    exportedAt: new Date().toISOString(),
-    version: "1.0",
-    ...state
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `kpmg-cm-navigator-${new Date().toISOString().split("T")[0]}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-  showToast("✓ JSON exported successfully");
+const blob = new Blob([JSON.stringify({exportedAt:new Date().toISOString(),version:“2.0”,…state},null,2)],{type:“application/json”});
+dlBlob(blob,`kpmg-cm-backup-${today()}.json`);
+showToast(“✓ JSON backup exported”);
 }
 
 function importJSON(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (data.scores) state.scores = data.scores;
-      if (data.evidence) state.evidence = data.evidence;
-      if (data.selectedRole !== undefined) {
-        state.selectedRole = data.selectedRole;
-        if (state.selectedRole) {
-          const role = ROLES.find(r => r.id === state.selectedRole);
-          document.getElementById("headerRoleBadge").style.display = "block";
-          document.getElementById("headerRoleName").textContent = role.label;
-          document.getElementById("headerDualPen").textContent = "Dual Pen: " + role.dualPen;
-          document.getElementById("roleContextCard").style.display = "block";
-          document.getElementById("roleContextText").textContent = role.context;
-          document.getElementById("roleNextBtn").style.display = "inline-block";
-        }
-      }
-      if (data.activeMetric) state.activeMetric = data.activeMetric;
-      renderRoles();
-      renderMetricTabs();
-      renderMetricContent();
-      renderEvidenceContent();
-      updateScoreHero();
-      updateSummary();
-      showToast("✓ Data imported successfully");
-    } catch (err) {
-      showToast("✗ Import failed — invalid JSON file", true);
-    }
-    event.target.value = "";
-  };
-  reader.readAsText(file);
+const file = event.target.files[0]; if(!file) return;
+const reader = new FileReader();
+reader.onload = e => {
+try {
+const d = JSON.parse(e.target.result);
+if(d.scores)   state.scores   = d.scores;
+if(d.evidence) state.evidence = d.evidence;
+if(d.profile)  state.profile  = d.profile;
+if(d.selectedRole !== undefined) state.selectedRole = d.selectedRole;
+if(d.activeMetric) state.activeMetric = d.activeMetric;
+// Restore UI
+loadProfileInputs();
+renderRoles();
+renderMetricTabs();
+renderMetricContent();
+renderEvidenceContent();
+updateScoreHero();
+updateHeaderBadge();
+if(state.selectedRole) {
+const r = ROLES.find(x=>x.id===state.selectedRole);
+document.getElementById(“roleContextCard”).style.display = “block”;
+document.getElementById(“roleContextText”).textContent = r.context;
+document.getElementById(“roleNextBtn”).style.display = “inline-block”;
+}
+showToast(“✓ Data imported successfully”);
+} catch { showToast(“✗ Import failed — invalid file”, true); }
+event.target.value = “”;
+};
+reader.readAsText(file);
 }
 
-// ============================================================
-// PDF EXPORT
-// ============================================================
+// ─────────────────────────────────────────────
+// PDF EXPORT — page breaks between sections
+// ─────────────────────────────────────────────
 function exportPDF() {
-  // Prepare print view
-  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-  document.getElementById("panel-summary").classList.add("active");
-  updateSummary();
-  setTimeout(() => {
-    window.print();
-    // Restore
-    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-    document.getElementById("panel-summary").classList.add("active");
-  }, 200);
-  showToast("✓ Print dialog opened — save as PDF");
-}
+updateSummary();
+const role    = ROLES.find(r => r.id === state.selectedRole);
+const {name, focus, dualPenName} = state.profile;
+const all     = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
+const total   = all.reduce((a,sm)=>a+(state.scores[sm.id]||0),0);
+const max     = all.length * 3;
+const pct     = max > 0 ? Math.round((total/max)*100) : 0;
+const {label:ratingLabel, color:ratingColor} = getRating(pct);
+const dateStr = new Date().toLocaleDateString(“en-AU”,{day:“numeric”,month:“long”,year:“numeric”});
 
-// ============================================================
-// WORD EXPORT
-// ============================================================
-function exportWord() {
-  const role = ROLES.find(r => r.id === state.selectedRole);
-  const allSubs = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
-  const total = allSubs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
-  const max = allSubs.length * 3;
-  const pct = max > 0 ? Math.round((total/max)*100) : 0;
-  const { label: ratingLabel } = getRating(pct);
-  const today = new Date().toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" });
+// Build metric score rows for page 2
+let scoreRows = “”;
+METRIC_KEYS.forEach(k => {
+const m = METRICS[k];
+const mTotal = m.submetrics.reduce((a,sm)=>a+(state.scores[sm.id]||0),0);
+const mMax   = m.submetrics.length * 3;
+const mPct   = mMax > 0 ? Math.round((mTotal/mMax)*100) : 0;
+scoreRows += `<tr style="background:#f0f7ff"> <td colspan="2" style="font-weight:700;padding:8px 12px;border:1px solid #e2e8f0">${m.icon} ${m.label}</td> <td style="padding:8px 12px;border:1px solid #e2e8f0;font-weight:700;color:${getRating(mPct).color}">${mPct}%</td> <td style="padding:8px 12px;border:1px solid #e2e8f0"></td> </tr>`;
+m.submetrics.forEach(sm => {
+const score = state.scores[sm.id]||0;
+const lv = sm.levels.find(l=>l.score===score);
+scoreRows += `<tr> <td style="padding:6px 12px;border:1px solid #e2e8f0;padding-left:24px;color:#64748b;font-size:9pt">${sm.label}</td> <td style="padding:6px 12px;border:1px solid #e2e8f0;font-size:9pt">${lv?lv.label+" ("+lv.value+")":"Not rated"}</td> <td style="padding:6px 12px;border:1px solid #e2e8f0"></td> <td style="padding:6px 12px;border:1px solid #e2e8f0;color:#f59e0b;font-size:13pt">${score>0?"★".repeat(score)+"☆".repeat(3-score):"—"}</td> </tr>`;
+});
+});
 
-  let html = `
-    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-    <head>
-      <meta charset='UTF-8'>
-      <style>
-        body { font-family: Arial, sans-serif; font-size: 11pt; color: #1e293b; margin: 2cm; }
-        h1 { font-size: 22pt; color: #0057a8; border-bottom: 3px solid #fbbf24; padding-bottom: 8pt; margin-bottom: 6pt; }
-        h2 { font-size: 15pt; color: #0057a8; margin-top: 18pt; margin-bottom: 6pt; border-left: 4pt solid #fbbf24; padding-left: 8pt; }
-        h3 { font-size: 12pt; color: #1e3a5f; margin-top: 12pt; margin-bottom: 4pt; }
-        .meta { font-size: 10pt; color: #64748b; margin-bottom: 16pt; }
-        .score-box { background: #f0f7ff; border: 1px solid #0057a8; padding: 10pt; margin-bottom: 16pt; display: inline-block; }
-        .score-box .pct { font-size: 28pt; font-weight: bold; color: #0057a8; }
-        .score-box .rating { font-size: 13pt; color: #0057a8; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
-        th { background: #0057a8; color: white; padding: 6pt 10pt; text-align: left; font-size: 10pt; }
-        td { padding: 6pt 10pt; border: 1px solid #e2e8f0; font-size: 10pt; vertical-align: top; }
-        tr:nth-child(even) td { background: #f8fafc; }
-        .stars { color: #f59e0b; font-size: 13pt; }
-        .evidence-text { color: #374151; line-height: 1.6; }
-        .section-header { background: #1e3a5f; color: white; padding: 6pt 12pt; font-weight: bold; font-size: 12pt; margin-top: 14pt; }
-        .tip-item { margin-bottom: 5pt; padding-left: 12pt; }
-        .footer { margin-top: 30pt; font-size: 9pt; color: #94a3b8; border-top: 1pt solid #e2e8f0; padding-top: 8pt; }
-      </style>
-    </head>
-    <body>
-      <h1>KPMG C&amp;M Year-End Performance Summary</h1>
-      <div class="meta">
-        Prepared: ${today} &nbsp;|&nbsp;
-        Role: ${role ? role.label : "Not selected"} &nbsp;|&nbsp;
-        Dual Pen: ${role ? role.dualPen : "—"} &nbsp;|&nbsp;
-        Calibration: 4 June 2026
-      </div>
+// Evidence pages
+let evidencePages = “”;
+METRIC_KEYS.forEach(k => {
+const m = METRICS[k];
+const items = m.submetrics.filter(sm => state.evidence[sm.id]?.trim());
+if(!items.length) return;
+evidencePages += `<div class="page"> <div style="background:#1e3a5f;color:white;padding:10pt 16pt;font-size:14pt;font-weight:bold;margin-bottom:14pt">${m.icon} ${m.label} — Evidence</div> ${items.map(sm => { const score = state.scores[sm.id]||0; return`
+<div style="margin-bottom:16pt;border-left:4pt solid ${m.accent};padding-left:12pt">
+<div style="font-weight:bold;font-size:11pt;color:#1e3a5f;margin-bottom:4pt">
+${sm.label} ${score>0?”<span style='color:#f59e0b'>”+“★”.repeat(score)+”</span>”:””}
+</div>
+<div style="font-size:10pt;color:#374151;line-height:1.7;white-space:pre-wrap">${esc(state.evidence[sm.id])}</div>
+</div>`; }).join("")} <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div> </div>`;
+});
 
-      <div class="score-box">
-        <div class="pct">${pct}%</div>
-        <div class="rating">Overall Self-Assessment: ${ratingLabel}</div>
-        <div style="font-size:10pt; color:#64748b">${total}/${max} points across all metrics</div>
-      </div>
+const printHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8">
 
-      <h2>Scorecard Summary</h2>
-      <table>
-        <tr>
-          <th>Pillar</th>
-          <th>Area</th>
-          <th>Self-Rating</th>
-          <th>Stars</th>
-        </tr>
-  `;
+  <style>
+    @page { margin: 2cm; size: A4; }
+    body { font-family: Arial, sans-serif; font-size: 10pt; color: #1e293b; margin: 0; }
+    .page { page-break-after: always; min-height: 24cm; position: relative; padding-bottom: 40pt; }
+    .page:last-child { page-break-after: avoid; }
+    .footer { position: absolute; bottom: 0; left: 0; right: 0; font-size: 8pt; color: #94a3b8; border-top: 1pt solid #e2e8f0; padding-top: 6pt; }
+    h1 { font-size: 20pt; color: #0057a8; margin: 0 0 4pt 0; }
+    h2 { font-size: 14pt; color: #0057a8; margin: 0 0 10pt 0; border-bottom: 2pt solid #fbbf24; padding-bottom: 4pt; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: #0057a8; color: white; padding: 7pt 12pt; text-align: left; font-size: 9pt; }
+  </style>
 
-  METRIC_KEYS.forEach(key => {
-    const m = METRICS[key];
-    m.submetrics.forEach((sm, i) => {
-      const score = state.scores[sm.id] || 0;
-      const levelObj = sm.levels.find(l => l.score === score);
-      html += `
-        <tr>
-          ${i === 0 ? `<td rowspan="${m.submetrics.length}" style="font-weight:bold; background:#f0f7ff">${m.icon} ${m.label}</td>` : ""}
-          <td>${sm.label}</td>
-          <td>${levelObj ? levelObj.label + " (" + levelObj.value + ")" : "Not rated"}</td>
-          <td class="stars">${score > 0 ? "★".repeat(score) + "☆".repeat(3-score) : "—"}</td>
-        </tr>
-      `;
-    });
-  });
+  </head><body>
 
-  html += `</table>`;
+  <!-- PAGE 1: COVER -->
 
-  // Evidence by pillar
-  html += `<h2>Evidence Log</h2>`;
+  <div class="page">
+    <div style="border-bottom:3pt solid #fbbf24;padding-bottom:16pt;margin-bottom:20pt">
+      <div style="font-size:10pt;letter-spacing:3px;color:#fbbf24;font-weight:700;margin-bottom:6pt">KPMG</div>
+      <h1>C&amp;M Year-End Performance Summary</h1>
+      <div style="font-size:10pt;color:#64748b;margin-top:4pt">Prepared: ${dateStr}</div>
+    </div>
+    <table style="margin-bottom:20pt;border:1pt solid #e2e8f0">
+      <tr><th colspan="2">Partner Details</th></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b;width:40%">Partner Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${name||'—'}</td></tr>
+      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Industry / Account</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${focus||'—'}</td></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">C&amp;M Role</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.label:'—'}</td></tr>
+      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Title</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.dualPen:'—'}</td></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${dualPenName||'—'}</td></tr>
+      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Calibration Date</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">4 June 2026</td></tr>
+    </table>
+    <div style="background:#f0f7ff;border:2pt solid #0057a8;padding:16pt;display:inline-block;min-width:200pt;margin-bottom:20pt">
+      <div style="font-size:32pt;font-weight:bold;color:${ratingColor}">${pct}%</div>
+      <div style="font-size:13pt;color:${ratingColor};font-weight:bold">${ratingLabel}</div>
+      <div style="font-size:9pt;color:#64748b;margin-top:4pt">${total}/${max} points across all metrics</div>
+    </div>
+    <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
+  </div>
 
-  METRIC_KEYS.forEach(key => {
-    const m = METRICS[key];
-    const hasEvidence = m.submetrics.some(sm => state.evidence[sm.id] && state.evidence[sm.id].trim());
-    if (!hasEvidence) return;
-    html += `<div class="section-header">${m.icon} ${m.label}</div>`;
-    m.submetrics.forEach(sm => {
-      if (!state.evidence[sm.id] || !state.evidence[sm.id].trim()) return;
-      const score = state.scores[sm.id] || 0;
-      html += `
-        <h3>${sm.label} ${score > 0 ? '<span class="stars">' + "★".repeat(score) + "</span>" : ""}</h3>
-        <p class="evidence-text">${escapeHtml(state.evidence[sm.id]).replace(/\n/g, "<br>")}</p>
-      `;
-    });
-  });
+  <!-- PAGE 2: SCORECARD -->
 
-  // Dual Pen prep
-  html += `
+  <div class="page">
+    <h2>Scorecard Summary</h2>
+    <table>
+      <tr><th style="width:35%">Area</th><th style="width:30%">Self-Rating</th><th style="width:15%">Score</th><th style="width:20%">Stars</th></tr>
+      ${scoreRows}
+    </table>
+    <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
+  </div>
+
+  <!-- EVIDENCE PAGES (one per pillar) -->
+
+${evidencePages}
+
+  <!-- LAST PAGE: DUAL PEN PREP -->
+
+  <div class="page">
     <h2>Dual Pen Conversation Preparation</h2>
-    <p><strong>Your Dual Pen:</strong> ${role ? role.dualPen : "—"}</p>
-    <p><strong>Calibration Meeting:</strong> 4 June 2026 — Formal Markets Ratings for roles with +20% time / $5M threshold</p>
-    <h3>Key Talking Points</h3>
-    <div class="tip-item">1. Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
-    <div class="tip-item">2. Quantify everything: dollar amounts, percentages, client names where appropriate</div>
-    <div class="tip-item">3. Demonstrate cross-divisional perspective, not just your home division</div>
-    <div class="tip-item">4. Show market presence: thought leadership, forums, community roles</div>
-    <div class="tip-item">5. Address any underperforming areas proactively with context and forward plan</div>
-    <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; Generated ${today}</div>
-    </body></html>
-  `;
+    <table style="margin-bottom:16pt;border:1pt solid #e2e8f0">
+      <tr><th colspan="2">Key Information</th></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b;width:40%">Dual Pen Title</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.dualPen:'—'}</td></tr>
+      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${dualPenName||'—'}</td></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Calibration Meeting</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">4 June 2026</td></tr>
+    </table>
+    <div style="font-weight:bold;font-size:11pt;color:#1e3a5f;margin-bottom:10pt">Key Talking Points</div>
+    ${[
+      "Lead with your strongest metric — revenue performance vs plan ($ and %)",
+      "Quantify everything: dollar amounts, percentages, client names where appropriate",
+      "Demonstrate cross-divisional perspective, not just your home division",
+      "Show market presence: thought leadership, forums, community roles",
+      "Address any underperforming areas proactively with context and forward plan"
+    ].map((t,i)=>`<div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">${i+1}.</span><span style="color:#374151">${t}</span></div>`).join("")}
+    <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
+  </div>
 
-  const blob = new Blob(["\ufeff" + html], { type: "application/msword" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `KPMG-CM-Performance-Summary-${new Date().toISOString().split("T")[0]}.doc`;
-  a.click();
-  URL.revokeObjectURL(url);
-  showToast("✓ Word document exported successfully");
+  </body></html>`;
+
+const win = window.open(””,”_blank”,“width=900,height=700”);
+win.document.write(printHTML);
+win.document.close();
+win.focus();
+setTimeout(() => { win.print(); }, 600);
+showToast(“✓ PDF print dialog opened — save as PDF”);
 }
 
-// ============================================================
-// TOAST
-// ============================================================
-function showToast(msg, isError = false) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.style.background = isError ? "#dc2626" : "#16a34a";
-  t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 3000);
+// ─────────────────────────────────────────────
+// WORD EXPORT — proper .docx XML
+// ─────────────────────────────────────────────
+function exportWord() {
+const role    = ROLES.find(r => r.id === state.selectedRole);
+const {name, focus, dualPenName} = state.profile;
+const all     = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
+const total   = all.reduce((a,sm)=>a+(state.scores[sm.id]||0),0);
+const max     = all.length * 3;
+const pct     = max > 0 ? Math.round((total/max)*100) : 0;
+const {label:ratingLabel} = getRating(pct);
+const dateStr = new Date().toLocaleDateString(“en-AU”,{day:“numeric”,month:“long”,year:“numeric”});
+
+// Build scorecard rows XML
+const tblBorder = `<w:top w:val="single" w:sz="4" w:color="CBD5E0"/><w:bottom w:val="single" w:sz="4" w:color="CBD5E0"/><w:left w:val="single" w:sz="4" w:color="CBD5E0"/><w:right w:val="single" w:sz="4" w:color="CBD5E0"/>`;
+
+function xmlCell(text, bold=false, bgColor=null, width=2340) {
+const shading = bgColor ? `<w:shd w:val="clear" w:fill="${bgColor}"/>` : “”;
+const b = bold ? “<w:b/>” : “”;
+return `<w:tc> <w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${shading}<w:tcBorders>${tblBorder}</w:tcBorders><w:tcMar><w:top w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar></w:tcPr> <w:p><w:pPr><w:spacing w:before="0" w:after="0"/></w:pPr><w:r><w:rPr>${b}<w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t xml:space="preserve">${xmlEsc(text)}</w:t></w:r></w:p> </w:tc>`;
+}
+
+function xmlHeaderRow(cols) {
+return `<w:tr>${cols.map(c=>`<w:tc><w:tcPr><w:tcW w:w=”${c.w}” w:type=“dxa”/><w:shd w:val=“clear” w:fill=“0057A8”/><w:tcBorders>${tblBorder}</w:tcBorders><w:tcMar><w:top w:w=“80” w:type=“dxa”/><w:bottom w:w=“80” w:type=“dxa”/><w:left w:w=“120” w:type=“dxa”/><w:right w:w=“120” w:type=“dxa”/></w:tcMar></w:tcPr><w:p><w:pPr><w:spacing w:before=“0” w:after=“0”/></w:pPr><w:r><w:rPr><w:b/><w:color w:val=“FFFFFF”/><w:sz w:val=“18”/><w:szCs w:val=“18”/></w:rPr><w:t>${xmlEsc(c.t)}</w:t></w:r></w:p></w:tc>`).join("")}</w:tr>`;
+}
+
+// Cover/details table rows
+const detailRows = [
+[“Partner Name”,     name||”—”],
+[“Industry / Account”, focus||”—”],
+[“C&M Role”,         role?role.label:”—”],
+[“Dual Pen Title”,   role?role.dualPen:”—”],
+[“Dual Pen Name”,    dualPenName||”—”],
+[“Calibration Date”, “4 June 2026”],
+[“Overall Score”,    `${pct}% — ${ratingLabel} (${total}/${max} points)`],
+].map((r,i) => `<w:tr> ${xmlCell(r[0], false, i%2===0?"F8FAFC":"FFFFFF", 3000)} ${xmlCell(r[1], true, i%2===0?"F8FAFC":"FFFFFF", 6360)} </w:tr>`).join(””);
+
+// Scorecard table rows
+let scorecardRows = xmlHeaderRow([{t:“Pillar”,w:2000},{t:“Metric Area”,w:3000},{t:“Self-Rating”,w:2500},{t:“Stars”,w:860}]);
+METRIC_KEYS.forEach(k => {
+const m = METRICS[k];
+m.submetrics.forEach((sm, idx) => {
+const score = state.scores[sm.id]||0;
+const lv = sm.levels.find(l=>l.score===score);
+const bg = idx%2===0 ? “F0F7FF” : “FFFFFF”;
+scorecardRows += `<w:tr> ${xmlCell(`${m.icon} ${m.label}`, true, bg, 2000)} ${xmlCell(sm.label, false, bg, 3000)} ${xmlCell(lv?`${lv.label} (${lv.value})`:"Not rated", false, bg, 2500)} ${xmlCell(score>0?"★".repeat(score)+"☆".repeat(3-score):"—", false, bg, 860)} </w:tr>`;
+});
+});
+
+// Evidence paragraphs
+let evidenceXML = “”;
+METRIC_KEYS.forEach(k => {
+const m = METRICS[k];
+const items = m.submetrics.filter(sm=>state.evidence[sm.id]?.trim());
+if(!items.length) return;
+evidenceXML += xmlPageBreak();
+evidenceXML += xmlHeading2(`${m.icon} ${m.label} — Evidence`);
+items.forEach(sm => {
+const score = state.scores[sm.id]||0;
+const stars = score>0?“★”.repeat(score):””;
+evidenceXML += xmlHeading3(`${sm.label} ${stars}`);
+// Split on newlines for multiple paragraphs
+const lines = (state.evidence[sm.id]||””).split(”\n”);
+lines.forEach(line => {
+evidenceXML += `<w:p><w:pPr><w:spacing w:before="0" w:after="80"/></w:pPr><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t xml:space="preserve">${xmlEsc(line)}</w:t></w:r></w:p>`;
+});
+});
+});
+
+// Talking points
+const talkingPoints = [
+“Lead with your strongest metric — revenue performance vs plan ($ and %)”,
+“Quantify everything: dollar amounts, percentages, client names where appropriate”,
+“Demonstrate cross-divisional perspective, not just your home division”,
+“Show market presence: thought leadership, forums, community roles”,
+“Address any underperforming areas proactively with context and forward plan”
+];
+
+const docXML = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:wpc=“http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas”
+xmlns:mc=“http://schemas.openxmlformats.org/markup-compatibility/2006”
+xmlns:o=“urn:schemas-microsoft-com:office:office”
+xmlns:r=“http://schemas.openxmlformats.org/officeDocument/2006/relationships”
+xmlns:m=“http://schemas.openxmlformats.org/officeDocument/2006/math”
+xmlns:v=“urn:schemas-microsoft-com:vml”
+xmlns:wp14=“http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing”
+xmlns:wp=“http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing”
+xmlns:w10=“urn:schemas-microsoft-com:office:word”
+xmlns:w=“http://schemas.openxmlformats.org/wordprocessingml/2006/main”
+xmlns:w14=“http://schemas.microsoft.com/office/word/2010/wordml”
+xmlns:wpg=“http://schemas.microsoft.com/office/word/2010/wordprocessingGroup”
+xmlns:wpi=“http://schemas.microsoft.com/office/word/2010/wordprocessingInk”
+xmlns:wne=“http://schemas.microsoft.com/office/word/2006/wordml”
+xmlns:wps=“http://schemas.microsoft.com/office/word/2010/wordprocessingShape”
+mc:Ignorable=“w14 wp14”>
+<w:body>
+
+${xmlTitle(“KPMG C&M Year-End Performance Summary”)}
+${xmlPara(`Prepared: ${dateStr}`, “#64748B”, “18”)}
+
+${xmlHeading1(“Partner Details”)}
+<w:tbl>
+<w:tblPr>
+<w:tblW w:w=“9360” w:type=“dxa”/>
+<w:tblBorders><w:insideH w:val=“single” w:sz=“4” w:color=“CBD5E0”/><w:insideV w:val=“single” w:sz=“4” w:color=“CBD5E0”/></w:tblBorders>
+</w:tblPr>
+<w:tblGrid><w:gridCol w:w=“3000”/><w:gridCol w:w=“6360”/></w:tblGrid>
+${detailRows}
+</w:tbl>
+
+${xmlPageBreak()}
+${xmlHeading1(“Scorecard Summary”)}
+<w:tbl>
+<w:tblPr>
+<w:tblW w:w=“9360” w:type=“dxa”/>
+<w:tblBorders><w:insideH w:val=“single” w:sz=“4” w:color=“CBD5E0”/><w:insideV w:val=“single” w:sz=“4” w:color=“CBD5E0”/></w:tblBorders>
+</w:tblPr>
+<w:tblGrid><w:gridCol w:w=“2000”/><w:gridCol w:w=“3000”/><w:gridCol w:w=“2500”/><w:gridCol w:w=“860”/></w:tblGrid>
+${scorecardRows}
+</w:tbl>
+
+${evidenceXML}
+
+${xmlPageBreak()}
+${xmlHeading1(“Dual Pen Conversation Preparation”)}
+${xmlKeyValue(“Dual Pen Title”,   role?role.dualPen:”—”)}
+${xmlKeyValue(“Dual Pen Name”,    dualPenName||”—”)}
+${xmlKeyValue(“Calibration Date”, “4 June 2026”)}
+${xmlKeyValue(“Threshold”,        “+20% time / $5M for formal Markets Rating”)}
+${xmlHeading2(“Key Talking Points”)}
+${talkingPoints.map((t,i)=>xmlNumberedItem(i+1, t)).join(””)}
+
+<w:sectPr>
+<w:pgSz w:w=“12240” w:h=“15840”/>
+<w:pgMar w:top=“1440” w:right=“1440” w:bottom=“1440” w:left=“1440”/>
+</w:sectPr>
+</w:body>
+</w:document>`;
+
+// Build the .docx zip in-browser
+buildDocx(docXML);
+showToast(“✓ Word document exported”);
+}
+
+// ─────────── XML helpers ───────────
+function xmlEsc(s) {
+return (s||””).replace(/&/g,”&”).replace(/</g,”<”).replace(/>/g,”>”).replace(/”/g,”"”);
+}
+function xmlTitle(text) {
+return `<w:p><w:pPr><w:pStyle w:val="Title"/><w:spacing w:before="0" w:after="120"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="0057A8"/><w:sz w:val="48"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+}
+function xmlHeading1(text) {
+return `<w:p><w:pPr><w:spacing w:before="240" w:after="120"/><w:pBdr><w:bottom w:val="single" w:sz="12" w:color="FBBF24" w:space="4"/></w:pBdr></w:pPr><w:r><w:rPr><w:b/><w:color w:val="0057A8"/><w:sz w:val="32"/><w:szCs w:val="32"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+}
+function xmlHeading2(text) {
+return `<w:p><w:pPr><w:spacing w:before="200" w:after="80"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="1E3A5F"/><w:sz w:val="26"/><w:szCs w:val="26"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+}
+function xmlHeading3(text) {
+return `<w:p><w:pPr><w:spacing w:before="160" w:after="60"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="374151"/><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+}
+function xmlPara(text, color=“374151”, size=“20”) {
+return `<w:p><w:pPr><w:spacing w:before="0" w:after="80"/></w:pPr><w:r><w:rPr><w:color w:val="${color}"/><w:sz w:val="${size}"/></w:rPr><w:t xml:space="preserve">${xmlEsc(text)}</w:t></w:r></w:p>`;
+}
+function xmlPageBreak() {
+return `<w:p><w:r><w:br w:type="page"/></w:r></w:p>`;
+}
+function xmlKeyValue(key, val) {
+return `<w:p><w:pPr><w:spacing w:before="60" w:after="60"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="20"/></w:rPr><w:t xml:space="preserve">${xmlEsc(key)}: </w:t></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>${xmlEsc(val)}</w:t></w:r></w:p>`;
+}
+function xmlNumberedItem(n, text) {
+return `<w:p><w:pPr><w:ind w:left="360"/><w:spacing w:before="60" w:after="60"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="F59E0B"/><w:sz w:val="20"/></w:rPr><w:t xml:space="preserve">${n}. </w:t></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+}
+
+// ─────────── Build .docx zip in browser ───────────
+function buildDocx(docXML) {
+// Core document parts as strings
+const contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?> <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"> <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/> <Default Extension="xml" ContentType="application/xml"/> <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/> <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/> </Types>`;
+
+const relsMain = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?> <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"> <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/> </Relationships>`;
+
+const wordRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?> <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"> <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/> </Relationships>`;
+
+const styles = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?> <w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"> <w:docDefaults> <w:rPrDefault><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr></w:rPrDefault> <w:pPrDefault><w:pPr><w:spacing w:after="160" w:line="276" w:lineRule="auto"/></w:pPr></w:pPrDefault> </w:docDefaults> </w:styles>`;
+
+// Zip it using JSZip (loaded inline)
+loadJSZip().then(JSZip => {
+const zip = new JSZip();
+zip.file(”[Content_Types].xml”, contentTypes);
+zip.file(”_rels/.rels”, relsMain);
+zip.file(“word/document.xml”, docXML);
+zip.file(“word/styles.xml”, styles);
+zip.file(“word/_rels/document.xml.rels”, wordRels);
+return zip.generateAsync({type:“blob”, mimeType:“application/vnd.openxmlformats-officedocument.wordprocessingml.document”});
+}).then(blob => {
+dlBlob(blob, `KPMG-CM-Performance-${today()}.docx`);
+}).catch(err => {
+console.error(“Docx build error:”, err);
+showToast(“✗ Export failed — see console”, true);
+});
+}
+
+function loadJSZip() {
+return new Promise((resolve, reject) => {
+if(window.JSZip) { resolve(window.JSZip); return; }
+const s = document.createElement(“script”);
+s.src = “https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js”;
+s.onload = () => resolve(window.JSZip);
+s.onerror = reject;
+document.head.appendChild(s);
+});
+}
+
+// ─────────────────────────────────────────────
+// UTILS
+// ─────────────────────────────────────────────
+function dlBlob(blob, filename) {
+const url = URL.createObjectURL(blob);
+const a   = document.createElement(“a”);
+a.href = url; a.download = filename; a.click();
+setTimeout(()=>URL.revokeObjectURL(url), 2000);
+}
+function today() { return new Date().toISOString().split(“T”)[0]; }
+function showToast(msg, isError=false) {
+const t = document.getElementById(“toast”);
+t.textContent = msg;
+t.style.background = isError ? “#dc2626” : “#16a34a”;
+t.classList.add(“show”);
+setTimeout(()=>t.classList.remove(“show”), 3000);
 }
 </script>
+
 </body>
 </html>
