@@ -270,12 +270,12 @@ h2 { font-size: 22px; }
 <!-- TABS -->
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
-  <button class="tab-btn" onclick="switchTab('profile')">My Profile</button>
-  <button class="tab-btn" onclick="switchTab('role')">My Role</button>
-  <button class="tab-btn" onclick="switchTab('scorecard')">Scorecard</button>
-  <button class="tab-btn" onclick="switchTab('evidence')">Evidence Builder</button>
-  <button class="tab-btn" onclick="switchTab('summary')">My Summary</button>
+  <button class="tab-btn active" data-tab="overview"   onclick="switchTab('overview')">Overview</button>
+  <button class="tab-btn"        data-tab="profile"    onclick="switchTab('profile')">My Profile</button>
+  <button class="tab-btn"        data-tab="role"       onclick="switchTab('role')">My Role</button>
+  <button class="tab-btn"        data-tab="scorecard"  onclick="switchTab('scorecard')">Scorecard</button>
+  <button class="tab-btn"        data-tab="evidence"   onclick="switchTab('evidence')">Evidence Builder</button>
+  <button class="tab-btn"        data-tab="summary"    onclick="switchTab('summary')">My Summary</button>
 </div>
 
 <div class="content">
@@ -369,7 +369,7 @@ h2 { font-size: 22px; }
     <div class="label">Calibration Note for Your Role</div>
     <p id="roleContextText" style="font-size:14px;color:#cbd5e1;line-height:1.7"></p>
   </div>
-  <button class="btn" style="margin-top:20px;display:none" id="roleNextBtn" onclick="switchTab('scorecard')">Next: Rate Your Performance →</button>
+  <button class="btn" id="roleNextBtn" onclick="switchTab('scorecard')" style="margin-top:20px;display:none">Next: Rate Your Performance →</button>
 </div>
 
 <!-- ===== SCORECARD ===== -->
@@ -544,16 +544,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ─────────────────────────────────────────────
-// TABS
+// TABS — robust data-attribute based switching
 // ─────────────────────────────────────────────
-const TAB_IDS = ["overview","profile","role","scorecard","evidence","summary"];
 function switchTab(id) {
-  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-  document.getElementById("panel-"+id).classList.add("active");
-  document.querySelectorAll(".tab-btn")[TAB_IDS.indexOf(id)].classList.add("active");
-  if (id === "summary") updateSummary();
+  // Hide all panels
+  document.querySelectorAll(".panel").forEach(function(p) {
+    p.classList.remove("active");
+  });
+  // Deactivate all tab buttons
+  document.querySelectorAll(".tab-btn").forEach(function(b) {
+    b.classList.remove("active");
+  });
+  // Show target panel
+  var panel = document.getElementById("panel-" + id);
+  if (panel) {
+    panel.classList.add("active");
+  } else {
+    console.error("switchTab: no panel found for id:", id);
+    return;
+  }
+  // Activate matching tab button via data-tab attribute
+  var btn = document.querySelector(".tab-btn[data-tab='" + id + "']");
+  if (btn) btn.classList.add("active");
+  // Side effects
+  if (id === "summary")   updateSummary();
   if (id === "scorecard") { renderMetricContent(); updateScoreHero(); }
+  // Scroll to top of content on mobile
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // ─────────────────────────────────────────────
@@ -600,10 +617,13 @@ function renderRoles() {
 function selectRole(id) {
   state.selectedRole = id;
   renderRoles();
-  const role = ROLES.find(r => r.id === id);
-  document.getElementById("roleContextCard").style.display = "block";
-  document.getElementById("roleContextText").textContent = role.context;
-  document.getElementById("roleNextBtn").style.display = "inline-block";
+  var role = ROLES.find(function(r){ return r.id === id; });
+  var contextCard = document.getElementById("roleContextCard");
+  var contextText = document.getElementById("roleContextText");
+  var nextBtn     = document.getElementById("roleNextBtn");
+  if (contextCard) contextCard.style.display = "block";
+  if (contextText) contextText.textContent = role.context;
+  if (nextBtn)     nextBtn.style.display = "inline-block";
   updateHeaderBadge();
 }
 
@@ -787,10 +807,15 @@ renderEvidenceContent();
 updateScoreHero();
 updateHeaderBadge();
 if(state.selectedRole) {
-const r = ROLES.find(x=>x.id===state.selectedRole);
-document.getElementById(“roleContextCard”).style.display = “block”;
-document.getElementById(“roleContextText”).textContent = r.context;
-document.getElementById(“roleNextBtn”).style.display = “inline-block”;
+var r = ROLES.find(function(x){ return x.id === state.selectedRole; });
+if(r) {
+var cc = document.getElementById(“roleContextCard”);
+var ct = document.getElementById(“roleContextText”);
+var nb = document.getElementById(“roleNextBtn”);
+if(cc) cc.style.display = “block”;
+if(ct) ct.textContent = r.context;
+if(nb) nb.style.display = “inline-block”;
+}
 }
 showToast(“✓ Data imported successfully”);
 } catch { showToast(“✗ Import failed — invalid file”, true); }
