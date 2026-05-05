@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,380 +7,377 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
-:root {
-–navy: #0a1628;
-–navy2: #0d2140;
-–blue: #0057a8;
-–blue2: #1e3a5f;
-–gold: #fbbf24;
-–slate: #94a3b8;
-–light: #e2e8f0;
-–purple: #6b21a8;
-–teal: #0891b2;
-–green: #065f46;
-}
+  :root {
+    --navy: #0a1628;
+    --navy2: #0d2140;
+    --blue: #0057a8;
+    --blue2: #1e3a5f;
+    --gold: #fbbf24;
+    --slate: #94a3b8;
+    --light: #e2e8f0;
+    --purple: #6b21a8;
+    --teal: #0891b2;
+    --green: #065f46;
+  }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-font-family: ‘DM Sans’, sans-serif;
-background: linear-gradient(135deg, var(–navy) 0%, var(–navy2) 50%, var(–navy) 100%);
-min-height: 100vh;
-color: var(–light);
-}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 50%, var(--navy) 100%);
+    min-height: 100vh;
+    color: var(--light);
+  }
 
-/* HEADER */
-.header {
-background: linear-gradient(90deg, var(–blue), var(–blue2));
-padding: 18px 36px;
-border-bottom: 2px solid var(–gold);
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 12px;
-}
-.header-brand { font-size: 12px; letter-spacing: 4px; color: var(–gold); font-weight: 700; }
-.header-title { font-family: ‘Playfair Display’, serif; font-size: 22px; margin-top: 2px; }
-.header-role-badge {
-background: rgba(255,255,255,0.1);
-border: 1px solid rgba(255,255,255,0.2);
-border-radius: 8px;
-padding: 10px 18px;
-text-align: right;
-min-width: 200px;
-}
-.header-role-badge .role-label { font-size: 10px; color: var(–slate); letter-spacing: 1px; }
-.header-role-badge .role-name { font-size: 14px; font-weight: 600; }
-.header-role-badge .dualpen-label { font-size: 11px; color: var(–gold); }
+  /* HEADER */
+  .header {
+    background: linear-gradient(90deg, var(--blue), var(--blue2));
+    padding: 18px 36px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .header-brand { font-size: 12px; letter-spacing: 4px; color: var(--gold); font-weight: 700; }
+  .header-title { font-family: 'Playfair Display', serif; font-size: 22px; margin-top: 2px; }
+  .header-role-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 10px 18px;
+    text-align: right;
+    min-width: 200px;
+  }
+  .header-role-badge .role-label { font-size: 10px; color: var(--slate); letter-spacing: 1px; }
+  .header-role-badge .role-name { font-size: 14px; font-weight: 600; }
+  .header-role-badge .dualpen-label { font-size: 11px; color: var(--gold); }
 
-/* TABS */
-.tabs {
-display: flex;
-background: #0d1f38;
-border-bottom: 1px solid var(–blue2);
-padding: 0 36px;
-overflow-x: auto;
-gap: 0;
-}
-.tab-btn {
-background: none;
-border: none;
-border-bottom: 3px solid transparent;
-color: var(–slate);
-padding: 14px 22px;
-cursor: pointer;
-font-size: 13px;
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 500;
-letter-spacing: 0.5px;
-white-space: nowrap;
-transition: all 0.2s;
-}
-.tab-btn:hover { color: var(–light); }
-.tab-btn.active { color: var(–gold); border-bottom-color: var(–gold); font-weight: 700; }
+  /* TABS */
+  .tabs {
+    display: flex;
+    background: #0d1f38;
+    border-bottom: 1px solid var(--blue2);
+    padding: 0 36px;
+    overflow-x: auto;
+    gap: 0;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--slate);
+    padding: 14px 22px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--light); }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); font-weight: 700; }
 
-/* CONTENT */
-.content { padding: 32px 36px; max-width: 1100px; margin: 0 auto; }
-.panel { display: none; }
-.panel.active { display: block; }
+  /* CONTENT */
+  .content { padding: 32px 36px; max-width: 1100px; margin: 0 auto; }
+  .panel { display: none; }
+  .panel.active { display: block; }
 
-/* TYPOGRAPHY */
-h2 { font-family: ‘Playfair Display’, serif; font-size: 28px; margin-bottom: 6px; }
-h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-.subtitle { color: var(–slate); font-size: 15px; margin-bottom: 28px; }
+  /* TYPOGRAPHY */
+  h2 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 6px; }
+  h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .subtitle { color: var(--slate); font-size: 15px; margin-bottom: 28px; }
 
-/* CARDS */
-.card {
-background: var(–navy2);
-border: 1px solid var(–blue2);
-border-radius: 12px;
-padding: 22px 24px;
-margin-bottom: 16px;
-}
-.card-gold { border-color: var(–gold); }
-.card-blue { border-color: var(–blue); }
+  /* CARDS */
+  .card {
+    background: var(--navy2);
+    border: 1px solid var(--blue2);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .card-gold { border-color: var(--gold); }
+  .card-blue { border-color: var(--blue); }
 
-/* GRID */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 
-/* LABEL */
-.label {
-font-size: 11px;
-color: var(–gold);
-letter-spacing: 1.5px;
-font-weight: 700;
-text-transform: uppercase;
-margin-bottom: 8px;
-}
+  /* LABEL */
+  .label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
-/* TIMELINE */
-.timeline { display: flex; margin-bottom: 36px; flex-wrap: wrap; }
-.timeline-step {
-flex: 1;
-min-width: 160px;
-background: var(–navy2);
-border: 1px solid var(–blue2);
-padding: 18px 20px;
-position: relative;
-}
-.timeline-step:first-child { border-radius: 10px 0 0 10px; }
-.timeline-step:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(–blue2); }
-.timeline-step.highlight { border-color: var(–gold); }
-.timeline-step .ts-phase { font-size: 10px; color: var(–gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
-.timeline-step .ts-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.timeline-step .ts-desc { font-size: 12px; color: var(–slate); line-height: 1.5; }
-.timeline-arrow {
-width: 28px; height: 28px;
-background: var(–gold);
-border-radius: 50%;
-display: flex; align-items: center; justify-content: center;
-font-size: 14px; color: var(–navy); font-weight: 900;
-position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
-z-index: 2;
-}
+  /* TIMELINE */
+  .timeline { display: flex; margin-bottom: 36px; flex-wrap: wrap; }
+  .timeline-step {
+    flex: 1;
+    min-width: 160px;
+    background: var(--navy2);
+    border: 1px solid var(--blue2);
+    padding: 18px 20px;
+    position: relative;
+  }
+  .timeline-step:first-child { border-radius: 10px 0 0 10px; }
+  .timeline-step:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(--blue2); }
+  .timeline-step.highlight { border-color: var(--gold); }
+  .timeline-step .ts-phase { font-size: 10px; color: var(--gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-step .ts-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-step .ts-desc { font-size: 12px; color: var(--slate); line-height: 1.5; }
+  .timeline-arrow {
+    width: 28px; height: 28px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: var(--navy); font-weight: 900;
+    position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+    z-index: 2;
+  }
 
-/* ROLE CARDS */
-.role-card {
-background: var(–navy2);
-border: 2px solid var(–blue2);
-border-radius: 12px;
-padding: 20px;
-cursor: pointer;
-transition: all 0.2s;
-}
-.role-card:hover { border-color: var(–blue); transform: translateY(-2px); }
-.role-card.selected { border-color: var(–gold); transform: scale(1.02); }
-.role-card.selected .rc-name { color: white; }
-.rc-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-.rc-dp { font-size: 12px; color: var(–slate); }
-.rc-dp span { color: var(–gold); font-weight: 600; }
-.rc-badge {
-display: inline-block;
-background: rgba(251,191,36,0.2);
-border: 1px solid var(–gold);
-color: var(–gold);
-font-size: 11px;
-border-radius: 6px;
-padding: 2px 10px;
-margin-top: 8px;
-}
+  /* ROLE CARDS */
+  .role-card {
+    background: var(--navy2);
+    border: 2px solid var(--blue2);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .role-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .role-card.selected { border-color: var(--gold); transform: scale(1.02); }
+  .role-card.selected .rc-name { color: white; }
+  .rc-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .rc-dp { font-size: 12px; color: var(--slate); }
+  .rc-dp span { color: var(--gold); font-weight: 600; }
+  .rc-badge {
+    display: inline-block;
+    background: rgba(251,191,36,0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    border-radius: 6px;
+    padding: 2px 10px;
+    margin-top: 8px;
+  }
 
-/* METRIC SELECTOR */
-.metric-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
-.metric-tab-btn {
-background: var(–navy2);
-border: 1px solid var(–blue2);
-color: var(–light);
-border-radius: 8px;
-padding: 8px 16px;
-cursor: pointer;
-font-size: 13px;
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 500;
-transition: all 0.2s;
-}
-.metric-tab-btn.active { font-weight: 700; color: white; }
+  /* METRIC SELECTOR */
+  .metric-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+  .metric-tab-btn {
+    background: var(--navy2);
+    border: 1px solid var(--blue2);
+    color: var(--light);
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .metric-tab-btn.active { font-weight: 700; color: white; }
 
-/* SCORE LEVELS */
-.score-levels { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
-.score-level {
-flex: 1;
-min-width: 110px;
-background: #0a1628;
-border: 2px solid var(–blue2);
-border-radius: 10px;
-padding: 14px;
-cursor: pointer;
-text-align: center;
-transition: all 0.15s;
-}
-.score-level:hover { border-color: var(–blue); }
-.score-level.selected { border-color: var(–gold); }
-.score-level .sl-label { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.score-level .sl-value { font-size: 12px; color: var(–slate); margin-bottom: 8px; }
-.score-level .sl-stars { font-size: 18px; color: var(–gold); }
+  /* SCORE LEVELS */
+  .score-levels { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+  .score-level {
+    flex: 1;
+    min-width: 110px;
+    background: #0a1628;
+    border: 2px solid var(--blue2);
+    border-radius: 10px;
+    padding: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .score-level:hover { border-color: var(--blue); }
+  .score-level.selected { border-color: var(--gold); }
+  .score-level .sl-label { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .score-level .sl-value { font-size: 12px; color: var(--slate); margin-bottom: 8px; }
+  .score-level .sl-stars { font-size: 18px; color: var(--gold); }
 
-/* SCORE SUMMARY */
-.score-hero {
-background: var(–navy2);
-border: 2px solid var(–blue2);
-border-radius: 12px;
-padding: 20px 28px;
-text-align: center;
-min-width: 160px;
-}
-.score-hero .pct { font-size: 42px; font-weight: 700; font-family: ‘Playfair Display’, serif; }
-.score-hero .rating { font-size: 16px; font-weight: 600; }
-.score-hero .pts { font-size: 11px; color: #64748b; }
+  /* SCORE SUMMARY */
+  .score-hero {
+    background: var(--navy2);
+    border: 2px solid var(--blue2);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 160px;
+  }
+  .score-hero .pct { font-size: 42px; font-weight: 700; font-family: 'Playfair Display', serif; }
+  .score-hero .rating { font-size: 16px; font-weight: 600; }
+  .score-hero .pts { font-size: 11px; color: #64748b; }
 
-/* PROGRESS BAR */
-.progress-wrap { background: #0a1628; border-radius: 6px; height: 8px; }
-.progress-bar { border-radius: 6px; height: 8px; transition: width 0.5s; }
+  /* PROGRESS BAR */
+  .progress-wrap { background: #0a1628; border-radius: 6px; height: 8px; }
+  .progress-bar { border-radius: 6px; height: 8px; transition: width 0.5s; }
 
-/* EVIDENCE */
-.evidence-section-header {
-border-radius: 10px 10px 0 0;
-padding: 12px 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-.evidence-submetric {
-background: var(–navy2);
-border-left: 3px solid;
-border-right: 1px solid var(–blue2);
-border-bottom: 1px solid var(–blue2);
-padding: 18px 20px;
-}
-.evidence-submetric:last-child { border-radius: 0 0 10px 10px; }
-.prompt-box {
-background: #0a1628;
-border-radius: 8px;
-padding: 14px;
-margin-bottom: 12px;
-display: none;
-}
-.prompt-box.open { display: block; }
-.prompt-item { font-size: 13px; color: var(–slate); margin-bottom: 6px; display: flex; gap: 8px; }
-.prompt-toggle {
-background: var(–blue2);
-border: none;
-color: var(–gold);
-border-radius: 6px;
-padding: 4px 12px;
-cursor: pointer;
-font-size: 12px;
-font-family: ‘DM Sans’, sans-serif;
-}
-textarea {
-width: 100%;
-background: #0a1628;
-border: 1px solid var(–blue2);
-border-radius: 8px;
-padding: 14px;
-color: var(–light);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 14px;
-line-height: 1.6;
-resize: vertical;
-min-height: 80px;
-}
-textarea:focus { outline: none; border-color: var(–blue); }
-textarea::placeholder { color: #475569; }
+  /* EVIDENCE */
+  .evidence-section-header {
+    border-radius: 10px 10px 0 0;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .evidence-submetric {
+    background: var(--navy2);
+    border-left: 3px solid;
+    border-right: 1px solid var(--blue2);
+    border-bottom: 1px solid var(--blue2);
+    padding: 18px 20px;
+  }
+  .evidence-submetric:last-child { border-radius: 0 0 10px 10px; }
+  .prompt-box {
+    background: #0a1628;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    display: none;
+  }
+  .prompt-box.open { display: block; }
+  .prompt-item { font-size: 13px; color: var(--slate); margin-bottom: 6px; display: flex; gap: 8px; }
+  .prompt-toggle {
+    background: var(--blue2);
+    border: none;
+    color: var(--gold);
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  textarea {
+    width: 100%;
+    background: #0a1628;
+    border: 1px solid var(--blue2);
+    border-radius: 8px;
+    padding: 14px;
+    color: var(--light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 80px;
+  }
+  textarea:focus { outline: none; border-color: var(--blue); }
+  textarea::placeholder { color: #475569; }
 
-/* BUTTONS */
-.btn {
-background: var(–blue);
-color: white;
-border: none;
-border-radius: 8px;
-padding: 12px 28px;
-font-size: 14px;
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 700;
-cursor: pointer;
-letter-spacing: 0.3px;
-transition: background 0.2s;
-}
-.btn:hover { background: #0066cc; }
-.btn-gold { background: var(–gold); color: var(–navy); }
-.btn-gold:hover { background: #f59e0b; }
-.btn-outline {
-background: transparent;
-border: 1px solid var(–blue2);
-color: var(–light);
-}
-.btn-outline:hover { border-color: var(–blue); }
-.btn-sm { padding: 8px 18px; font-size: 13px; }
-.btn-danger { background: #dc2626; }
-.btn-danger:hover { background: #b91c1c; }
+  /* BUTTONS */
+  .btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #0066cc; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: #f59e0b; }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--blue2);
+    color: var(--light);
+  }
+  .btn-outline:hover { border-color: var(--blue); }
+  .btn-sm { padding: 8px 18px; font-size: 13px; }
+  .btn-danger { background: #dc2626; }
+  .btn-danger:hover { background: #b91c1c; }
 
-/* EXPORT BAR */
-.export-bar {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
-padding: 16px 36px;
-background: #0a1f38;
-border-top: 1px solid var(–blue2);
-border-bottom: 1px solid var(–blue2);
-align-items: center;
-}
-.export-bar span { font-size: 13px; color: var(–slate); margin-right: 4px; }
+  /* EXPORT BAR */
+  .export-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 16px 36px;
+    background: #0a1f38;
+    border-top: 1px solid var(--blue2);
+    border-bottom: 1px solid var(--blue2);
+    align-items: center;
+  }
+  .export-bar span { font-size: 13px; color: var(--slate); margin-right: 4px; }
 
-/* SUMMARY */
-.summary-metric-card {
-background: var(–navy2);
-border-radius: 12px;
-padding: 20px;
-border: 1px solid;
-}
-.evidence-entry {
-margin-bottom: 16px;
-padding-bottom: 16px;
-border-bottom: 1px solid var(–blue2);
-}
-.evidence-entry:last-child { border-bottom: none; }
-.ev-meta { font-size: 12px; margin-bottom: 4px; }
-.ev-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; white-space: pre-wrap; }
+  /* SUMMARY */
+  .summary-metric-card {
+    background: var(--navy2);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid;
+  }
+  .evidence-entry {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--blue2);
+  }
+  .evidence-entry:last-child { border-bottom: none; }
+  .ev-meta { font-size: 12px; margin-bottom: 4px; }
+  .ev-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; white-space: pre-wrap; }
 
-/* TALKING POINTS */
-.tp-item { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
-.tp-num { color: var(–gold); flex-shrink: 0; font-weight: 700; }
+  /* TALKING POINTS */
+  .tp-item { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
+  .tp-num { color: var(--gold); flex-shrink: 0; font-weight: 700; }
 
-/* PRINT / PDF */
-@media print {
-.tabs, .export-bar, .header { display: none !important; }
-body { background: white !important; color: black !important; }
-.panel { display: block !important; }
-.panel:not(.print-target) { display: none !important; }
-.card, .summary-metric-card { background: #f8fafc !important; border-color: #e2e8f0 !important; }
-h2, h3 { color: #0a1628 !important; }
-.subtitle, .ev-text, .tp-item { color: #374151 !important; }
-.label { color: #0057a8 !important; }
-}
+  /* PRINT / PDF */
+  @media print {
+    .tabs, .export-bar, .header { display: none !important; }
+    body { background: white !important; color: black !important; }
+    .panel { display: block !important; }
+    .panel:not(.print-target) { display: none !important; }
+    .card, .summary-metric-card { background: #f8fafc !important; border-color: #e2e8f0 !important; }
+    h2, h3 { color: #0a1628 !important; }
+    .subtitle, .ev-text, .tp-item { color: #374151 !important; }
+    .label { color: #0057a8 !important; }
+  }
 
-/* NOTIFICATION */
-.toast {
-position: fixed;
-bottom: 24px;
-right: 24px;
-background: #16a34a;
-color: white;
-padding: 12px 22px;
-border-radius: 8px;
-font-size: 14px;
-font-family: ‘DM Sans’, sans-serif;
-font-weight: 600;
-z-index: 9999;
-opacity: 0;
-transform: translateY(10px);
-transition: all 0.3s;
-pointer-events: none;
-}
-.toast.show { opacity: 1; transform: translateY(0); }
+  /* NOTIFICATION */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #16a34a;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
 
-@media (max-width: 700px) {
-.grid-2, .grid-3 { grid-template-columns: 1fr; }
-.content { padding: 20px 18px; }
-.header { padding: 14px 18px; }
-.tabs { padding: 0 18px; }
-.export-bar { padding: 12px 18px; }
-}
+  @media (max-width: 700px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .content { padding: 20px 18px; }
+    .header { padding: 14px 18px; }
+    .tabs { padding: 0 18px; }
+    .export-bar { padding: 12px 18px; }
+  }
 </style>
-
 </head>
 <body>
 
 <!-- TOAST -->
-
 <div class="toast" id="toast"></div>
 
 <!-- HEADER -->
-
 <div class="header">
   <div>
     <div class="header-brand">KPMG</div>
@@ -395,7 +391,6 @@ pointer-events: none;
 </div>
 
 <!-- EXPORT BAR -->
-
 <div class="export-bar">
   <span>Backup &amp; Export:</span>
   <button class="btn btn-sm btn-outline" onclick="exportJSON()">⬇ Export JSON</button>
@@ -407,7 +402,6 @@ pointer-events: none;
 </div>
 
 <!-- TABS -->
-
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
   <button class="tab-btn" onclick="switchTab('role')">My Role</button>
@@ -417,96 +411,86 @@ pointer-events: none;
 </div>
 
 <!-- CONTENT -->
-
 <div class="content">
 
   <!-- ===== OVERVIEW ===== -->
-
   <div class="panel active" id="panel-overview">
     <h2>Your Year-End Roadmap</h2>
     <p class="subtitle">The three-stage C&amp;M performance process and what it takes to build a compelling case.</p>
 
-```
-<div class="timeline">
-  <div class="timeline-step">
-    <div class="ts-phase">NOW</div>
-    <div class="ts-title">Build Your Evidence</div>
-    <div class="ts-desc">Document achievements against each metric with specific numbers and outcomes</div>
-    <div class="timeline-arrow">›</div>
-  </div>
-  <div class="timeline-step">
-    <div class="ts-phase">PRE-JUNE</div>
-    <div class="ts-title">Dual Pen Review</div>
-    <div class="ts-desc">Your Dual Pen meets with you &amp; People Leader to review C&amp;M goals and agree indicative rating</div>
-    <div class="timeline-arrow">›</div>
-  </div>
-  <div class="timeline-step highlight">
-    <div class="ts-phase">4 JUNE 2026</div>
-    <div class="ts-title">Calibration Meeting</div>
-    <div class="ts-desc">IL &amp; Sector leads, Platinum/Priority CLPs, Growth Portfolio and Divisional C&amp;M reviewed</div>
-    <div class="timeline-arrow">›</div>
-  </div>
-  <div class="timeline-step">
-    <div class="ts-phase">POST-CALIBRATION</div>
-    <div class="ts-title">Markets Rating</div>
-    <div class="ts-desc">Formal Markets Ratings for significant C&amp;M roles (+20% time / $5M). Outcomes shared with Divisional NMPs</div>
-  </div>
-</div>
-
-<div class="grid-2" style="margin-bottom:24px">
-  <div class="card">
-    <div class="label">Divisional Focus</div>
-    <div style="font-size:13px; color:#cbd5e1; line-height:1.9">
-      Client Delivery &nbsp;•&nbsp; Revenue Targets<br>
-      People Leadership &nbsp;•&nbsp; Capability &amp; Proposition Development
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="ts-phase">NOW</div>
+        <div class="ts-title">Build Your Evidence</div>
+        <div class="ts-desc">Document achievements against each metric with specific numbers and outcomes</div>
+        <div class="timeline-arrow">›</div>
+      </div>
+      <div class="timeline-step">
+        <div class="ts-phase">PRE-JUNE</div>
+        <div class="ts-title">Dual Pen Review</div>
+        <div class="ts-desc">Your Dual Pen meets with you &amp; People Leader to review C&amp;M goals and agree indicative rating</div>
+        <div class="timeline-arrow">›</div>
+      </div>
+      <div class="timeline-step highlight">
+        <div class="ts-phase">4 JUNE 2026</div>
+        <div class="ts-title">Calibration Meeting</div>
+        <div class="ts-desc">IL &amp; Sector leads, Platinum/Priority CLPs, Growth Portfolio and Divisional C&amp;M reviewed</div>
+        <div class="timeline-arrow">›</div>
+      </div>
+      <div class="timeline-step">
+        <div class="ts-phase">POST-CALIBRATION</div>
+        <div class="ts-title">Markets Rating</div>
+        <div class="ts-desc">Formal Markets Ratings for significant C&amp;M roles (+20% time / $5M). Outcomes shared with Divisional NMPs</div>
+      </div>
     </div>
-  </div>
-  <div class="card card-blue">
-    <div class="label">C&amp;M Focus — Your Differentiator</div>
-    <div style="font-size:13px; color:#cbd5e1; line-height:1.9">
-      Sector or Client Leadership &nbsp;•&nbsp; Sector Leadership &amp; Community<br>
-      Client Service Team &nbsp;•&nbsp; Sales Enablement &amp; BD Support
+
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="card">
+        <div class="label">Divisional Focus</div>
+        <div style="font-size:13px; color:#cbd5e1; line-height:1.9">
+          Client Delivery &nbsp;•&nbsp; Revenue Targets<br>
+          People Leadership &nbsp;•&nbsp; Capability &amp; Proposition Development
+        </div>
+      </div>
+      <div class="card card-blue">
+        <div class="label">C&amp;M Focus — Your Differentiator</div>
+        <div style="font-size:13px; color:#cbd5e1; line-height:1.9">
+          Sector or Client Leadership &nbsp;•&nbsp; Sector Leadership &amp; Community<br>
+          Client Service Team &nbsp;•&nbsp; Sales Enablement &amp; BD Support
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="card card-gold">
-  <div class="label">💡 Key Principles to Evidence</div>
-  <div class="grid-2" style="gap:10px; margin-top:8px">
-    <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Whole of Firm revenue accountability</div>
-    <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Aligned to Partner's focus area in market</div>
-    <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Support sales pipeline/conversion in home division</div>
-    <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Synergies with market focus (time allocation)</div>
-    <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px" style="grid-column:1/-1">› Balanced scorecard across Markets &amp; Divisional goals agreed with People Leader &amp; Dual Pen</div>
-  </div>
-</div>
+    <div class="card card-gold">
+      <div class="label">💡 Key Principles to Evidence</div>
+      <div class="grid-2" style="gap:10px; margin-top:8px">
+        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Whole of Firm revenue accountability</div>
+        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Aligned to Partner's focus area in market</div>
+        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Support sales pipeline/conversion in home division</div>
+        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px">› Synergies with market focus (time allocation)</div>
+        <div style="font-size:13px; color:#cbd5e1; display:flex; gap:8px" style="grid-column:1/-1">› Balanced scorecard across Markets &amp; Divisional goals agreed with People Leader &amp; Dual Pen</div>
+      </div>
+    </div>
 
-<button class="btn" style="margin-top:24px" onclick="switchTab('role')">Start: Select Your Role →</button>
-```
-
+    <button class="btn" style="margin-top:24px" onclick="switchTab('role')">Start: Select Your Role →</button>
   </div>
 
   <!-- ===== ROLE ===== -->
-
   <div class="panel" id="panel-role">
     <h2>Select Your C&amp;M Role</h2>
     <p class="subtitle">Your role determines your Dual Pen and the calibration lens applied to your performance.</p>
 
-```
-<div class="grid-3" id="roleGrid" style="margin-bottom:24px"></div>
+    <div class="grid-3" id="roleGrid" style="margin-bottom:24px"></div>
 
-<div class="card card-blue" id="roleContextCard" style="display:none">
-  <div class="label">Calibration Note for Your Role</div>
-  <p id="roleContextText" style="font-size:14px; color:#cbd5e1; line-height:1.7"></p>
-</div>
+    <div class="card card-blue" id="roleContextCard" style="display:none">
+      <div class="label">Calibration Note for Your Role</div>
+      <p id="roleContextText" style="font-size:14px; color:#cbd5e1; line-height:1.7"></p>
+    </div>
 
-<button class="btn" style="margin-top:20px" id="roleNextBtn" onclick="switchTab('scorecard')" style="display:none">Next: Rate Your Performance →</button>
-```
-
+    <button class="btn" style="margin-top:20px" id="roleNextBtn" onclick="switchTab('scorecard')" style="display:none">Next: Rate Your Performance →</button>
   </div>
 
   <!-- ===== SCORECARD ===== -->
-
   <div class="panel" id="panel-scorecard">
     <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:24px">
       <div>
@@ -520,15 +504,11 @@ pointer-events: none;
       </div>
     </div>
 
-```
-<div class="metric-tabs" id="metricTabs"></div>
-<div id="metricContent"></div>
-```
-
+    <div class="metric-tabs" id="metricTabs"></div>
+    <div id="metricContent"></div>
   </div>
 
   <!-- ===== EVIDENCE ===== -->
-
   <div class="panel" id="panel-evidence">
     <h2>Evidence Builder</h2>
     <p class="subtitle">Guided prompts for every sub-metric. Your Dual Pen will probe each area — be specific.</p>
@@ -536,48 +516,44 @@ pointer-events: none;
   </div>
 
   <!-- ===== SUMMARY ===== -->
-
   <div class="panel print-target" id="panel-summary">
     <h2>Your Performance Summary</h2>
     <p class="subtitle">A consolidated view for your Dual Pen conversation and calibration preparation.</p>
 
-```
-<div class="grid-4" id="summaryMetrics" style="margin-bottom:28px"></div>
+    <div class="grid-4" id="summaryMetrics" style="margin-bottom:28px"></div>
 
-<div class="card" id="summaryEvidence">
-  <div class="label">Evidence Log</div>
-  <div id="evidenceLog" style="margin-top:12px"></div>
-</div>
-
-<div class="card card-blue" style="margin-top:20px" id="dualPenPrepCard">
-  <div class="label">Dual Pen Conversation Prep</div>
-  <div class="grid-2" style="margin-top:12px; gap:20px">
-    <div>
-      <div style="font-size:12px; color:var(--slate); margin-bottom:10px">KEY TALKING POINTS</div>
-      <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
-      <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
-      <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
-      <div class="tp-item"><span class="tp-num">4.</span> Show market presence: thought leadership, forums, community roles</div>
-      <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
+    <div class="card" id="summaryEvidence">
+      <div class="label">Evidence Log</div>
+      <div id="evidenceLog" style="margin-top:12px"></div>
     </div>
-    <div>
-      <div style="font-size:12px; color:var(--slate); margin-bottom:10px">YOUR DUAL PEN &amp; KEY DATES</div>
-      <div style="background:#0a1628; border-radius:8px; padding:16px; margin-bottom:12px">
-        <div style="font-size:24px; font-weight:700; color:var(--gold)" id="summaryDualPen">—</div>
-        <div style="font-size:12px; color:var(--slate); margin-top:8px; line-height:1.6">
-          Provides formal review and checkpoint against agreed C&amp;M goals including time commitment. Inputs on your indicative performance rating prior to calibration.
+
+    <div class="card card-blue" style="margin-top:20px" id="dualPenPrepCard">
+      <div class="label">Dual Pen Conversation Prep</div>
+      <div class="grid-2" style="margin-top:12px; gap:20px">
+        <div>
+          <div style="font-size:12px; color:var(--slate); margin-bottom:10px">KEY TALKING POINTS</div>
+          <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
+          <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
+          <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
+          <div class="tp-item"><span class="tp-num">4.</span> Show market presence: thought leadership, forums, community roles</div>
+          <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
+        </div>
+        <div>
+          <div style="font-size:12px; color:var(--slate); margin-bottom:10px">YOUR DUAL PEN &amp; KEY DATES</div>
+          <div style="background:#0a1628; border-radius:8px; padding:16px; margin-bottom:12px">
+            <div style="font-size:24px; font-weight:700; color:var(--gold)" id="summaryDualPen">—</div>
+            <div style="font-size:12px; color:var(--slate); margin-top:8px; line-height:1.6">
+              Provides formal review and checkpoint against agreed C&amp;M goals including time commitment. Inputs on your indicative performance rating prior to calibration.
+            </div>
+          </div>
+          <div style="background:#0a1628; border-radius:8px; padding:16px">
+            <div style="font-size:11px; color:var(--slate); margin-bottom:4px">CALIBRATION DATE</div>
+            <div style="font-size:20px; font-weight:700; color:var(--gold)">4 June 2026</div>
+            <div style="font-size:12px; color:var(--slate); margin-top:4px">Formal Markets Ratings for roles with +20% time / $5M threshold</div>
+          </div>
         </div>
       </div>
-      <div style="background:#0a1628; border-radius:8px; padding:16px">
-        <div style="font-size:11px; color:var(--slate); margin-bottom:4px">CALIBRATION DATE</div>
-        <div style="font-size:20px; font-weight:700; color:var(--gold)">4 June 2026</div>
-        <div style="font-size:12px; color:var(--slate); margin-top:4px">Formal Markets Ratings for roles with +20% time / $5M threshold</div>
-      </div>
     </div>
-  </div>
-</div>
-```
-
   </div>
 
 </div><!-- /content -->
@@ -821,257 +797,289 @@ function renderEvidenceContent() {
             <textarea id="ev-${sm.id}" placeholder="Document your evidence here... (be specific: numbers, names, outcomes)"
               onchange="setEvidence('${sm.id}', this.value)"
               oninput="setEvidence('${sm.id}', this.value)">${state.evidence[sm.id] || ""}</textarea>
-
-```
+          </div>
+        `).join("")}
       </div>
-    `).join("")}
-  </div>
-`;
-```
-
-}).join(””);
+    `;
+  }).join("");
 }
 
 function togglePrompt(id) {
-const el = document.getElementById(“prompts-” + id);
-const btn = el.previousElementSibling.querySelector(”.prompt-toggle”);
-el.classList.toggle(“open”);
-btn.textContent = el.classList.contains(“open”) ? “Hide Prompts” : “Show Prompts”;
+  const el = document.getElementById("prompts-" + id);
+  const btn = el.previousElementSibling.querySelector(".prompt-toggle");
+  el.classList.toggle("open");
+  btn.textContent = el.classList.contains("open") ? "Hide Prompts" : "Show Prompts";
 }
 
 function setEvidence(id, val) {
-state.evidence[id] = val;
+  state.evidence[id] = val;
 }
 
 // ============================================================
 // SUMMARY
 // ============================================================
 function updateSummary() {
-// Metric cards
-const grid = document.getElementById(“summaryMetrics”);
-grid.innerHTML = METRIC_KEYS.map(key => {
-const m = METRICS[key];
-const subs = m.submetrics;
-const total = subs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
-const max = subs.length * 3;
-const pct = max > 0 ? Math.round((total/max)*100) : 0;
-const rated = subs.filter(sm => state.scores[sm.id]).length;
-const { color } = getRating(pct);
-return `<div class="summary-metric-card" style="border-color:${m.accent}"> <div style="font-size:24px; margin-bottom:6px">${m.icon}</div> <div style="font-size:14px; font-weight:700; margin-bottom:10px">${m.label}</div> <div class="progress-wrap" style="margin-bottom:8px"> <div class="progress-bar" style="background:${m.accent}; width:${pct}%"></div> </div> <div style="font-size:26px; font-weight:700; color:${color}; font-family:'Playfair Display',serif">${pct}%</div> <div style="font-size:11px; color:#64748b">${rated}/${subs.length} areas rated</div> </div>`;
-}).join(””);
+  // Metric cards
+  const grid = document.getElementById("summaryMetrics");
+  grid.innerHTML = METRIC_KEYS.map(key => {
+    const m = METRICS[key];
+    const subs = m.submetrics;
+    const total = subs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
+    const max = subs.length * 3;
+    const pct = max > 0 ? Math.round((total/max)*100) : 0;
+    const rated = subs.filter(sm => state.scores[sm.id]).length;
+    const { color } = getRating(pct);
+    return `
+      <div class="summary-metric-card" style="border-color:${m.accent}">
+        <div style="font-size:24px; margin-bottom:6px">${m.icon}</div>
+        <div style="font-size:14px; font-weight:700; margin-bottom:10px">${m.label}</div>
+        <div class="progress-wrap" style="margin-bottom:8px">
+          <div class="progress-bar" style="background:${m.accent}; width:${pct}%"></div>
+        </div>
+        <div style="font-size:26px; font-weight:700; color:${color}; font-family:'Playfair Display',serif">${pct}%</div>
+        <div style="font-size:11px; color:#64748b">${rated}/${subs.length} areas rated</div>
+      </div>
+    `;
+  }).join("");
 
-// Evidence log
-const log = document.getElementById(“evidenceLog”);
-const entries = METRIC_KEYS.flatMap(key =>
-METRICS[key].submetrics
-.filter(sm => state.evidence[sm.id] && state.evidence[sm.id].trim())
-.map(sm => ({ metric: METRICS[key], sm }))
-);
-if (entries.length === 0) {
-log.innerHTML = `<div style="color:#64748b; font-size:14px">No evidence documented yet. Go to the Evidence Builder tab to add your achievements.</div>`;
-} else {
-log.innerHTML = entries.map(({ metric, sm }) => {
-const score = state.scores[sm.id];
-return `<div class="evidence-entry"> <div class="ev-meta" style="color:${metric.accent}"> ${metric.label} › ${sm.label} ${score ? '<span style="color:var(--gold); margin-left:8px">' + "★".repeat(score) + "</span>" : ""} </div> <div class="ev-text">${escapeHtml(state.evidence[sm.id])}</div> </div>`;
-}).join(””);
-}
+  // Evidence log
+  const log = document.getElementById("evidenceLog");
+  const entries = METRIC_KEYS.flatMap(key =>
+    METRICS[key].submetrics
+      .filter(sm => state.evidence[sm.id] && state.evidence[sm.id].trim())
+      .map(sm => ({ metric: METRICS[key], sm }))
+  );
+  if (entries.length === 0) {
+    log.innerHTML = `<div style="color:#64748b; font-size:14px">No evidence documented yet. Go to the Evidence Builder tab to add your achievements.</div>`;
+  } else {
+    log.innerHTML = entries.map(({ metric, sm }) => {
+      const score = state.scores[sm.id];
+      return `
+        <div class="evidence-entry">
+          <div class="ev-meta" style="color:${metric.accent}">
+            ${metric.label} › ${sm.label}
+            ${score ? '<span style="color:var(--gold); margin-left:8px">' + "★".repeat(score) + "</span>" : ""}
+          </div>
+          <div class="ev-text">${escapeHtml(state.evidence[sm.id])}</div>
+        </div>
+      `;
+    }).join("");
+  }
 
-// Dual pen
-const role = ROLES.find(r => r.id === state.selectedRole);
-document.getElementById(“summaryDualPen”).textContent = role ? role.dualPen : “— Select your role first —”;
+  // Dual pen
+  const role = ROLES.find(r => r.id === state.selectedRole);
+  document.getElementById("summaryDualPen").textContent = role ? role.dualPen : "— Select your role first —";
 }
 
 function escapeHtml(str) {
-return (str || “”).replace(/&/g,”&”).replace(/</g,”<”).replace(/>/g,”>”);
+  return (str || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 }
 
 // ============================================================
 // JSON EXPORT / IMPORT
 // ============================================================
 function exportJSON() {
-const data = {
-exportedAt: new Date().toISOString(),
-version: “1.0”,
-…state
-};
-const blob = new Blob([JSON.stringify(data, null, 2)], { type: “application/json” });
-const url = URL.createObjectURL(blob);
-const a = document.createElement(“a”);
-a.href = url;
-a.download = `kpmg-cm-navigator-${new Date().toISOString().split("T")[0]}.json`;
-a.click();
-URL.revokeObjectURL(url);
-showToast(“✓ JSON exported successfully”);
+  const data = {
+    exportedAt: new Date().toISOString(),
+    version: "1.0",
+    ...state
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `kpmg-cm-navigator-${new Date().toISOString().split("T")[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("✓ JSON exported successfully");
 }
 
 function importJSON(event) {
-const file = event.target.files[0];
-if (!file) return;
-const reader = new FileReader();
-reader.onload = (e) => {
-try {
-const data = JSON.parse(e.target.result);
-if (data.scores) state.scores = data.scores;
-if (data.evidence) state.evidence = data.evidence;
-if (data.selectedRole !== undefined) {
-state.selectedRole = data.selectedRole;
-if (state.selectedRole) {
-const role = ROLES.find(r => r.id === state.selectedRole);
-document.getElementById(“headerRoleBadge”).style.display = “block”;
-document.getElementById(“headerRoleName”).textContent = role.label;
-document.getElementById(“headerDualPen”).textContent = “Dual Pen: “ + role.dualPen;
-document.getElementById(“roleContextCard”).style.display = “block”;
-document.getElementById(“roleContextText”).textContent = role.context;
-document.getElementById(“roleNextBtn”).style.display = “inline-block”;
-}
-}
-if (data.activeMetric) state.activeMetric = data.activeMetric;
-renderRoles();
-renderMetricTabs();
-renderMetricContent();
-renderEvidenceContent();
-updateScoreHero();
-updateSummary();
-showToast(“✓ Data imported successfully”);
-} catch (err) {
-showToast(“✗ Import failed — invalid JSON file”, true);
-}
-event.target.value = “”;
-};
-reader.readAsText(file);
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.scores) state.scores = data.scores;
+      if (data.evidence) state.evidence = data.evidence;
+      if (data.selectedRole !== undefined) {
+        state.selectedRole = data.selectedRole;
+        if (state.selectedRole) {
+          const role = ROLES.find(r => r.id === state.selectedRole);
+          document.getElementById("headerRoleBadge").style.display = "block";
+          document.getElementById("headerRoleName").textContent = role.label;
+          document.getElementById("headerDualPen").textContent = "Dual Pen: " + role.dualPen;
+          document.getElementById("roleContextCard").style.display = "block";
+          document.getElementById("roleContextText").textContent = role.context;
+          document.getElementById("roleNextBtn").style.display = "inline-block";
+        }
+      }
+      if (data.activeMetric) state.activeMetric = data.activeMetric;
+      renderRoles();
+      renderMetricTabs();
+      renderMetricContent();
+      renderEvidenceContent();
+      updateScoreHero();
+      updateSummary();
+      showToast("✓ Data imported successfully");
+    } catch (err) {
+      showToast("✗ Import failed — invalid JSON file", true);
+    }
+    event.target.value = "";
+  };
+  reader.readAsText(file);
 }
 
 // ============================================================
 // PDF EXPORT
 // ============================================================
 function exportPDF() {
-// Prepare print view
-document.querySelectorAll(”.panel”).forEach(p => p.classList.remove(“active”));
-document.getElementById(“panel-summary”).classList.add(“active”);
-updateSummary();
-setTimeout(() => {
-window.print();
-// Restore
-document.querySelectorAll(”.panel”).forEach(p => p.classList.remove(“active”));
-document.getElementById(“panel-summary”).classList.add(“active”);
-}, 200);
-showToast(“✓ Print dialog opened — save as PDF”);
+  // Prepare print view
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.getElementById("panel-summary").classList.add("active");
+  updateSummary();
+  setTimeout(() => {
+    window.print();
+    // Restore
+    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+    document.getElementById("panel-summary").classList.add("active");
+  }, 200);
+  showToast("✓ Print dialog opened — save as PDF");
 }
 
 // ============================================================
 // WORD EXPORT
 // ============================================================
 function exportWord() {
-const role = ROLES.find(r => r.id === state.selectedRole);
-const allSubs = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
-const total = allSubs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
-const max = allSubs.length * 3;
-const pct = max > 0 ? Math.round((total/max)*100) : 0;
-const { label: ratingLabel } = getRating(pct);
-const today = new Date().toLocaleDateString(“en-AU”, { day: “numeric”, month: “long”, year: “numeric” });
+  const role = ROLES.find(r => r.id === state.selectedRole);
+  const allSubs = METRIC_KEYS.flatMap(k => METRICS[k].submetrics);
+  const total = allSubs.reduce((a, sm) => a + (state.scores[sm.id] || 0), 0);
+  const max = allSubs.length * 3;
+  const pct = max > 0 ? Math.round((total/max)*100) : 0;
+  const { label: ratingLabel } = getRating(pct);
+  const today = new Date().toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" });
 
-let html = `
-<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-<head>
-<meta charset='UTF-8'>
-<style>
-body { font-family: Arial, sans-serif; font-size: 11pt; color: #1e293b; margin: 2cm; }
-h1 { font-size: 22pt; color: #0057a8; border-bottom: 3px solid #fbbf24; padding-bottom: 8pt; margin-bottom: 6pt; }
-h2 { font-size: 15pt; color: #0057a8; margin-top: 18pt; margin-bottom: 6pt; border-left: 4pt solid #fbbf24; padding-left: 8pt; }
-h3 { font-size: 12pt; color: #1e3a5f; margin-top: 12pt; margin-bottom: 4pt; }
-.meta { font-size: 10pt; color: #64748b; margin-bottom: 16pt; }
-.score-box { background: #f0f7ff; border: 1px solid #0057a8; padding: 10pt; margin-bottom: 16pt; display: inline-block; }
-.score-box .pct { font-size: 28pt; font-weight: bold; color: #0057a8; }
-.score-box .rating { font-size: 13pt; color: #0057a8; font-weight: bold; }
-table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
-th { background: #0057a8; color: white; padding: 6pt 10pt; text-align: left; font-size: 10pt; }
-td { padding: 6pt 10pt; border: 1px solid #e2e8f0; font-size: 10pt; vertical-align: top; }
-tr:nth-child(even) td { background: #f8fafc; }
-.stars { color: #f59e0b; font-size: 13pt; }
-.evidence-text { color: #374151; line-height: 1.6; }
-.section-header { background: #1e3a5f; color: white; padding: 6pt 12pt; font-weight: bold; font-size: 12pt; margin-top: 14pt; }
-.tip-item { margin-bottom: 5pt; padding-left: 12pt; }
-.footer { margin-top: 30pt; font-size: 9pt; color: #94a3b8; border-top: 1pt solid #e2e8f0; padding-top: 8pt; }
-</style>
-</head>
-<body>
-<h1>KPMG C&M Year-End Performance Summary</h1>
-<div class="meta">
-Prepared: ${today}  | 
-Role: ${role ? role.label : “Not selected”}  | 
-Dual Pen: ${role ? role.dualPen : “—”}  | 
-Calibration: 4 June 2026
-</div>
+  let html = `
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    <head>
+      <meta charset='UTF-8'>
+      <style>
+        body { font-family: Arial, sans-serif; font-size: 11pt; color: #1e293b; margin: 2cm; }
+        h1 { font-size: 22pt; color: #0057a8; border-bottom: 3px solid #fbbf24; padding-bottom: 8pt; margin-bottom: 6pt; }
+        h2 { font-size: 15pt; color: #0057a8; margin-top: 18pt; margin-bottom: 6pt; border-left: 4pt solid #fbbf24; padding-left: 8pt; }
+        h3 { font-size: 12pt; color: #1e3a5f; margin-top: 12pt; margin-bottom: 4pt; }
+        .meta { font-size: 10pt; color: #64748b; margin-bottom: 16pt; }
+        .score-box { background: #f0f7ff; border: 1px solid #0057a8; padding: 10pt; margin-bottom: 16pt; display: inline-block; }
+        .score-box .pct { font-size: 28pt; font-weight: bold; color: #0057a8; }
+        .score-box .rating { font-size: 13pt; color: #0057a8; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 8pt 0; }
+        th { background: #0057a8; color: white; padding: 6pt 10pt; text-align: left; font-size: 10pt; }
+        td { padding: 6pt 10pt; border: 1px solid #e2e8f0; font-size: 10pt; vertical-align: top; }
+        tr:nth-child(even) td { background: #f8fafc; }
+        .stars { color: #f59e0b; font-size: 13pt; }
+        .evidence-text { color: #374151; line-height: 1.6; }
+        .section-header { background: #1e3a5f; color: white; padding: 6pt 12pt; font-weight: bold; font-size: 12pt; margin-top: 14pt; }
+        .tip-item { margin-bottom: 5pt; padding-left: 12pt; }
+        .footer { margin-top: 30pt; font-size: 9pt; color: #94a3b8; border-top: 1pt solid #e2e8f0; padding-top: 8pt; }
+      </style>
+    </head>
+    <body>
+      <h1>KPMG C&amp;M Year-End Performance Summary</h1>
+      <div class="meta">
+        Prepared: ${today} &nbsp;|&nbsp;
+        Role: ${role ? role.label : "Not selected"} &nbsp;|&nbsp;
+        Dual Pen: ${role ? role.dualPen : "—"} &nbsp;|&nbsp;
+        Calibration: 4 June 2026
+      </div>
 
-```
-  <div class="score-box">
-    <div class="pct">${pct}%</div>
-    <div class="rating">Overall Self-Assessment: ${ratingLabel}</div>
-    <div style="font-size:10pt; color:#64748b">${total}/${max} points across all metrics</div>
-  </div>
+      <div class="score-box">
+        <div class="pct">${pct}%</div>
+        <div class="rating">Overall Self-Assessment: ${ratingLabel}</div>
+        <div style="font-size:10pt; color:#64748b">${total}/${max} points across all metrics</div>
+      </div>
 
-  <h2>Scorecard Summary</h2>
-  <table>
-    <tr>
-      <th>Pillar</th>
-      <th>Area</th>
-      <th>Self-Rating</th>
-      <th>Stars</th>
-    </tr>
-```
+      <h2>Scorecard Summary</h2>
+      <table>
+        <tr>
+          <th>Pillar</th>
+          <th>Area</th>
+          <th>Self-Rating</th>
+          <th>Stars</th>
+        </tr>
+  `;
 
-`;
+  METRIC_KEYS.forEach(key => {
+    const m = METRICS[key];
+    m.submetrics.forEach((sm, i) => {
+      const score = state.scores[sm.id] || 0;
+      const levelObj = sm.levels.find(l => l.score === score);
+      html += `
+        <tr>
+          ${i === 0 ? `<td rowspan="${m.submetrics.length}" style="font-weight:bold; background:#f0f7ff">${m.icon} ${m.label}</td>` : ""}
+          <td>${sm.label}</td>
+          <td>${levelObj ? levelObj.label + " (" + levelObj.value + ")" : "Not rated"}</td>
+          <td class="stars">${score > 0 ? "★".repeat(score) + "☆".repeat(3-score) : "—"}</td>
+        </tr>
+      `;
+    });
+  });
 
-METRIC_KEYS.forEach(key => {
-const m = METRICS[key];
-m.submetrics.forEach((sm, i) => {
-const score = state.scores[sm.id] || 0;
-const levelObj = sm.levels.find(l => l.score === score);
-html += `<tr> ${i === 0 ?`<td rowspan="${m.submetrics.length}" style="font-weight:bold; background:#f0f7ff">${m.icon} ${m.label}</td>`: ""} <td>${sm.label}</td> <td>${levelObj ? levelObj.label + " (" + levelObj.value + ")" : "Not rated"}</td> <td class="stars">${score > 0 ? "★".repeat(score) + "☆".repeat(3-score) : "—"}</td> </tr>`;
-});
-});
+  html += `</table>`;
 
-html += `</table>`;
+  // Evidence by pillar
+  html += `<h2>Evidence Log</h2>`;
 
-// Evidence by pillar
-html += `<h2>Evidence Log</h2>`;
+  METRIC_KEYS.forEach(key => {
+    const m = METRICS[key];
+    const hasEvidence = m.submetrics.some(sm => state.evidence[sm.id] && state.evidence[sm.id].trim());
+    if (!hasEvidence) return;
+    html += `<div class="section-header">${m.icon} ${m.label}</div>`;
+    m.submetrics.forEach(sm => {
+      if (!state.evidence[sm.id] || !state.evidence[sm.id].trim()) return;
+      const score = state.scores[sm.id] || 0;
+      html += `
+        <h3>${sm.label} ${score > 0 ? '<span class="stars">' + "★".repeat(score) + "</span>" : ""}</h3>
+        <p class="evidence-text">${escapeHtml(state.evidence[sm.id]).replace(/\n/g, "<br>")}</p>
+      `;
+    });
+  });
 
-METRIC_KEYS.forEach(key => {
-const m = METRICS[key];
-const hasEvidence = m.submetrics.some(sm => state.evidence[sm.id] && state.evidence[sm.id].trim());
-if (!hasEvidence) return;
-html += `<div class="section-header">${m.icon} ${m.label}</div>`;
-m.submetrics.forEach(sm => {
-if (!state.evidence[sm.id] || !state.evidence[sm.id].trim()) return;
-const score = state.scores[sm.id] || 0;
-html += `<h3>${sm.label} ${score > 0 ? '<span class="stars">' + "★".repeat(score) + "</span>" : ""}</h3> <p class="evidence-text">${escapeHtml(state.evidence[sm.id]).replace(/\n/g, "<br>")}</p>`;
-});
-});
+  // Dual Pen prep
+  html += `
+    <h2>Dual Pen Conversation Preparation</h2>
+    <p><strong>Your Dual Pen:</strong> ${role ? role.dualPen : "—"}</p>
+    <p><strong>Calibration Meeting:</strong> 4 June 2026 — Formal Markets Ratings for roles with +20% time / $5M threshold</p>
+    <h3>Key Talking Points</h3>
+    <div class="tip-item">1. Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
+    <div class="tip-item">2. Quantify everything: dollar amounts, percentages, client names where appropriate</div>
+    <div class="tip-item">3. Demonstrate cross-divisional perspective, not just your home division</div>
+    <div class="tip-item">4. Show market presence: thought leadership, forums, community roles</div>
+    <div class="tip-item">5. Address any underperforming areas proactively with context and forward plan</div>
+    <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; Generated ${today}</div>
+    </body></html>
+  `;
 
-// Dual Pen prep
-html += `<h2>Dual Pen Conversation Preparation</h2> <p><strong>Your Dual Pen:</strong> ${role ? role.dualPen : "—"}</p> <p><strong>Calibration Meeting:</strong> 4 June 2026 — Formal Markets Ratings for roles with +20% time / $5M threshold</p> <h3>Key Talking Points</h3> <div class="tip-item">1. Lead with your strongest metric — revenue performance vs plan ($ and %)</div> <div class="tip-item">2. Quantify everything: dollar amounts, percentages, client names where appropriate</div> <div class="tip-item">3. Demonstrate cross-divisional perspective, not just your home division</div> <div class="tip-item">4. Show market presence: thought leadership, forums, community roles</div> <div class="tip-item">5. Address any underperforming areas proactively with context and forward plan</div> <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; Generated ${today}</div> </body></html>`;
-
-const blob = new Blob([”\ufeff” + html], { type: “application/msword” });
-const url = URL.createObjectURL(blob);
-const a = document.createElement(“a”);
-a.href = url;
-a.download = `KPMG-CM-Performance-Summary-${new Date().toISOString().split("T")[0]}.doc`;
-a.click();
-URL.revokeObjectURL(url);
-showToast(“✓ Word document exported successfully”);
+  const blob = new Blob(["\ufeff" + html], { type: "application/msword" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `KPMG-CM-Performance-Summary-${new Date().toISOString().split("T")[0]}.doc`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("✓ Word document exported successfully");
 }
 
 // ============================================================
 // TOAST
 // ============================================================
 function showToast(msg, isError = false) {
-const t = document.getElementById(“toast”);
-t.textContent = msg;
-t.style.background = isError ? “#dc2626” : “#16a34a”;
-t.classList.add(“show”);
-setTimeout(() => t.classList.remove(“show”), 3000);
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.style.background = isError ? "#dc2626" : "#16a34a";
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 3000);
 }
 </script>
-
 </body>
 </html>
