@@ -3,186 +3,236 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <title>KPMG C&M Partner Year-End Navigator</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+  /* ── System font stack — no external dependencies ── */
+  :root {
+    --navy:  #0a1628;
+    --navy2: #0d2140;
+    --blue:  #0057a8;
+    --blue2: #1e3a5f;
+    --gold:  #fbbf24;
+    --slate: #94a3b8;
+    --light: #e2e8f0;
+    --green: #065f46;
+    --font-serif: Georgia, "Times New Roman", serif;
+    --font-sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
 
-:root {
-–navy: #0a1628; –navy2: #0d2140; –blue: #0057a8; –blue2: #1e3a5f;
-–gold: #fbbf24; –slate: #94a3b8; –light: #e2e8f0;
-–purple: #6b21a8; –teal: #0891b2; –green: #065f46;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Force dark background on every browser — belt AND braces */
+html {
+background-color: #0a1628 !important;
+background: #0a1628 !important;
+min-height: 100%;
+}
+body {
+font-family: var(–font-sans);
+background-color: #0a1628 !important;
+background-image: linear-gradient(160deg, #0a1628 0%, #0d2140 50%, #0a1628 100%) !important;
+background-attachment: fixed;
+min-height: 100vh;
+color: #e2e8f0 !important;
+-webkit-text-size-adjust: 100%;
+/* Prevent Safari from overriding text colour */
+-webkit-font-smoothing: antialiased;
 }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: ‘DM Sans’, sans-serif; background: linear-gradient(135deg, var(–navy) 0%, var(–navy2) 50%, var(–navy) 100%); min-height: 100vh; color: var(–light); }
-
 /* HEADER */
-.header { background: linear-gradient(90deg, var(–blue), var(–blue2)); padding: 18px 36px; border-bottom: 2px solid var(–gold); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.header-brand { font-size: 12px; letter-spacing: 4px; color: var(–gold); font-weight: 700; }
-.header-title { font-family: ‘Playfair Display’, serif; font-size: 22px; margin-top: 2px; }
-.header-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px 18px; text-align: right; }
-.header-badge .hb-name { font-size: 16px; font-weight: 700; color: white; }
-.header-badge .hb-role { font-size: 12px; color: var(–slate); }
-.header-badge .hb-dp { font-size: 11px; color: var(–gold); }
+.header {
+background-color: #0057a8 !important;
+background-image: linear-gradient(90deg, #0057a8, #1e3a5f) !important;
+padding: 18px 24px;
+border-bottom: 2px solid #fbbf24;
+display: -webkit-flex; display: flex;
+-webkit-justify-content: space-between; justify-content: space-between;
+-webkit-align-items: center; align-items: center;
+-webkit-flex-wrap: wrap; flex-wrap: wrap;
+gap: 12px;
+}
+.header-brand { font-size: 12px; letter-spacing: 4px; color: #fbbf24; font-weight: 700; }
+.header-title  { font-family: var(–font-serif); font-size: 20px; margin-top: 2px; color: #e2e8f0; }
+.header-badge  {
+background-color: rgba(255,255,255,0.12);
+border: 1px solid rgba(255,255,255,0.25);
+border-radius: 8px; padding: 10px 16px; text-align: right;
+}
+.hb-name { font-size: 15px; font-weight: 700; color: #ffffff; }
+.hb-role { font-size: 12px; color: #94a3b8; }
+.hb-dp   { font-size: 11px; color: #fbbf24; }
 
 /* TABS */
-.tabs { display: flex; background: #0d1f38; border-bottom: 1px solid var(–blue2); padding: 0 36px; overflow-x: auto; }
-.tab-btn { background: none; border: none; border-bottom: 3px solid transparent; color: var(–slate); padding: 14px 22px; cursor: pointer; font-size: 13px; font-family: ‘DM Sans’, sans-serif; font-weight: 500; letter-spacing: 0.5px; white-space: nowrap; transition: all 0.2s; }
-.tab-btn:hover { color: var(–light); }
-.tab-btn.active { color: var(–gold); border-bottom-color: var(–gold); font-weight: 700; }
+.tabs {
+display: -webkit-flex; display: flex;
+background-color: #091730 !important;
+border-bottom: 1px solid #1e3a5f;
+padding: 0 24px;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.tab-btn {
+background: none; border: none;
+border-bottom: 3px solid transparent;
+color: #94a3b8;
+padding: 13px 18px;
+cursor: pointer; font-size: 13px;
+font-family: var(–font-sans);
+font-weight: 500; white-space: nowrap;
+-webkit-tap-highlight-color: transparent;
+transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn:hover  { color: #e2e8f0; }
+.tab-btn.active { color: #fbbf24; border-bottom-color: #fbbf24; font-weight: 700; }
 
 /* CONTENT */
-.content { padding: 32px 36px; max-width: 1100px; margin: 0 auto; }
+.content { padding: 28px 24px; max-width: 1100px; margin: 0 auto; }
 .panel { display: none; }
 .panel.active { display: block; }
 
-/* TYPE */
-h2 { font-family: ‘Playfair Display’, serif; font-size: 28px; margin-bottom: 6px; }
-h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-.subtitle { color: var(–slate); font-size: 15px; margin-bottom: 28px; }
-.label { font-size: 11px; color: var(–gold); letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+/* TYPOGRAPHY */
+h2 { font-family: var(–font-serif); font-size: 26px; margin-bottom: 6px; color: #e2e8f0; font-weight: 700; }
+h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #e2e8f0; }
+.subtitle { color: #94a3b8; font-size: 15px; margin-bottom: 24px; }
+.label { font-size: 11px; color: #fbbf24; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
 
 /* CARDS */
-.card { background: var(–navy2); border: 1px solid var(–blue2); border-radius: 12px; padding: 22px 24px; margin-bottom: 16px; }
-.card-gold { border-color: var(–gold); }
-.card-blue { border-color: var(–blue); }
+.card {
+background-color: #0d2140 !important;
+border: 1px solid #1e3a5f;
+border-radius: 12px; padding: 20px 22px; margin-bottom: 16px;
+}
+.card-gold { border-color: #fbbf24 !important; }
+.card-blue { border-color: #0057a8 !important; }
 
 /* GRIDS */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.grid-2 { display: -webkit-grid; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid-3 { display: -webkit-grid; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.grid-4 { display: -webkit-grid; display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 16px; }
 
 /* FORM INPUTS */
 .form-group { margin-bottom: 18px; }
-.form-label { display: block; font-size: 12px; color: var(–gold); letter-spacing: 1px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+.form-label { display: block; font-size: 12px; color: #fbbf24; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
 .form-input {
-width: 100%; background: #0a1628; border: 1px solid var(–blue2);
-border-radius: 8px; padding: 12px 16px; color: var(–light);
-font-family: ‘DM Sans’, sans-serif; font-size: 15px; transition: border 0.2s;
+width: 100%; background-color: #080f1e; border: 1px solid #1e3a5f;
+border-radius: 8px; padding: 12px 16px; color: #e2e8f0;
+font-family: var(–font-sans); font-size: 15px; transition: border 0.2s;
+-webkit-appearance: none; appearance: none;
 }
-.form-input:focus { outline: none; border-color: var(–gold); box-shadow: 0 0 0 3px rgba(251,191,36,0.1); }
+.form-input:focus { outline: none; border-color: #fbbf24; }
+.form-input::-webkit-input-placeholder { color: #475569; }
 .form-input::placeholder { color: #475569; }
 
-/* TIMELINE */
-.timeline { display: flex; margin-bottom: 36px; flex-wrap: wrap; }
-.timeline-step { flex: 1; min-width: 160px; background: var(–navy2); border: 1px solid var(–blue2); padding: 18px 20px; position: relative; }
+/* TIMELINE — vertical on mobile */
+.timeline { display: -webkit-flex; display: flex; margin-bottom: 28px; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 2px; }
+.timeline-step { -webkit-flex: 1; flex: 1; min-width: 150px; background-color: #0d2140; border: 1px solid #1e3a5f; padding: 16px 18px; position: relative; }
 .timeline-step:first-child { border-radius: 10px 0 0 10px; }
-.timeline-step:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(–blue2); }
-.timeline-step.highlight { border-color: var(–gold); }
-.ts-phase { font-size: 10px; color: var(–gold); letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
-.ts-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.ts-desc { font-size: 12px; color: var(–slate); line-height: 1.5; }
-.timeline-arrow { width: 28px; height: 28px; background: var(–gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(–navy); font-weight: 900; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); z-index: 2; }
+.timeline-step:last-child  { border-radius: 0 10px 10px 0; }
+.timeline-step.highlight   { border-color: #fbbf24; }
+.ts-phase { font-size: 10px; color: #fbbf24; letter-spacing: 2px; font-weight: 700; margin-bottom: 4px; }
+.ts-title { font-size: 14px; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; }
+.ts-desc  { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+.timeline-arrow { width: 26px; height: 26px; background-color: #fbbf24; border-radius: 50%; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; font-size: 14px; color: #0a1628; font-weight: 900; position: absolute; right: -13px; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); z-index: 2; }
 
 /* ROLE CARDS */
-.role-card { background: var(–navy2); border: 2px solid var(–blue2); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; }
-.role-card:hover { border-color: var(–blue); transform: translateY(-2px); }
-.role-card.selected { border-color: var(–gold); transform: scale(1.02); }
-.rc-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-.rc-dp { font-size: 12px; color: var(–slate); }
-.rc-dp span { color: var(–gold); font-weight: 600; }
-.rc-badge { display: inline-block; background: rgba(251,191,36,0.2); border: 1px solid var(–gold); color: var(–gold); font-size: 11px; border-radius: 6px; padding: 2px 10px; margin-top: 8px; }
+.role-card { background-color: #0d2140; border: 2px solid #1e3a5f; border-radius: 12px; padding: 18px; cursor: pointer; transition: border-color 0.2s, -webkit-transform 0.2s, transform 0.2s; -webkit-tap-highlight-color: transparent; }
+.role-card:hover  { border-color: #0057a8; }
+.role-card.selected { border-color: #fbbf24; }
+.rc-name  { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #e2e8f0; }
+.rc-dp    { font-size: 12px; color: #94a3b8; }
+.rc-dp span { color: #fbbf24; font-weight: 600; }
+.rc-badge { display: inline-block; background-color: rgba(251,191,36,0.2); border: 1px solid #fbbf24; color: #fbbf24; font-size: 11px; border-radius: 6px; padding: 2px 10px; margin-top: 8px; }
 
 /* METRIC TABS */
-.metric-tabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
-.metric-tab-btn { background: var(–navy2); border: 1px solid var(–blue2); color: var(–light); border-radius: 8px; padding: 8px 16px; cursor: pointer; font-size: 13px; font-family: ‘DM Sans’, sans-serif; font-weight: 500; transition: all 0.2s; }
-.metric-tab-btn.active { font-weight: 700; color: white; }
+.metric-tabs { display: -webkit-flex; display: flex; gap: 8px; margin-bottom: 20px; -webkit-flex-wrap: wrap; flex-wrap: wrap; }
+.metric-tab-btn { background-color: #0d2140; border: 1px solid #1e3a5f; color: #e2e8f0; border-radius: 8px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-family: var(–font-sans); font-weight: 500; transition: background-color 0.2s; -webkit-tap-highlight-color: transparent; }
+.metric-tab-btn.active { font-weight: 700; color: #ffffff; }
 
 /* SCORE LEVELS */
-.score-levels { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
-.score-level { flex: 1; min-width: 110px; background: #0a1628; border: 2px solid var(–blue2); border-radius: 10px; padding: 14px; cursor: pointer; text-align: center; transition: all 0.15s; }
-.score-level:hover { border-color: var(–blue); }
-.score-level.selected { border-color: var(–gold); }
-.sl-label { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.sl-value { font-size: 12px; color: var(–slate); margin-bottom: 8px; }
-.sl-stars { font-size: 18px; color: var(–gold); }
+.score-levels { display: -webkit-flex; display: flex; gap: 10px; -webkit-flex-wrap: wrap; flex-wrap: wrap; margin-top: 12px; }
+.score-level { -webkit-flex: 1; flex: 1; min-width: 100px; background-color: #080f1e; border: 2px solid #1e3a5f; border-radius: 10px; padding: 12px; cursor: pointer; text-align: center; transition: border-color 0.15s; -webkit-tap-highlight-color: transparent; }
+.score-level:hover   { border-color: #0057a8; }
+.score-level.selected { border-color: #fbbf24; }
+.sl-label { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: #e2e8f0; }
+.sl-value { font-size: 11px; color: #94a3b8; margin-bottom: 8px; }
+.sl-stars { font-size: 17px; color: #fbbf24; }
 
 /* SCORE HERO */
-.score-hero { background: var(–navy2); border: 2px solid var(–blue2); border-radius: 12px; padding: 20px 28px; text-align: center; min-width: 160px; }
-.score-hero .pct { font-size: 42px; font-weight: 700; font-family: ‘Playfair Display’, serif; }
-.score-hero .rating-lbl { font-size: 16px; font-weight: 600; }
-.score-hero .pts { font-size: 11px; color: #64748b; }
+.score-hero { background-color: #0d2140; border: 2px solid #1e3a5f; border-radius: 12px; padding: 18px 24px; text-align: center; min-width: 150px; }
+.pct       { font-size: 40px; font-weight: 700; font-family: var(–font-serif); }
+.rating-lbl { font-size: 15px; font-weight: 600; }
+.pts       { font-size: 11px; color: #64748b; }
 
 /* PROGRESS */
-.progress-wrap { background: #0a1628; border-radius: 6px; height: 8px; }
-.progress-bar { border-radius: 6px; height: 8px; transition: width 0.5s; }
+.progress-wrap { background-color: #080f1e; border-radius: 6px; height: 8px; }
+.progress-bar  { border-radius: 6px; height: 8px; -webkit-transition: width 0.5s; transition: width 0.5s; }
 
 /* EVIDENCE */
-.ev-section-hdr { border-radius: 10px 10px 0 0; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
-.ev-submetric { background: var(–navy2); border-left: 3px solid; border-right: 1px solid var(–blue2); border-bottom: 1px solid var(–blue2); padding: 18px 20px; }
+.ev-section-hdr { border-radius: 10px 10px 0 0; padding: 12px 20px; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 10px; }
+.ev-submetric { background-color: #0d2140; border-left: 3px solid; border-right: 1px solid #1e3a5f; border-bottom: 1px solid #1e3a5f; padding: 16px 18px; }
 .ev-submetric:last-child { border-radius: 0 0 10px 10px; }
-.prompt-box { background: #0a1628; border-radius: 8px; padding: 14px; margin-bottom: 12px; display: none; }
+.prompt-box { background-color: #080f1e; border-radius: 8px; padding: 14px; margin-bottom: 12px; display: none; }
 .prompt-box.open { display: block; }
-.prompt-item { font-size: 13px; color: var(–slate); margin-bottom: 6px; display: flex; gap: 8px; }
-.prompt-toggle { background: var(–blue2); border: none; color: var(–gold); border-radius: 6px; padding: 4px 12px; cursor: pointer; font-size: 12px; font-family: ‘DM Sans’, sans-serif; }
-textarea { width: 100%; background: #0a1628; border: 1px solid var(–blue2); border-radius: 8px; padding: 14px; color: var(–light); font-family: ‘DM Sans’, sans-serif; font-size: 14px; line-height: 1.6; resize: vertical; min-height: 80px; }
-textarea:focus { outline: none; border-color: var(–blue); }
+.prompt-item { font-size: 13px; color: #94a3b8; margin-bottom: 6px; display: -webkit-flex; display: flex; gap: 8px; }
+.prompt-toggle { background-color: #1e3a5f; border: none; color: #fbbf24; border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: 12px; font-family: var(–font-sans); -webkit-tap-highlight-color: transparent; }
+textarea {
+width: 100%; background-color: #080f1e; border: 1px solid #1e3a5f;
+border-radius: 8px; padding: 13px; color: #e2e8f0;
+font-family: var(–font-sans); font-size: 14px; line-height: 1.6;
+resize: vertical; min-height: 80px;
+-webkit-appearance: none; appearance: none;
+}
+textarea:focus { outline: none; border-color: #0057a8; }
+textarea::-webkit-input-placeholder { color: #475569; }
 textarea::placeholder { color: #475569; }
 
 /* BUTTONS */
-.btn { background: var(–blue); color: white; border: none; border-radius: 8px; padding: 12px 28px; font-size: 14px; font-family: ‘DM Sans’, sans-serif; font-weight: 700; cursor: pointer; transition: background 0.2s; }
-.btn:hover { background: #0066cc; }
-.btn-gold { background: var(–gold); color: var(–navy); }
-.btn-gold:hover { background: #f59e0b; }
-.btn-outline { background: transparent; border: 1px solid var(–blue2); color: var(–light); }
-.btn-outline:hover { border-color: var(–blue); background: rgba(0,87,168,0.1); }
-.btn-sm { padding: 8px 18px; font-size: 13px; }
-.btn-green { background: #16a34a; }
-.btn-green:hover { background: #15803d; }
+.btn { background-color: #0057a8; color: #ffffff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 14px; font-family: var(–font-sans); font-weight: 700; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background-color 0.2s; -webkit-appearance: none; }
+.btn:hover   { background-color: #0066cc; }
+.btn-gold    { background-color: #fbbf24 !important; color: #0a1628 !important; }
+.btn-gold:hover { background-color: #f59e0b !important; }
+.btn-outline { background-color: transparent !important; border: 1px solid #1e3a5f !important; color: #e2e8f0 !important; }
+.btn-outline:hover { border-color: #0057a8 !important; }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
 
 /* EXPORT BAR */
-.export-bar { display: flex; gap: 10px; flex-wrap: wrap; padding: 14px 36px; background: #0a1f38; border-top: 1px solid var(–blue2); border-bottom: 1px solid var(–blue2); align-items: center; }
-.export-bar-label { font-size: 12px; color: var(–slate); margin-right: 2px; white-space: nowrap; }
+.export-bar { display: -webkit-flex; display: flex; gap: 8px; -webkit-flex-wrap: wrap; flex-wrap: wrap; padding: 12px 24px; background-color: #091730 !important; border-top: 1px solid #1e3a5f; border-bottom: 1px solid #1e3a5f; -webkit-align-items: center; align-items: center; }
+.export-bar-label { font-size: 12px; color: #94a3b8; margin-right: 2px; white-space: nowrap; }
 
 /* SUMMARY */
-.summary-metric-card { background: var(–navy2); border-radius: 12px; padding: 20px; border: 1px solid; }
-.ev-entry { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(–blue2); }
+.summary-metric-card { background-color: #0d2140; border-radius: 12px; padding: 18px; border: 1px solid #1e3a5f; }
+.ev-entry { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #1e3a5f; }
 .ev-entry:last-child { border-bottom: none; }
 .ev-meta { font-size: 12px; margin-bottom: 4px; }
 .ev-text { font-size: 14px; color: #cbd5e1; line-height: 1.6; white-space: pre-wrap; }
-.tp-item { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; display: flex; gap: 8px; line-height: 1.5; }
-.tp-num { color: var(–gold); flex-shrink: 0; font-weight: 700; }
+.tp-item { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; display: -webkit-flex; display: flex; gap: 8px; line-height: 1.5; }
+.tp-num  { color: #fbbf24; -webkit-flex-shrink: 0; flex-shrink: 0; font-weight: 700; }
 
 /* PROFILE BANNER */
-.profile-banner { background: linear-gradient(90deg, rgba(0,87,168,0.3), rgba(30,58,95,0.3)); border: 1px solid var(–blue); border-radius: 10px; padding: 14px 20px; margin-bottom: 24px; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
-.pb-item { display: flex; flex-direction: column; gap: 2px; }
-.pb-key { font-size: 10px; color: var(–slate); letter-spacing: 1px; text-transform: uppercase; }
-.pb-val { font-size: 14px; font-weight: 600; color: white; }
-.pb-empty { color: var(–slate); font-style: italic; font-weight: 400; }
-
-/* PRINT */
-@media print {
-.tabs, .export-bar, .header { display: none !important; }
-body { background: white !important; color: #1e293b !important; font-family: Arial, sans-serif !important; }
-.panel { display: none !important; }
-.panel.print-active { display: block !important; }
-.print-page { page-break-after: always; padding: 24pt; }
-.print-page:last-child { page-break-after: avoid; }
-.card, .summary-metric-card { background: #f8fafc !important; border-color: #e2e8f0 !important; box-shadow: none; }
-h2 { color: #0057a8 !important; font-family: Arial, sans-serif !important; }
-h3 { color: #1e3a5f !important; }
-.subtitle { color: #64748b !important; }
-.label { color: #0057a8 !important; }
-.ev-text, .tp-item { color: #374151 !important; }
-.progress-wrap { background: #e2e8f0 !important; }
-.profile-banner { background: #f0f7ff !important; border-color: #0057a8 !important; }
-.pb-val { color: #1e293b !important; }
-.pb-key { color: #64748b !important; }
-.grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
-.summary-metric-card { border: 1px solid #e2e8f0 !important; }
-.score-hero { background: #f0f7ff !important; border-color: #0057a8 !important; }
-.ev-entry { border-bottom-color: #e2e8f0 !important; }
-}
+.profile-banner { background-color: rgba(0,87,168,0.25); border: 1px solid #0057a8; border-radius: 10px; padding: 14px 18px; margin-bottom: 22px; display: -webkit-flex; display: flex; gap: 20px; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-align-items: center; align-items: center; }
+.pb-item { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 2px; }
+.pb-key  { font-size: 10px; color: #94a3b8; letter-spacing: 1px; text-transform: uppercase; }
+.pb-val  { font-size: 14px; font-weight: 600; color: #ffffff; }
+.pb-empty { color: #94a3b8; font-style: italic; font-weight: 400; }
 
 /* TOAST */
-.toast { position: fixed; bottom: 24px; right: 24px; background: #16a34a; color: white; padding: 12px 22px; border-radius: 8px; font-size: 14px; font-family: ‘DM Sans’, sans-serif; font-weight: 600; z-index: 9999; opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; }
-.toast.show { opacity: 1; transform: translateY(0); }
+.toast { position: fixed; bottom: 24px; right: 16px; left: 16px; max-width: 340px; margin: 0 auto; background-color: #16a34a; color: white; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-family: var(–font-sans); font-weight: 600; z-index: 9999; opacity: 0; -webkit-transform: translateY(10px); transform: translateY(10px); -webkit-transition: all 0.3s; transition: all 0.3s; pointer-events: none; text-align: center; }
+.toast.show { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
 
-@media (max-width: 700px) {
-.grid-2, .grid-3 { grid-template-columns: 1fr; }
-.content { padding: 20px 18px; }
-.header, .tabs, .export-bar { padding-left: 18px; padding-right: 18px; }
+@media (max-width: 640px) {
+.grid-2, .grid-3 { grid-template-columns: 1fr !important; }
+.timeline { -webkit-flex-direction: column; flex-direction: column; }
+.timeline-step { min-width: unset; border-radius: 0 !important; border-right: 1px solid #1e3a5f; }
+.timeline-step:first-child { border-radius: 10px 10px 0 0 !important; }
+.timeline-step:last-child  { border-radius: 0 0 10px 10px !important; }
+.timeline-arrow { display: none; }
+.content { padding: 18px 16px; }
+.header  { padding: 14px 16px; }
+.export-bar { padding: 10px 16px; }
+.tabs { padding: 0 12px; }
+h2 { font-size: 22px; }
 }
 </style>
 
@@ -303,7 +353,7 @@ h3 { color: #1e3a5f !important; }
       <input class="form-input" type="text" id="inputDualPenName" placeholder="e.g. James Smith" oninput="saveProfile()" />
     </div>
   </div>
-  <div style="margin-top:16px;padding:14px 20px;background:rgba(0,87,168,0.15);border:1px solid var(--blue);border-radius:10px;font-size:13px;color:var(--slate);max-width:600px">
+  <div style="margin-top:16px;padding:14px 20px;background:rgba(0,87,168,0.15);border:1px solid #0057a8;border-radius:10px;font-size:13px;color:#94a3b8;max-width:600px">
     💡 These fields are optional but recommended. They will appear on the cover page of your PDF and Word exports.
   </div>
   <button class="btn" style="margin-top:24px" onclick="switchTab('role')">Next: Select Your Role →</button>
@@ -363,7 +413,7 @@ h3 { color: #1e3a5f !important; }
     <div class="label">Dual Pen Conversation Prep</div>
     <div class="grid-2" style="margin-top:12px;gap:20px">
       <div>
-        <div style="font-size:12px;color:var(--slate);margin-bottom:10px">KEY TALKING POINTS</div>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">KEY TALKING POINTS</div>
         <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
         <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
         <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
@@ -371,17 +421,17 @@ h3 { color: #1e3a5f !important; }
         <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
       </div>
       <div>
-        <div style="font-size:12px;color:var(--slate);margin-bottom:10px">DUAL PEN &amp; KEY DATES</div>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">DUAL PEN &amp; KEY DATES</div>
         <div style="background:#0a1628;border-radius:8px;padding:16px;margin-bottom:12px">
-          <div style="font-size:11px;color:var(--slate);margin-bottom:4px">DUAL PEN TITLE</div>
-          <div style="font-size:20px;font-weight:700;color:var(--gold)" id="summaryDualPenTitle">—</div>
-          <div style="font-size:11px;color:var(--slate);margin-top:8px;margin-bottom:2px">DUAL PEN NAME</div>
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">DUAL PEN TITLE</div>
+          <div style="font-size:20px;font-weight:700;color:#fbbf24" id="summaryDualPenTitle">—</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:8px;margin-bottom:2px">DUAL PEN NAME</div>
           <div style="font-size:16px;font-weight:600" id="summaryDualPenName">—</div>
         </div>
         <div style="background:#0a1628;border-radius:8px;padding:16px">
-          <div style="font-size:11px;color:var(--slate);margin-bottom:4px">CALIBRATION DATE</div>
-          <div style="font-size:20px;font-weight:700;color:var(--gold)">4 June 2026</div>
-          <div style="font-size:12px;color:var(--slate);margin-top:4px">Formal Markets Ratings: +20% time / $5M threshold</div>
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">CALIBRATION DATE</div>
+          <div style="font-size:20px;font-weight:700;color:#fbbf24">4 June 2026</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:4px">Formal Markets Ratings: +20% time / $5M threshold</div>
         </div>
       </div>
     </div>
@@ -585,7 +635,7 @@ function renderMetricContent() {
         ${sm.levels.map(lv => `
           <div class="score-level ${state.scores[sm.id]===lv.score?'selected':''}"
                onclick="setScore('${sm.id}',${lv.score})"
-               style="${state.scores[sm.id]===lv.score?`background:${m.color};border-color:var(--gold)`:''}">
+               style="${state.scores[sm.id]===lv.score?`background:${m.color};border-color:#fbbf24`:''}">
             <div class="sl-label">${lv.label}</div>
             <div class="sl-value">${lv.value}</div>
             <div class="sl-stars">${"★".repeat(lv.score)}${"☆".repeat(3-lv.score)}</div>
@@ -641,7 +691,7 @@ function renderEvidenceContent() {
               <button class="prompt-toggle" onclick="togglePrompt('${sm.id}')">Show Prompts</button>
             </div>
             <div class="prompt-box" id="prompts-${sm.id}">
-              ${sm.prompts.map((p,i) => `<div class="prompt-item"><span style="color:var(--gold)">${i+1}.</span> ${p}</div>`).join("")}
+              ${sm.prompts.map((p,i) => `<div class="prompt-item"><span style="color:#fbbf24">${i+1}.</span> ${p}</div>`).join("")}
             </div>
             <textarea id="ev-${sm.id}"
               placeholder="Document your evidence here... (be specific: numbers, names, outcomes)"
@@ -684,7 +734,7 @@ const max   = m.submetrics.length * 3;
 const pct   = max > 0 ? Math.round((total/max)*100) : 0;
 const rated = m.submetrics.filter(sm=>state.scores[sm.id]).length;
 const {color} = getRating(pct);
-return ` <div class="summary-metric-card" style="border-color:${m.accent}"> <div style="font-size:24px;margin-bottom:6px">${m.icon}</div> <div style="font-size:14px;font-weight:700;margin-bottom:10px">${m.label}</div> <div class="progress-wrap" style="margin-bottom:8px"> <div class="progress-bar" style="background:${m.accent};width:${pct}%"></div> </div> <div style="font-size:26px;font-weight:700;color:${color};font-family:'Playfair Display',serif">${pct}%</div> <div style="font-size:11px;color:#64748b">${rated}/${m.submetrics.length} areas rated</div> </div>`;
+return ` <div class="summary-metric-card" style="border-color:${m.accent}"> <div style="font-size:24px;margin-bottom:6px">${m.icon}</div> <div style="font-size:14px;font-weight:700;margin-bottom:10px">${m.label}</div> <div class="progress-wrap" style="margin-bottom:8px"> <div class="progress-bar" style="background:${m.accent};width:${pct}%"></div> </div> <div style="font-size:26px;font-weight:700;color:${color};font-family:Georgia,serif">${pct}%</div> <div style="font-size:11px;color:#64748b">${rated}/${m.submetrics.length} areas rated</div> </div>`;
 }).join(””);
 
 // Evidence log
@@ -695,13 +745,13 @@ document.getElementById(“evidenceLog”).innerHTML = entries.length === 0
 ? `<div style="color:#64748b;font-size:14px">No evidence documented yet. Go to the Evidence Builder tab to add your achievements.</div>`
 : entries.map(({metric:m,sm}) => {
 const score = state.scores[sm.id]||0;
-return `<div class="ev-entry"> <div class="ev-meta" style="color:${m.accent}"> ${m.label} › ${sm.label} ${score?`<span style="color:var(--gold);margin-left:8px">${“★”.repeat(score)}</span>`:""} </div> <div class="ev-text">${esc(state.evidence[sm.id])}</div> </div>`;
+return `<div class="ev-entry"> <div class="ev-meta" style="color:${m.accent}"> ${m.label} › ${sm.label} ${score?`<span style="color:#fbbf24;margin-left:8px">${“★”.repeat(score)}</span>`:""} </div> <div class="ev-text">${esc(state.evidence[sm.id])}</div> </div>`;
 }).join(””);
 
 // Dual pen
 document.getElementById(“summaryDualPenTitle”).textContent = role ? role.dualPen : “— Select your role —”;
 document.getElementById(“summaryDualPenName”).textContent  = dualPenName || “— Enter name in My Profile —”;
-document.getElementById(“summaryDualPenName”).style.color  = dualPenName ? “white” : “var(–slate)”;
+document.getElementById(“summaryDualPenName”).style.color  = dualPenName ? “white” : “#94a3b8”;
 }
 
 function esc(str) {
