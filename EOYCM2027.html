@@ -1763,166 +1763,233 @@ function exportPDF() {
 // ─────────────────────────────────────────────
 // WORD EXPORT — proper .docx XML
 // ─────────────────────────────────────────────
-function exportWord() {
-  var role  = findRole(state.selectedRole);
-  var role2 = findRole(state.selectedRole2);
-  var name = state.profile.name||''; var focus = state.profile.focus||''; var dualPenName = state.profile.dualPenName||'';
-  var all = []; METRIC_KEYS.forEach(function(k){ METRICS[k].submetrics.forEach(function(sm){ all.push(sm); }); });
-  var max = all.length * 3;
-  var total1 = 0; all.forEach(function(sm){ total1 += (state.scores[sm.id]||0); });
-  var pct1 = max > 0 ? Math.round((total1/max)*100) : 0;
-  var total2 = 0; all.forEach(function(sm){ total2 += (state.scores2[sm.id]||0); });
-  var pct2 = max > 0 ? Math.round((total2/max)*100) : 0;
-  var ratingLabel = getRating(pct1).label;
-  var dateStr = new Date().toLocaleDateString("en-AU",{day:"numeric",month:"long",year:"numeric"});
-
-  // Build scorecard rows XML
-  const tblBorder = `<w:top w:val="single" w:sz="4" w:color="CBD5E0"/><w:bottom w:val="single" w:sz="4" w:color="CBD5E0"/><w:left w:val="single" w:sz="4" w:color="CBD5E0"/><w:right w:val="single" w:sz="4" w:color="CBD5E0"/>`;
-
-  function xmlCell(text, bold, bgColor, width) {
-    if (bold === undefined) bold = false;
-    if (bgColor === undefined) bgColor = null;
-    if (width === undefined) width = 2340;
-    var shading = bgColor ? '<w:shd w:val="clear" w:fill="' + bgColor + '"/>' : "";
-    var b = bold ? "<w:b/>" : "";
-    return '<w:tc>'
-      + '<w:tcPr><w:tcW w:w="' + width + '" w:type="dxa"/>' + shading + '<w:tcBorders>' + tblBorder + '</w:tcBorders>'
-      + '<w:tcMar><w:top w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar></w:tcPr>'
-      + '<w:p><w:pPr><w:spacing w:before="0" w:after="0"/></w:pPr>'
-      + '<w:r><w:rPr>' + b + '<w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr>'
-      + '<w:t xml:space="preserve">' + xmlEsc(text) + '</w:t></w:r></w:p>'
-      + '</w:tc>';
-  }
-
-  function xmlHeaderRow(cols) {
-    return `<w:tr>${cols.map(c=>`<w:tc><w:tcPr><w:tcW w:w="${c.w}" w:type="dxa"/><w:shd w:val="clear" w:fill="0057A8"/><w:tcBorders>${tblBorder}</w:tcBorders><w:tcMar><w:top w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:left w:w="120" w:type="dxa"/><w:right w:w="120" w:type="dxa"/></w:tcMar></w:tcPr><w:p><w:pPr><w:spacing w:before="0" w:after="0"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="FFFFFF"/><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr><w:t>${xmlEsc(c.t)}</w:t></w:r></w:p></w:tc>`).join("")}</w:tr>`;
-  }
-
-  // Cover/details table rows
-  var detailData = [
-    ["Partner Name",       name||"—"],
-    ["Industry / Account", focus||"—"],
-    ["C&M Role",           role?role.label:"—"],
-    ["Dual Pen Title",     role?role.dualPen:"—"],
-    ["Dual Pen Name",      dualPenName||"—"],
-    ["Calibration Date",   "4 June 2026"],
-    ["Primary Role Score", pct1+"% — "+getRating(pct1).label+" ("+total1+"/"+max+" points)"],
-    ["Second Role Score",  role2 ? pct2+"% — "+getRating(pct2).label+" ("+total2+"/"+max+" points)" : "—"]
-  ];
-  var detailRows = "";
-  detailData.forEach(function(r, i) {
-    var bg = i%2===0 ? "F8FAFC" : "FFFFFF";
-    detailRows += "<w:tr>" + xmlCell(r[0], false, bg, 3000) + xmlCell(r[1], true, bg, 6360) + "</w:tr>";
+function buildXmlScorecardRows(sc, tblBorder, headerColor) {
+  var hdrColor = headerColor || "0057A8";
+  var rows = "";
+  // Header row
+  var cols = [{t:"Pillar",w:2000},{t:"Metric Area",w:3000},{t:"Self-Rating",w:2500},{t:"Stars",w:860}];
+  rows += "<w:tr>";
+  cols.forEach(function(c) {
+    rows += "<w:tc><w:tcPr><w:tcW w:w=\"" + c.w + "\" w:type=\"dxa\"/>"
+      + "<w:shd w:val=\"clear\" w:fill=\"" + hdrColor + "\"/>"
+      + "<w:tcBorders>" + tblBorder + "</w:tcBorders>"
+      + "<w:tcMar><w:top w:w=\"80\" w:type=\"dxa\"/><w:bottom w:w=\"80\" w:type=\"dxa\"/><w:left w:w=\"120\" w:type=\"dxa\"/><w:right w:w=\"120\" w:type=\"dxa\"/></w:tcMar></w:tcPr>"
+      + "<w:p><w:pPr><w:spacing w:before=\"0\" w:after=\"0\"/></w:pPr>"
+      + "<w:r><w:rPr><w:b/><w:color w:val=\"FFFFFF\"/><w:sz w:val=\"18\"/><w:szCs w:val=\"18\"/></w:rPr>"
+      + "<w:t>" + xmlEsc(c.t) + "</w:t></w:r></w:p></w:tc>";
   });
+  rows += "</w:tr>";
 
-  // Scorecard table rows
-  let scorecardRows = xmlHeaderRow([{t:"Pillar",w:2000},{t:"Metric Area",w:3000},{t:"Self-Rating",w:2500},{t:"Stars",w:860}]);
+  // Data rows
   METRIC_KEYS.forEach(function(k) {
     var m = METRICS[k];
     m.submetrics.forEach(function(sm, idx) {
-      var score = state.scores[sm.id]||0;
-      var lv = (function(){ for(var _i=0;_i<sm.levels.length;_i++){if(sm.levels[_i].score===score)return sm.levels[_i];} return null; })()
-      const bg = idx%2===0 ? "F0F7FF" : "FFFFFF";
-      scorecardRows += `<w:tr>
-        ${xmlCell(`${m.icon} ${m.label}`, true, bg, 2000)}
-        ${xmlCell(sm.label, false, bg, 3000)}
-        ${xmlCell(lv?`${lv.label} (${lv.value})`:"Not rated", false, bg, 2500)}
-        ${xmlCell(score>0?"★".repeat(score)+"☆".repeat(3-score):"—", false, bg, 860)}
-      </w:tr>`;
+      var score = sc[sm.id] || 0;
+      var lv = null;
+      for (var _i = 0; _i < sm.levels.length; _i++) {
+        if (sm.levels[_i].score === score) { lv = sm.levels[_i]; break; }
+      }
+      var bg = idx % 2 === 0 ? "F0F7FF" : "FFFFFF";
+      var ratingText = lv ? lv.label + " (" + lv.value + ")" : "Not rated";
+      var starsText  = score > 0 ? "★".repeat(score) + "☆".repeat(3 - score) : "—";
+
+      function mkCell(text, bold, bgCol, width) {
+        var shading = bgCol ? "<w:shd w:val=\"clear\" w:fill=\"" + bgCol + "\"/>" : "";
+        var bTag = bold ? "<w:b/>" : "";
+        return "<w:tc><w:tcPr><w:tcW w:w=\"" + width + "\" w:type=\"dxa\"/>" + shading
+          + "<w:tcBorders>" + tblBorder + "</w:tcBorders>"
+          + "<w:tcMar><w:top w:w=\"80\" w:type=\"dxa\"/><w:bottom w:w=\"80\" w:type=\"dxa\"/><w:left w:w=\"120\" w:type=\"dxa\"/><w:right w:w=\"120\" w:type=\"dxa\"/></w:tcMar></w:tcPr>"
+          + "<w:p><w:pPr><w:spacing w:before=\"0\" w:after=\"0\"/></w:pPr>"
+          + "<w:r><w:rPr>" + bTag + "<w:sz w:val=\"18\"/><w:szCs w:val=\"18\"/></w:rPr>"
+          + "<w:t xml:space=\"preserve\">" + xmlEsc(text) + "</w:t></w:r></w:p></w:tc>";
+      }
+
+      rows += "<w:tr>"
+        + mkCell(m.icon + " " + m.label, true, bg, 2000)
+        + mkCell(sm.label, false, bg, 3000)
+        + mkCell(ratingText, false, bg, 2500)
+        + mkCell(starsText, false, bg, 860)
+        + "</w:tr>";
     });
   });
+  return rows;
+}
 
-  // Evidence paragraphs
-  let evidenceXML = "";
+function buildXmlEvidenceSection(sc, ev) {
+  var xml = "";
   METRIC_KEYS.forEach(function(k) {
     var m = METRICS[k];
-    var items = []; m.submetrics.forEach(function(sm){ if(state.evidence[sm.id] && state.evidence[sm.id].trim()) items.push(sm); });
-    if(!items.length) return;
-    evidenceXML += xmlPageBreak();
-    evidenceXML += xmlHeading2(`${m.icon} ${m.label} — Evidence`);
+    var items = [];
+    m.submetrics.forEach(function(sm) {
+      if (ev[sm.id] && ev[sm.id].trim()) items.push(sm);
+    });
+    if (!items.length) return;
+    xml += xmlPageBreak();
+    xml += xmlHeading2(m.icon + " " + m.label + " \u2014 Evidence");
     items.forEach(function(sm) {
-      var score = state.scores[sm.id]||0;
-      const stars = score>0?"★".repeat(score):"";
-      evidenceXML += xmlHeading3(`${sm.label} ${stars}`);
-      // Split on newlines for multiple paragraphs
-      const lines = (state.evidence[sm.id]||"").split("\n");
+      var score  = sc[sm.id] || 0;
+      var stars  = score > 0 ? " " + "★".repeat(score) : "";
+      xml += xmlHeading3(sm.label + stars);
+      var lines = (ev[sm.id] || "").split("\n");
       lines.forEach(function(line) {
-        evidenceXML += `<w:p><w:pPr><w:spacing w:before="0" w:after="80"/></w:pPr><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t xml:space="preserve">${xmlEsc(line)}</w:t></w:r></w:p>`;
+        xml += "<w:p><w:pPr><w:spacing w:before=\"0\" w:after=\"80\"/></w:pPr>"
+          + "<w:r><w:rPr><w:sz w:val=\"20\"/></w:rPr>"
+          + "<w:t xml:space=\"preserve\">" + xmlEsc(line) + "</w:t></w:r></w:p>";
       });
     });
   });
+  return xml;
+}
 
-  // Talking points
-  const talkingPoints = [
-    "Lead with your strongest metric — revenue performance vs plan ($ and %)",
+function exportWord() {
+  var role  = findRole(state.selectedRole);
+  var role2 = findRole(state.selectedRole2);
+  var name        = state.profile.name        || "";
+  var focus       = state.profile.focus       || "";
+  var dualPenName = state.profile.dualPenName || "";
+  var dateStr     = new Date().toLocaleDateString("en-AU", {day:"numeric", month:"long", year:"numeric"});
+
+  // Score totals
+  var all = [];
+  METRIC_KEYS.forEach(function(k) { METRICS[k].submetrics.forEach(function(sm) { all.push(sm); }); });
+  var max    = all.length * 3;
+  var total1 = 0; all.forEach(function(sm) { total1 += (state.scores[sm.id]  || 0); });
+  var total2 = 0; all.forEach(function(sm) { total2 += (state.scores2[sm.id] || 0); });
+  var pct1   = max > 0 ? Math.round((total1 / max) * 100) : 0;
+  var pct2   = max > 0 ? Math.round((total2 / max) * 100) : 0;
+
+  var tblBorder = "<w:top w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/>"
+    + "<w:bottom w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/>"
+    + "<w:left w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/>"
+    + "<w:right w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/>";
+
+  // ── Cover detail table ──
+  var detailData = [
+    ["Partner Name",        name       || "—"],
+    ["Industry / Account",  focus      || "—"],
+    ["Calibration Date",    "4 June 2026"],
+    ["Dual Pen Name",       dualPenName || "—"]
+  ];
+  if (role) {
+    detailData.splice(2, 0, ["Primary Role",           role.label]);
+    detailData.splice(3, 0, ["Primary Dual Pen Title",  role.dualPen]);
+    detailData.splice(4, 0, ["Primary Role Score",      pct1 + "% \u2014 " + getRating(pct1).label + " (" + total1 + "/" + max + " pts)"]);
+  }
+  if (role2) {
+    var insertAt = role ? 7 : 2;
+    detailData.splice(insertAt,     0, ["Second Role",           role2.label]);
+    detailData.splice(insertAt + 1, 0, ["Second Dual Pen Title",  role2.dualPen]);
+    detailData.splice(insertAt + 2, 0, ["Second Role Score",      pct2 + "% \u2014 " + getRating(pct2).label + " (" + total2 + "/" + max + " pts)"]);
+  }
+
+  function mkDetailRow(label, value, rowIdx) {
+    var bg = rowIdx % 2 === 0 ? "F8FAFC" : "FFFFFF";
+    function mkDCell(text, bold, width) {
+      var bTag = bold ? "<w:b/>" : "";
+      return "<w:tc><w:tcPr><w:tcW w:w=\"" + width + "\" w:type=\"dxa\"/>"
+        + "<w:shd w:val=\"clear\" w:fill=\"" + bg + "\"/>"
+        + "<w:tcBorders>" + tblBorder + "</w:tcBorders>"
+        + "<w:tcMar><w:top w:w=\"80\" w:type=\"dxa\"/><w:bottom w:w=\"80\" w:type=\"dxa\"/><w:left w:w=\"120\" w:type=\"dxa\"/><w:right w:w=\"120\" w:type=\"dxa\"/></w:tcMar></w:tcPr>"
+        + "<w:p><w:pPr><w:spacing w:before=\"0\" w:after=\"0\"/></w:pPr>"
+        + "<w:r><w:rPr>" + bTag + "<w:sz w:val=\"18\"/><w:szCs w:val=\"18\"/></w:rPr>"
+        + "<w:t xml:space=\"preserve\">" + xmlEsc(text) + "</w:t></w:r></w:p></w:tc>";
+    }
+    return "<w:tr>" + mkDCell(label, false, 3000) + mkDCell(value, true, 6360) + "</w:tr>";
+  }
+
+  var detailRows = "";
+  detailData.forEach(function(row, i) { detailRows += mkDetailRow(row[0], row[1], i); });
+
+  // ── Primary role scorecard & evidence ──
+  var scoreRows1   = buildXmlScorecardRows(state.scores,  tblBorder, "0057A8");
+  var evidenceXML1 = buildXmlEvidenceSection(state.scores,  state.evidence);
+
+  // ── Second role scorecard & evidence ──
+  var role2Section = "";
+  if (role2) {
+    var scoreRows2   = buildXmlScorecardRows(state.scores2, tblBorder, "7C3AED");
+    var evidenceXML2 = buildXmlEvidenceSection(state.scores2, state.evidence2);
+    role2Section =
+        xmlPageBreak()
+      + xmlHeading1((role2 ? role2.label : "Second Role") + " \u2014 Scorecard")
+      + xmlPara("Dual Pen: " + (role2 ? role2.dualPen : "\u2014") + "  |  Score: " + pct2 + "% \u2014 " + getRating(pct2).label, "7C3AED", "18")
+      + "<w:tbl>"
+      + "<w:tblPr><w:tblW w:w=\"9360\" w:type=\"dxa\"/>"
+      + "<w:tblBorders><w:insideH w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/><w:insideV w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/></w:tblBorders>"
+      + "</w:tblPr>"
+      + "<w:tblGrid><w:gridCol w:w=\"2000\"/><w:gridCol w:w=\"3000\"/><w:gridCol w:w=\"2500\"/><w:gridCol w:w=\"860\"/></w:tblGrid>"
+      + scoreRows2
+      + "</w:tbl>"
+      + evidenceXML2;
+  }
+
+  // ── Talking points ──
+  var tps = [
+    "Lead with your strongest metric \u2014 revenue performance vs plan ($ and %)",
     "Quantify everything: dollar amounts, percentages, client names where appropriate",
     "Demonstrate cross-divisional perspective, not just your home division",
     "Show market presence: thought leadership, forums, community roles",
     "Address any underperforming areas proactively with context and forward plan"
   ];
+  var tpXML = "";
+  tps.forEach(function(t, i) { tpXML += xmlNumberedItem(i + 1, t); });
 
-  const docXML = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas"
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:o="urn:schemas-microsoft-com:office:office"
-  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-  xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"
-  xmlns:v="urn:schemas-microsoft-com:vml"
-  xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing"
-  xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
-  xmlns:w10="urn:schemas-microsoft-com:office:word"
-  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
-  xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml"
-  xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup"
-  xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk"
-  xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml"
-  xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape"
-  mc:Ignorable="w14 wp14">
-<w:body>
+  // ── Assemble full document ──
+  var docXML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
+    + "<w:document xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\""
+    + " xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\""
+    + " xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\""
+    + " xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\""
+    + " mc:Ignorable=\"w14\">"
+    + "<w:body>"
 
-  ${xmlTitle("KPMG C&M Year-End Performance Summary")}
-  ${xmlPara(`Prepared: ${dateStr}`, "#64748B", "18")}
+    // Cover
+    + xmlTitle("KPMG C&M Year-End Performance Summary")
+    + xmlPara("Prepared: " + dateStr, "64748B", "18")
+    + xmlHeading1("Partner Details")
+    + "<w:tbl>"
+    + "<w:tblPr><w:tblW w:w=\"9360\" w:type=\"dxa\"/>"
+    + "<w:tblBorders><w:insideH w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/><w:insideV w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/></w:tblBorders>"
+    + "</w:tblPr>"
+    + "<w:tblGrid><w:gridCol w:w=\"3000\"/><w:gridCol w:w=\"6360\"/></w:tblGrid>"
+    + detailRows
+    + "</w:tbl>"
 
-  ${xmlHeading1("Partner Details")}
-  <w:tbl>
-    <w:tblPr>
-      <w:tblW w:w="9360" w:type="dxa"/>
-      <w:tblBorders><w:insideH w:val="single" w:sz="4" w:color="CBD5E0"/><w:insideV w:val="single" w:sz="4" w:color="CBD5E0"/></w:tblBorders>
-    </w:tblPr>
-    <w:tblGrid><w:gridCol w:w="3000"/><w:gridCol w:w="6360"/></w:tblGrid>
-    ${detailRows}
-  </w:tbl>
+    // Primary role scorecard
+    + xmlPageBreak()
+    + xmlHeading1((role ? role.label : "Primary Role") + " \u2014 Scorecard")
+    + xmlPara("Dual Pen: " + (role ? role.dualPen : "\u2014") + "  |  Score: " + pct1 + "% \u2014 " + getRating(pct1).label, "0057A8", "18")
+    + "<w:tbl>"
+    + "<w:tblPr><w:tblW w:w=\"9360\" w:type=\"dxa\"/>"
+    + "<w:tblBorders><w:insideH w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/><w:insideV w:val=\"single\" w:sz=\"4\" w:color=\"CBD5E0\"/></w:tblBorders>"
+    + "</w:tblPr>"
+    + "<w:tblGrid><w:gridCol w:w=\"2000\"/><w:gridCol w:w=\"3000\"/><w:gridCol w:w=\"2500\"/><w:gridCol w:w=\"860\"/></w:tblGrid>"
+    + scoreRows1
+    + "</w:tbl>"
 
-  ${xmlPageBreak()}
-  ${xmlHeading1("Scorecard Summary")}
-  <w:tbl>
-    <w:tblPr>
-      <w:tblW w:w="9360" w:type="dxa"/>
-      <w:tblBorders><w:insideH w:val="single" w:sz="4" w:color="CBD5E0"/><w:insideV w:val="single" w:sz="4" w:color="CBD5E0"/></w:tblBorders>
-    </w:tblPr>
-    <w:tblGrid><w:gridCol w:w="2000"/><w:gridCol w:w="3000"/><w:gridCol w:w="2500"/><w:gridCol w:w="860"/></w:tblGrid>
-    ${scorecardRows}
-  </w:tbl>
+    // Primary role evidence
+    + evidenceXML1
 
-  ${evidenceXML}
+    // Second role (scorecard + evidence) — in sequence after primary
+    + role2Section
 
-  ${xmlPageBreak()}
-  ${xmlHeading1("Dual Pen Conversation Preparation")}
-  ${xmlKeyValue("Dual Pen Title",   role?role.dualPen:"—")}
-  ${xmlKeyValue("Dual Pen Name",    dualPenName||"—")}
-  ${xmlKeyValue("Calibration Date", "4 June 2026")}
-  ${xmlKeyValue("Threshold",        "+20% time / $5M for formal Markets Rating")}
-  ${xmlHeading2("Key Talking Points")}
-  ${talkingPoints.map((t,i)=>xmlNumberedItem(i+1, t)).join("")}
+    // Dual Pen prep
+    + xmlPageBreak()
+    + xmlHeading1("Dual Pen Conversation Preparation")
+    + (role  ? xmlKeyValue("Primary Role Dual Pen",  role.dualPen)   : "")
+    + (role2 ? xmlKeyValue("Second Role Dual Pen",   role2.dualPen)  : "")
+    + xmlKeyValue("Dual Pen Name",    dualPenName || "\u2014")
+    + xmlKeyValue("Calibration Date", "4 June 2026")
+    + xmlKeyValue("Threshold",        "+20% time / $5M for formal Markets Rating")
+    + xmlHeading2("Key Talking Points")
+    + tpXML
 
-  <w:sectPr>
-    <w:pgSz w:w="12240" w:h="15840"/>
-    <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/>
-  </w:sectPr>
-</w:body>
-</w:document>`;
+    + "<w:sectPr>"
+    + "<w:pgSz w:w=\"12240\" w:h=\"15840\"/>"
+    + "<w:pgMar w:top=\"1440\" w:right=\"1440\" w:bottom=\"1440\" w:left=\"1440\"/>"
+    + "</w:sectPr>"
+    + "</w:body></w:document>";
 
-  // Build the .docx zip in-browser
   buildDocx(docXML);
 }
 
@@ -1931,28 +1998,51 @@ function xmlEsc(s) {
   return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 function xmlTitle(text) {
-  return `<w:p><w:pPr><w:pStyle w:val="Title"/><w:spacing w:before="0" w:after="120"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="0057A8"/><w:sz w:val="48"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+  return "<w:p><w:pPr><w:spacing w:before=\"0\" w:after=\"120\"/></w:pPr>"
+    + "<w:r><w:rPr><w:b/><w:color w:val=\"0057A8\"/><w:sz w:val=\"48\"/><w:szCs w:val=\"48\"/></w:rPr>"
+    + "<w:t>" + xmlEsc(text) + "</w:t></w:r></w:p>";
 }
 function xmlHeading1(text) {
-  return `<w:p><w:pPr><w:spacing w:before="240" w:after="120"/><w:pBdr><w:bottom w:val="single" w:sz="12" w:color="FBBF24" w:space="4"/></w:pBdr></w:pPr><w:r><w:rPr><w:b/><w:color w:val="0057A8"/><w:sz w:val="32"/><w:szCs w:val="32"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+  return "<w:p><w:pPr><w:spacing w:before=\"240\" w:after=\"120\"/>"
+    + "<w:pBdr><w:bottom w:val=\"single\" w:sz=\"12\" w:color=\"FBBF24\" w:space=\"4\"/></w:pBdr></w:pPr>"
+    + "<w:r><w:rPr><w:b/><w:color w:val=\"0057A8\"/><w:sz w:val=\"32\"/><w:szCs w:val=\"32\"/></w:rPr>"
+    + "<w:t>" + xmlEsc(text) + "</w:t></w:r></w:p>";
 }
 function xmlHeading2(text) {
-  return `<w:p><w:pPr><w:spacing w:before="200" w:after="80"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="1E3A5F"/><w:sz w:val="26"/><w:szCs w:val="26"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+  return "<w:p><w:pPr><w:spacing w:before=\"200\" w:after=\"80\"/></w:pPr>"
+    + "<w:r><w:rPr><w:b/><w:color w:val=\"1E3A5F\"/><w:sz w:val=\"26\"/><w:szCs w:val=\"26\"/></w:rPr>"
+    + "<w:t>" + xmlEsc(text) + "</w:t></w:r></w:p>";
 }
 function xmlHeading3(text) {
-  return `<w:p><w:pPr><w:spacing w:before="160" w:after="60"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="374151"/><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+  return "<w:p><w:pPr><w:spacing w:before=\"160\" w:after=\"60\"/></w:pPr>"
+    + "<w:r><w:rPr><w:b/><w:color w:val=\"374151\"/><w:sz w:val=\"22\"/><w:szCs w:val=\"22\"/></w:rPr>"
+    + "<w:t>" + xmlEsc(text) + "</w:t></w:r></w:p>";
 }
-function xmlPara(text, color="374151", size="20") {
-  return `<w:p><w:pPr><w:spacing w:before="0" w:after="80"/></w:pPr><w:r><w:rPr><w:color w:val="${color}"/><w:sz w:val="${size}"/></w:rPr><w:t xml:space="preserve">${xmlEsc(text)}</w:t></w:r></w:p>`;
+function xmlPara(text, color, size) {
+  if (!color) color = "374151";
+  if (!size)  size  = "20";
+  // strip leading # if present
+  color = color.replace("#","");
+  return "<w:p><w:pPr><w:spacing w:before=\"0\" w:after=\"80\"/></w:pPr>"
+    + "<w:r><w:rPr><w:color w:val=\"" + color + "\"/><w:sz w:val=\"" + size + "\"/></w:rPr>"
+    + "<w:t xml:space=\"preserve\">" + xmlEsc(text) + "</w:t></w:r></w:p>";
 }
 function xmlPageBreak() {
-  return `<w:p><w:r><w:br w:type="page"/></w:r></w:p>`;
+  return "<w:p><w:r><w:br w:type=\"page\"/></w:r></w:p>";
 }
 function xmlKeyValue(key, val) {
-  return `<w:p><w:pPr><w:spacing w:before="60" w:after="60"/></w:pPr><w:r><w:rPr><w:b/><w:sz w:val="20"/></w:rPr><w:t xml:space="preserve">${xmlEsc(key)}: </w:t></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>${xmlEsc(val)}</w:t></w:r></w:p>`;
+  return "<w:p><w:pPr><w:spacing w:before=\"60\" w:after=\"60\"/></w:pPr>"
+    + "<w:r><w:rPr><w:b/><w:sz w:val=\"20\"/></w:rPr>"
+    + "<w:t xml:space=\"preserve\">" + xmlEsc(key) + ": </w:t></w:r>"
+    + "<w:r><w:rPr><w:sz w:val=\"20\"/></w:rPr>"
+    + "<w:t>" + xmlEsc(val) + "</w:t></w:r></w:p>";
 }
 function xmlNumberedItem(n, text) {
-  return `<w:p><w:pPr><w:ind w:left="360"/><w:spacing w:before="60" w:after="60"/></w:pPr><w:r><w:rPr><w:b/><w:color w:val="F59E0B"/><w:sz w:val="20"/></w:rPr><w:t xml:space="preserve">${n}. </w:t></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>${xmlEsc(text)}</w:t></w:r></w:p>`;
+  return "<w:p><w:pPr><w:ind w:left=\"360\"/><w:spacing w:before=\"60\" w:after=\"60\"/></w:pPr>"
+    + "<w:r><w:rPr><w:b/><w:color w:val=\"F59E0B\"/><w:sz w:val=\"20\"/></w:rPr>"
+    + "<w:t xml:space=\"preserve\">" + n + ". </w:t></w:r>"
+    + "<w:r><w:rPr><w:sz w:val=\"20\"/></w:rPr>"
+    + "<w:t>" + xmlEsc(text) + "</w:t></w:r></w:p>";
 }
 
 // ─────────── Build .docx zip in browser ───────────
