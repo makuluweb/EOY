@@ -234,6 +234,28 @@
     h2 { font-size: 22px; }
   }
 
+  /* ROLE SWITCHER */
+  .role-switcher {
+    display: -webkit-flex; display: flex;
+    background-color: #080f1e;
+    border: 1px solid #1e3a5f;
+    border-radius: 10px;
+    padding: 4px;
+    gap: 4px;
+    width: -webkit-fit-content; width: fit-content;
+  }
+  .rs-btn {
+    background: none; border: none; border-radius: 7px;
+    padding: 8px 20px; color: #94a3b8; cursor: pointer;
+    font-size: 13px; font-family: var(--font-sans); font-weight: 600;
+    transition: all 0.2s; -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+  }
+  .rs-btn.rs-active {
+    background-color: #0057a8; color: #ffffff;
+  }
+  .rs-role2.rs-active { background-color: #7c3aed; }
+
   /* AI COMPONENTS */
   .ai-btn {
     background: linear-gradient(135deg, #7c3aed, #0057a8);
@@ -373,6 +395,201 @@
 </div>
 
 <div class="content">
+
+<!-- ===== OVERVIEW ===== -->
+<div class="panel active" id="panel-overview">
+  <h2>Your Year-End Roadmap</h2>
+  <p class="subtitle">The three-stage C&amp;M performance process and what it takes to build a compelling case.</p>
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="ts-phase">NOW</div>
+      <div class="ts-title">Build Your Evidence</div>
+      <div class="ts-desc">Document achievements against each metric with specific numbers and outcomes</div>
+      <div class="timeline-arrow">›</div>
+    </div>
+    <div class="timeline-step">
+      <div class="ts-phase">PRE-JUNE</div>
+      <div class="ts-title">Dual Pen Review</div>
+      <div class="ts-desc">Your Dual Pen meets with you &amp; People Leader to review C&amp;M goals and agree indicative rating</div>
+      <div class="timeline-arrow">›</div>
+    </div>
+    <div class="timeline-step highlight">
+      <div class="ts-phase">4 JUNE 2026</div>
+      <div class="ts-title">Calibration Meeting</div>
+      <div class="ts-desc">IL &amp; Sector leads, Platinum/Priority CLPs, Growth Portfolio and Divisional C&amp;M reviewed</div>
+      <div class="timeline-arrow">›</div>
+    </div>
+    <div class="timeline-step">
+      <div class="ts-phase">POST-CALIBRATION</div>
+      <div class="ts-title">Markets Rating</div>
+      <div class="ts-desc">Formal Markets Ratings for significant C&amp;M roles (+20% time / $5M). Outcomes shared with Divisional NMPs</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <div class="label">Divisional Focus</div>
+      <div style="font-size:13px;color:#cbd5e1;line-height:1.9">Client Delivery &nbsp;•&nbsp; Revenue Targets<br>People Leadership &nbsp;•&nbsp; Capability &amp; Proposition Development</div>
+    </div>
+    <div class="card card-blue">
+      <div class="label">C&amp;M Focus — Your Differentiator</div>
+      <div style="font-size:13px;color:#cbd5e1;line-height:1.9">Sector or Client Leadership &nbsp;•&nbsp; Sector Leadership &amp; Community<br>Client Service Team &nbsp;•&nbsp; Sales Enablement &amp; BD Support</div>
+    </div>
+  </div>
+  <div class="card card-gold">
+    <div class="label">💡 Key Principles to Evidence</div>
+    <div class="grid-2" style="gap:10px;margin-top:8px">
+      <div style="font-size:13px;color:#cbd5e1">› Whole of Firm revenue accountability</div>
+      <div style="font-size:13px;color:#cbd5e1">› Aligned to Partner's focus area in market</div>
+      <div style="font-size:13px;color:#cbd5e1">› Support sales pipeline/conversion in home division</div>
+      <div style="font-size:13px;color:#cbd5e1">› Synergies with market focus (time allocation)</div>
+      <div style="font-size:13px;color:#cbd5e1;grid-column:1/-1">› Balanced scorecard across Markets &amp; Divisional goals agreed with People Leader &amp; Dual Pen</div>
+    </div>
+  </div>
+  <button class="btn" style="margin-top:24px" onclick="switchTab('profile')">Start: Enter Your Profile →</button>
+</div>
+
+<!-- ===== PROFILE ===== -->
+<div class="panel" id="panel-profile">
+  <h2>My Profile</h2>
+  <p class="subtitle">This information appears on all your exports and keeps your documents personalised.</p>
+  <div class="card card-gold" style="max-width:600px">
+    <div class="label">Your Details</div>
+    <div class="form-group">
+      <label class="form-label">Full Name</label>
+      <input class="form-input" type="text" id="inputName" placeholder="e.g. Nicole Apostol" oninput="saveProfile()" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Industry or Account I Lead</label>
+      <input class="form-input" type="text" id="inputFocus" placeholder="e.g. Financial Services / Telstra Account" oninput="saveProfile()" />
+    </div>
+    <div class="form-group" style="margin-bottom:0">
+      <label class="form-label">My Dual Pen Name</label>
+      <input class="form-input" type="text" id="inputDualPenName" placeholder="e.g. James Smith" oninput="saveProfile()" />
+    </div>
+  </div>
+  <div style="margin-top:16px;padding:14px 20px;background:rgba(0,87,168,0.15);border:1px solid #0057a8;border-radius:10px;font-size:13px;color:#94a3b8;max-width:600px">
+    💡 These fields are optional but recommended. They appear on the cover page of your PDF and Word exports.
+  </div>
+  <button class="btn" style="margin-top:24px" onclick="switchTab('role')">Next: Select Your Role →</button>
+</div>
+
+<!-- ===== ROLE ===== -->
+<div class="panel" id="panel-role">
+  <h2>Select Your C&amp;M Role</h2>
+  <p class="subtitle">Your role determines your Dual Pen and calibration lens. Select a second role if you hold more than one C&amp;M position.</p>
+  <div style="margin-bottom:10px">
+    <div class="label">Primary Role <span style="color:#e2e8f0;font-size:12px;text-transform:none;letter-spacing:0;font-weight:400">— required</span></div>
+  </div>
+  <div class="grid-3" id="roleGrid" style="margin-bottom:20px"></div>
+  <div style="margin-bottom:10px;margin-top:8px">
+    <div class="label">Second Role <span style="color:#94a3b8;font-size:12px;text-transform:none;letter-spacing:0;font-weight:400">— optional, separate scorecard &amp; evidence will be created</span></div>
+  </div>
+  <div class="grid-3" id="roleGrid2" style="margin-bottom:20px"></div>
+  <button class="btn btn-outline btn-sm" onclick="clearRole2()" id="clearRole2Btn" style="display:none;margin-bottom:20px">✕ Clear Second Role</button>
+  <div class="card card-blue" id="roleContextCard" style="display:none">
+    <div class="label">Calibration Notes for Your Role(s)</div>
+    <div id="roleContextText" style="font-size:14px;color:#cbd5e1;line-height:1.7"></div>
+  </div>
+  <button class="btn" id="roleNextBtn" onclick="switchTab('scorecard')" style="margin-top:20px;display:none">Next: Rate Your Performance →</button>
+</div>
+
+<!-- ===== SCORECARD ===== -->
+<div class="panel" id="panel-scorecard">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px">
+    <div>
+      <h2>Scorecard</h2>
+      <p class="subtitle" style="margin-bottom:0">Rate yourself honestly — this frames your Dual Pen conversation.</p>
+    </div>
+    <div class="score-hero" id="scoreHero">
+      <div class="pct" id="scorePct" style="color:#2563eb">0%</div>
+      <div class="rating-lbl" id="scoreRating" style="color:#2563eb">Not Rated</div>
+      <div class="pts" id="scorePts">0/0 points</div>
+    </div>
+  </div>
+  <!-- Role switcher (shown only when 2nd role exists) -->
+  <div id="scorecardRoleSwitcher" style="display:none;margin-bottom:20px">
+    <div class="role-switcher">
+      <button class="rs-btn rs-active" id="scRoleBtn1" onclick="setScorecardRole(1)">
+        <span id="scRoleLabel1">Primary Role</span>
+      </button>
+      <button class="rs-btn" id="scRoleBtn2" onclick="setScorecardRole(2)">
+        <span id="scRoleLabel2">Second Role</span>
+      </button>
+    </div>
+  </div>
+  <div class="metric-tabs" id="metricTabs"></div>
+  <div id="metricContent"></div>
+</div>
+
+<!-- ===== EVIDENCE ===== -->
+<div class="panel" id="panel-evidence">
+  <h2>Evidence Builder</h2>
+  <p class="subtitle">Guided prompts for every sub-metric. Be specific — your Dual Pen will probe each area.</p>
+  <!-- Role switcher (shown only when 2nd role exists) -->
+  <div id="evidenceRoleSwitcher" style="display:none;margin-bottom:20px">
+    <div class="role-switcher">
+      <button class="rs-btn rs-active" id="evRoleBtn1" onclick="setEvidenceRole(1)">
+        <span id="evRoleLabel1">Primary Role</span>
+      </button>
+      <button class="rs-btn" id="evRoleBtn2" onclick="setEvidenceRole(2)">
+        <span id="evRoleLabel2">Second Role</span>
+      </button>
+    </div>
+  </div>
+  <div id="evidenceContent"></div>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="panel" id="panel-summary">
+  <h2>My Summary</h2>
+  <p class="subtitle">Consolidated view for your Dual Pen conversation and calibration preparation.</p>
+  <!-- Role switcher (shown only when 2nd role exists) -->
+  <div id="summaryRoleSwitcher" style="display:none;margin-bottom:20px">
+    <div class="role-switcher">
+      <button class="rs-btn rs-active" id="sumRoleBtn1" onclick="setSummaryRole(1)">
+        <span id="sumRoleLabel1">Primary Role</span>
+      </button>
+      <button class="rs-btn" id="sumRoleBtn2" onclick="setSummaryRole(2)">
+        <span id="sumRoleLabel2">Second Role</span>
+      </button>
+    </div>
+  </div>
+  <div class="profile-banner" id="summaryProfileBanner"></div>
+  <div class="grid-4" id="summaryMetrics" style="margin-bottom:24px"></div>
+  <div class="card">
+    <div class="label">Evidence Log</div>
+    <div id="evidenceLog" style="margin-top:12px"></div>
+  </div>
+  <div class="card card-blue" style="margin-top:20px">
+    <div class="label">Dual Pen Conversation Prep</div>
+    <div class="grid-2" style="margin-top:12px;gap:20px">
+      <div>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">KEY TALKING POINTS</div>
+        <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
+        <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
+        <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
+        <div class="tp-item"><span class="tp-num">4.</span> Show market presence: thought leadership, forums, community roles</div>
+        <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
+      </div>
+      <div>
+        <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">DUAL PEN &amp; KEY DATES</div>
+        <div style="background:#0a1628;border-radius:8px;padding:16px;margin-bottom:12px">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">DUAL PEN TITLE</div>
+          <div style="font-size:20px;font-weight:700;color:#fbbf24" id="summaryDualPenTitle">—</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:8px;margin-bottom:2px">DUAL PEN NAME</div>
+          <div style="font-size:16px;font-weight:600" id="summaryDualPenName">—</div>
+        </div>
+        <div style="background:#0a1628;border-radius:8px;padding:16px">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">CALIBRATION DATE</div>
+          <div style="font-size:20px;font-weight:700;color:#fbbf24">4 June 2026</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:4px">Formal Markets Ratings: +20% time / $5M threshold</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
 
 <!-- ===== OVERVIEW ===== -->
 <div class="panel active" id="panel-overview">
@@ -626,9 +843,15 @@ let state = {
   profile: { name:"", focus:"", dualPenName:"" },
   selectedRole:  null,
   selectedRole2: null,
-  scores: {},
-  evidence: {},
+  scores:        {},   // primary role scores
+  evidence:      {},   // primary role evidence
+  scores2:       {},   // second role scores
+  evidence2:     {},   // second role evidence
   activeMetric:  "sustainable_growth",
+  // which role is active in each section (1 = primary, 2 = second)
+  activeScoreRole:    1,
+  activeEvidenceRole: 1,
+  activeSummaryRole:  1,
   apiKey: ""
 };
 
@@ -670,8 +893,9 @@ function switchTab(id) {
   var btn = document.querySelector(".tab-btn[data-tab='" + id + "']");
   if (btn) btn.classList.add("active");
   // Side effects
-  if (id === "summary")   updateSummary();
-  if (id === "scorecard") { renderMetricContent(); updateScoreHero(); }
+  if (id === "scorecard") { updateRoleSwitcherUI("scorecard"); renderMetricTabs(); renderMetricContent(); updateScoreHero(); }
+  if (id === "evidence")  { updateRoleSwitcherUI("evidence");  renderEvidenceContent(); }
+  if (id === "summary")   { updateRoleSwitcherUI("summary");   updateSummary(); }
   // Scroll to top of content on mobile
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -802,7 +1026,66 @@ function updateRoleContext() {
 }
 
 // ─────────────────────────────────────────────
-// SCORECARD
+// ROLE SWITCHER (Scorecard / Evidence / Summary)
+// ─────────────────────────────────────────────
+function updateRoleSwitcherUI(section) {
+  var has2 = !!state.selectedRole2;
+  var role1 = findRole(state.selectedRole);
+  var role2 = findRole(state.selectedRole2);
+  var r1label = role1 ? role1.label : "Primary Role";
+  var r2label = role2 ? role2.label : "Second Role";
+
+  var switcherId = section + "RoleSwitcher";
+  var switcher = document.getElementById(switcherId);
+  if (!switcher) return;
+  switcher.style.display = has2 ? "block" : "none";
+  if (!has2) return;
+
+  // Update labels
+  var prefix = section === "scorecard" ? "sc" : (section === "evidence" ? "ev" : "sum");
+  var lbl1 = document.getElementById(prefix + "RoleLabel1");
+  var lbl2 = document.getElementById(prefix + "RoleLabel2");
+  if (lbl1) lbl1.textContent = r1label;
+  if (lbl2) lbl2.textContent = r2label;
+
+  // Active state
+  var activeRole = section === "scorecard" ? state.activeScoreRole
+                 : section === "evidence"  ? state.activeEvidenceRole
+                 : state.activeSummaryRole;
+  var btn1 = document.getElementById(prefix + "RoleBtn1");
+  var btn2 = document.getElementById(prefix + "RoleBtn2");
+  if (btn1) { btn1.classList.toggle("rs-active", activeRole === 1); btn1.classList.remove("rs-role2"); }
+  if (btn2) { btn2.classList.toggle("rs-active", activeRole === 2); btn2.classList.toggle("rs-role2", activeRole === 2); }
+}
+
+function setScorecardRole(r) {
+  state.activeScoreRole = r;
+  updateRoleSwitcherUI("scorecard");
+  renderMetricTabs();
+  renderMetricContent();
+  updateScoreHero();
+}
+
+function setEvidenceRole(r) {
+  state.activeEvidenceRole = r;
+  updateRoleSwitcherUI("evidence");
+  renderEvidenceContent();
+}
+
+function setSummaryRole(r) {
+  state.activeSummaryRole = r;
+  updateRoleSwitcherUI("summary");
+  updateSummary();
+}
+
+// Helper: get active scores/evidence object based on section
+function activeScores()   { return state.activeScoreRole   === 2 ? state.scores2   : state.scores;   }
+function activeEvidence() { return state.activeEvidenceRole === 2 ? state.evidence2 : state.evidence; }
+function summaryScores()  { return state.activeSummaryRole  === 2 ? state.scores2   : state.scores;   }
+function summaryEvidence(){ return state.activeSummaryRole  === 2 ? state.evidence2 : state.evidence; }
+function activeRole()     { return state.activeScoreRole    === 2 ? findRole(state.selectedRole2) : findRole(state.selectedRole); }
+function activeRole2Ev()  { return state.activeEvidenceRole === 2 ? findRole(state.selectedRole2) : findRole(state.selectedRole); }
+
 // ─────────────────────────────────────────────
 function renderMetricTabs() {
   var el = document.getElementById("metricTabs");
@@ -824,15 +1107,18 @@ function setActiveMetric(k) {
 }
 
 function renderMetricContent() {
-  var m = METRICS[state.activeMetric];
+  var m  = METRICS[state.activeMetric];
   var el = document.getElementById("metricContent");
   if (!el) return;
+  var sc = activeScores();
+  var r  = activeRole();
+  var roleColor = r ? r.color : "#0057a8";
   el.innerHTML = m.submetrics.map(function(sm) {
     var levelsHTML = sm.levels.map(function(lv) {
-      var sel = state.scores[sm.id] === lv.score;
+      var sel = sc[sm.id] === lv.score;
       return '<div class="score-level' + (sel ? ' selected' : '') + '"'
         + ' onclick="setScore(\'' + sm.id + '\',' + lv.score + ')"'
-        + (sel ? ' style="background-color:' + m.color + ';border-color:#fbbf24"' : '')
+        + (sel ? ' style="background-color:' + roleColor + ';border-color:#fbbf24"' : '')
         + '>'
         + '<div class="sl-label">' + lv.label + '</div>'
         + '<div class="sl-value">' + lv.value + '</div>'
@@ -847,7 +1133,8 @@ function renderMetricContent() {
 }
 
 function setScore(id, score) {
-  state.scores[id] = score;
+  if (state.activeScoreRole === 2) { state.scores2[id] = score; }
+  else { state.scores[id] = score; }
   renderMetricContent();
   updateScoreHero();
 }
@@ -858,19 +1145,21 @@ function updateScoreHero() {
   var rateEl  = document.getElementById("scoreRating");
   var ptsEl   = document.getElementById("scorePts");
   if (!hero || !pctEl || !rateEl || !ptsEl) return;
+  var sc  = activeScores();
   var all = [];
   METRIC_KEYS.forEach(function(k) { METRICS[k].submetrics.forEach(function(sm) { all.push(sm); }); });
   var total = 0;
-  all.forEach(function(sm) { total += (state.scores[sm.id] || 0); });
+  all.forEach(function(sm) { total += (sc[sm.id] || 0); });
   var max = all.length * 3;
   var pct = max > 0 ? Math.round((total / max) * 100) : 0;
   var rating = getRating(pct);
+  var r = activeRole();
   hero.style.borderColor = rating.color;
   pctEl.textContent      = pct + "%";
   pctEl.style.color      = rating.color;
   rateEl.textContent     = rating.label;
   rateEl.style.color     = rating.color;
-  ptsEl.textContent      = total + "/" + max + " points";
+  ptsEl.textContent      = total + "/" + max + (r ? " · " + r.label : "");
 }
 
 function getRating(pct) {
@@ -886,6 +1175,9 @@ function getRating(pct) {
 function renderEvidenceContent() {
   var el = document.getElementById("evidenceContent");
   if (!el) return;
+  var ev = state.activeEvidenceRole === 2 ? state.evidence2 : state.evidence;
+  var r  = state.activeEvidenceRole === 2 ? findRole(state.selectedRole2) : findRole(state.selectedRole);
+  var roleLabel = r ? r.label : "";
   var aiActive = !!state.apiKey;
   el.innerHTML = METRIC_KEYS.map(function(k) {
     var m = METRICS[k];
@@ -893,7 +1185,7 @@ function renderEvidenceContent() {
       var promptsHTML = sm.prompts.map(function(p, i) {
         return '<div class="prompt-item"><span style="color:#fbbf24">' + (i+1) + '.</span> ' + p + '</div>';
       }).join("");
-      var savedVal = state.evidence[sm.id] || "";
+      var savedVal = ev[sm.id] || "";
       var aiHint = aiActive
         ? ''
         : '<div class="no-ai-hint">✨ Connect an API key to unlock AI suggestions</div>';
@@ -937,15 +1229,19 @@ function togglePrompt(id) {
 }
 
 function setEvidence(id, val) {
-  state.evidence[id] = val;
+  if (state.activeEvidenceRole === 2) { state.evidence2[id] = val; }
+  else { state.evidence[id] = val; }
 }
 
 // ─────────────────────────────────────────────
 // SUMMARY
 // ─────────────────────────────────────────────
 function updateSummary() {
-  var role  = findRole(state.selectedRole);
+  var role1 = findRole(state.selectedRole);
   var role2 = findRole(state.selectedRole2);
+  var activeR = state.activeSummaryRole === 2 ? role2 : role1;
+  var sc  = summaryScores();
+  var ev  = summaryEvidence();
   var name        = state.profile.name        || "";
   var focus       = state.profile.focus       || "";
   var dualPenName = state.profile.dualPenName || "";
@@ -953,16 +1249,16 @@ function updateSummary() {
   // Profile banner
   var banner = document.getElementById("summaryProfileBanner");
   if (banner) {
-    var roleText  = role  ? role.label  : 'Not selected';
-    var role2Text = role2 ? role2.label : '—';
-    var dpText    = role  ? role.dualPen  : '—';
-    var dp2Text   = role2 ? role2.dualPen : '';
+    var roleLabel = activeR ? activeR.label : 'Not selected';
+    var dpLabel   = activeR ? activeR.dualPen : '—';
+    var roleTag   = state.activeSummaryRole === 2
+      ? '<span style="background:#7c3aed;color:white;font-size:10px;border-radius:4px;padding:1px 6px;margin-left:6px">SECOND</span>'
+      : '<span style="background:#0057a8;color:white;font-size:10px;border-radius:4px;padding:1px 6px;margin-left:6px">PRIMARY</span>';
     banner.innerHTML =
       '<div class="pb-item"><span class="pb-key">Partner Name</span><span class="pb-val' + (!name?' pb-empty':'') + '">' + (name||'Not entered') + '</span></div>'
     + '<div class="pb-item"><span class="pb-key">Industry / Account</span><span class="pb-val' + (!focus?' pb-empty':'') + '">' + (focus||'Not entered') + '</span></div>'
-    + '<div class="pb-item"><span class="pb-key">Primary Role</span><span class="pb-val' + (!role?' pb-empty':'') + '">' + roleText + '</span></div>'
-    + (role2 ? '<div class="pb-item"><span class="pb-key">Second Role</span><span class="pb-val" style="color:#a78bfa">' + role2Text + '</span></div>' : '')
-    + '<div class="pb-item"><span class="pb-key">Dual Pen Title</span><span class="pb-val' + (!role?' pb-empty':'') + '">' + dpText + (dp2Text ? ' / ' + dp2Text : '') + '</span></div>'
+    + '<div class="pb-item"><span class="pb-key">Viewing Role</span><span class="pb-val">' + roleLabel + roleTag + '</span></div>'
+    + '<div class="pb-item"><span class="pb-key">Dual Pen Title</span><span class="pb-val' + (!activeR?' pb-empty':'') + '">' + dpLabel + '</span></div>'
     + '<div class="pb-item"><span class="pb-key">Dual Pen Name</span><span class="pb-val' + (!dualPenName?' pb-empty':'') + '">' + (dualPenName||'Not entered') + '</span></div>';
   }
 
@@ -972,11 +1268,11 @@ function updateSummary() {
     metricsEl.innerHTML = METRIC_KEYS.map(function(k) {
       var m     = METRICS[k];
       var total = 0;
-      m.submetrics.forEach(function(sm) { total += (state.scores[sm.id] || 0); });
+      m.submetrics.forEach(function(sm) { total += (sc[sm.id] || 0); });
       var max   = m.submetrics.length * 3;
       var pct   = max > 0 ? Math.round((total / max) * 100) : 0;
       var rated = 0;
-      m.submetrics.forEach(function(sm) { if (state.scores[sm.id]) rated++; });
+      m.submetrics.forEach(function(sm) { if (sc[sm.id]) rated++; });
       var color = getRating(pct).color;
       return '<div class="summary-metric-card" style="border-color:' + m.accent + '">'
         + '<div style="font-size:24px;margin-bottom:6px">' + m.icon + '</div>'
@@ -994,24 +1290,22 @@ function updateSummary() {
   var entries = [];
   METRIC_KEYS.forEach(function(k) {
     METRICS[k].submetrics.forEach(function(sm) {
-      if (state.evidence[sm.id] && state.evidence[sm.id].trim()) {
-        entries.push({ metric: METRICS[k], sm: sm });
-      }
+      if (ev[sm.id] && ev[sm.id].trim()) { entries.push({ metric: METRICS[k], sm: sm }); }
     });
   });
   var logEl = document.getElementById("evidenceLog");
   if (logEl) {
     if (entries.length === 0) {
-      logEl.innerHTML = '<div style="color:#64748b;font-size:14px">No evidence documented yet. Go to the Evidence Builder tab to add your achievements.</div>';
+      logEl.innerHTML = '<div style="color:#64748b;font-size:14px">No evidence documented for this role yet.</div>';
     } else {
       logEl.innerHTML = entries.map(function(e) {
         var m     = e.metric;
         var sm    = e.sm;
-        var score = state.scores[sm.id] || 0;
+        var score = sc[sm.id] || 0;
         var stars = score ? '<span style="color:#fbbf24;margin-left:8px">' + '★'.repeat(score) + '</span>' : '';
         return '<div class="ev-entry">'
           + '<div class="ev-meta" style="color:' + m.accent + '">' + m.label + ' › ' + sm.label + stars + '</div>'
-          + '<div class="ev-text">' + esc(state.evidence[sm.id]) + '</div>'
+          + '<div class="ev-text">' + esc(ev[sm.id]) + '</div>'
           + '</div>';
       }).join("");
     }
@@ -1020,11 +1314,7 @@ function updateSummary() {
   // Dual pen section
   var dpTitle = document.getElementById("summaryDualPenTitle");
   var dpName  = document.getElementById("summaryDualPenName");
-  if (dpTitle) {
-    var dpTitleText = role ? role.dualPen : "— Select your role —";
-    if (role2) dpTitleText += " &amp; " + role2.dualPen;
-    dpTitle.innerHTML = dpTitleText;
-  }
+  if (dpTitle) dpTitle.textContent = activeR ? activeR.dualPen : "— Select your role —";
   if (dpName)  {
     dpName.textContent = dualPenName || "— Enter name in My Profile —";
     dpName.style.color = dualPenName ? "#ffffff" : "#94a3b8";
@@ -1151,7 +1441,7 @@ function callClaude(systemPrompt, userPrompt, onSuccess, onError) {
       "anthropic-dangerous-direct-browser-access": "true"
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-5",
       max_tokens: 600,
       system: systemPrompt,
       messages: [{ role: "user", content: userPrompt }]
@@ -1245,12 +1535,14 @@ function aiRefine(smId, metricKey) {
 function exportJSON() {
   var payload = {
     exportedAt:    new Date().toISOString(),
-    version:       "2.1",
+    version:       "3.0",
     profile:       state.profile,
     selectedRole:  state.selectedRole,
     selectedRole2: state.selectedRole2,
     scores:        state.scores,
     evidence:      state.evidence,
+    scores2:       state.scores2,
+    evidence2:     state.evidence2,
     activeMetric:  state.activeMetric
   };
   var blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
@@ -1266,6 +1558,8 @@ function importJSON(event) {
       var d = JSON.parse(e.target.result);
       if (d.scores)      state.scores      = d.scores;
       if (d.evidence)    state.evidence    = d.evidence;
+      if (d.scores2)     state.scores2     = d.scores2;
+      if (d.evidence2)   state.evidence2   = d.evidence2;
       if (d.profile)     state.profile     = d.profile;
       if (d.selectedRole  !== undefined) state.selectedRole  = d.selectedRole;
       if (d.selectedRole2 !== undefined) state.selectedRole2 = d.selectedRole2;
@@ -1298,64 +1592,74 @@ function importJSON(event) {
 // ─────────────────────────────────────────────
 // PDF EXPORT — page breaks between sections
 // ─────────────────────────────────────────────
+function buildScoreRows(sc) {
+  var rows = "";
+  METRIC_KEYS.forEach(function(k) {
+    var m = METRICS[k];
+    var mTotal = 0;
+    m.submetrics.forEach(function(sm) { mTotal += (sc[sm.id]||0); });
+    var mMax = m.submetrics.length * 3;
+    var mPct = mMax > 0 ? Math.round((mTotal/mMax)*100) : 0;
+    rows += '<tr style="background:#f0f7ff"><td colspan="2" style="font-weight:700;padding:8px 12px;border:1px solid #e2e8f0">' + m.icon + ' ' + m.label + '</td>'
+      + '<td style="padding:8px 12px;border:1px solid #e2e8f0;font-weight:700;color:' + getRating(mPct).color + '">' + mPct + '%</td>'
+      + '<td style="padding:8px 12px;border:1px solid #e2e8f0"></td></tr>';
+    m.submetrics.forEach(function(sm) {
+      var score = sc[sm.id]||0;
+      var lv = null; for (var _i=0;_i<sm.levels.length;_i++){if(sm.levels[_i].score===score){lv=sm.levels[_i];break;}}
+      rows += '<tr><td style="padding:6px 12px;border:1px solid #e2e8f0;padding-left:24px;color:#64748b;font-size:9pt">' + sm.label + '</td>'
+        + '<td style="padding:6px 12px;border:1px solid #e2e8f0;font-size:9pt">' + (lv?lv.label+' ('+lv.value+')':'Not rated') + '</td>'
+        + '<td style="padding:8px 12px;border:1px solid #e2e8f0"></td>'
+        + '<td style="padding:6px 12px;border:1px solid #e2e8f0;color:#f59e0b;font-size:13pt">' + (score>0?'★'.repeat(score)+'☆'.repeat(3-score):'—') + '</td></tr>';
+    });
+  });
+  return rows;
+}
+
+function buildEvidencePages(sc, ev, dateStr) {
+  var pages = "";
+  METRIC_KEYS.forEach(function(k) {
+    var m = METRICS[k];
+    var items = []; m.submetrics.forEach(function(sm){ if(ev[sm.id] && ev[sm.id].trim()) items.push(sm); });
+    if (!items.length) return;
+    var itemsHTML = "";
+    items.forEach(function(sm) {
+      var score = sc[sm.id]||0;
+      var starSpan = score>0 ? '<span style="color:#f59e0b">'+'★'.repeat(score)+'</span>' : '';
+      itemsHTML += '<div style="margin-bottom:16pt;border-left:4pt solid '+m.accent+';padding-left:12pt">'
+        + '<div style="font-weight:bold;font-size:11pt;color:#1e3a5f;margin-bottom:4pt">'+sm.label+' '+starSpan+'</div>'
+        + '<div style="font-size:10pt;color:#374151;line-height:1.7;white-space:pre-wrap">'+esc(ev[sm.id])+'</div>'
+        + '</div>';
+    });
+    pages += '<div class="page"><div style="background:#1e3a5f;color:white;padding:10pt 16pt;font-size:14pt;font-weight:bold;margin-bottom:14pt">'+m.icon+' '+m.label+' — Evidence</div>'
+      + itemsHTML
+      + '<div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; '+dateStr+'</div></div>';
+  });
+  return pages;
+}
+
 function exportPDF() {
   updateSummary();
   var role  = findRole(state.selectedRole);
   var role2 = findRole(state.selectedRole2);
   var name = state.profile.name||''; var focus = state.profile.focus||''; var dualPenName = state.profile.dualPenName||'';
-  var all = []; METRIC_KEYS.forEach(function(k){ METRICS[k].submetrics.forEach(function(sm){ all.push(sm); }); });
-  var total = 0; all.forEach(function(sm){ total += (state.scores[sm.id]||0); });
-  var max = all.length * 3;
-  var pct = max > 0 ? Math.round((total/max)*100) : 0;
-  var ratingLabel = getRating(pct).label; var ratingColor = getRating(pct).color;
   var dateStr = new Date().toLocaleDateString("en-AU",{day:"numeric",month:"long",year:"numeric"});
 
-  // Build metric score rows for page 2
-  var scoreRows = "";
-  METRIC_KEYS.forEach(function(k) {
-    var m = METRICS[k];
-    var mTotal = 0; m.submetrics.forEach(function(sm){ mTotal += (state.scores[sm.id]||0); });
-    var mMax   = m.submetrics.length * 3;
-    var mPct   = mMax > 0 ? Math.round((mTotal/mMax)*100) : 0;
-    scoreRows += `<tr style="background:#f0f7ff">
-      <td colspan="2" style="font-weight:700;padding:8px 12px;border:1px solid #e2e8f0">${m.icon} ${m.label}</td>
-      <td style="padding:8px 12px;border:1px solid #e2e8f0;font-weight:700;color:${getRating(mPct).color}">${mPct}%</td>
-      <td style="padding:8px 12px;border:1px solid #e2e8f0"></td>
-    </tr>`;
-    m.submetrics.forEach(function(sm) {
-      var score = state.scores[sm.id]||0;
-      var lv = (function(){ for(var _i=0;_i<sm.levels.length;_i++){if(sm.levels[_i].score===score)return sm.levels[_i];} return null; })()
-      scoreRows += `<tr>
-        <td style="padding:6px 12px;border:1px solid #e2e8f0;padding-left:24px;color:#64748b;font-size:9pt">${sm.label}</td>
-        <td style="padding:6px 12px;border:1px solid #e2e8f0;font-size:9pt">${lv?lv.label+" ("+lv.value+")":"Not rated"}</td>
-        <td style="padding:6px 12px;border:1px solid #e2e8f0"></td>
-        <td style="padding:6px 12px;border:1px solid #e2e8f0;color:#f59e0b;font-size:13pt">${score>0?"★".repeat(score)+"☆".repeat(3-score):"—"}</td>
-      </tr>`;
-    });
-  });
+  // Primary role totals
+  var all = []; METRIC_KEYS.forEach(function(k){ METRICS[k].submetrics.forEach(function(sm){ all.push(sm); }); });
+  var total1 = 0; all.forEach(function(sm){ total1 += (state.scores[sm.id]||0); });
+  var max = all.length * 3;
+  var pct1 = max > 0 ? Math.round((total1/max)*100) : 0;
+  var rating1 = getRating(pct1);
 
-  // Evidence pages
-  var evidencePages = "";
-  METRIC_KEYS.forEach(function(k) {
-    var m = METRICS[k];
-    var items = []; m.submetrics.forEach(function(sm){ if(state.evidence[sm.id] && state.evidence[sm.id].trim()) items.push(sm); });
-    if(!items.length) return;
-    evidencePages += `
-      <div class="page">
-        <div style="background:#1e3a5f;color:white;padding:10pt 16pt;font-size:14pt;font-weight:bold;margin-bottom:14pt">${m.icon} ${m.label} — Evidence</div>
-        ${items.map(function(sm) {
-          var score = state.scores[sm.id]||0;
-          return `
-            <div style="margin-bottom:16pt;border-left:4pt solid ${m.accent};padding-left:12pt">
-              <div style="font-weight:bold;font-size:11pt;color:#1e3a5f;margin-bottom:4pt">
-                ${sm.label} ${score>0?"<span style='color:#f59e0b'>"+"★".repeat(score)+"</span>":""}
-              </div>
-              <div style="font-size:10pt;color:#374151;line-height:1.7;white-space:pre-wrap">${esc(state.evidence[sm.id])}</div>
-            </div>`;
-        }).join("")}
-        <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
-      </div>`;
-  });
+  // Second role totals
+  var total2 = 0; all.forEach(function(sm){ total2 += (state.scores2[sm.id]||0); });
+  var pct2 = max > 0 ? Math.round((total2/max)*100) : 0;
+  var rating2 = getRating(pct2);
+
+  var scoreRows1 = buildScoreRows(state.scores);
+  var evidencePages1 = buildEvidencePages(state.scores, state.evidence, dateStr);
+  var scoreRows2 = role2 ? buildScoreRows(state.scores2) : "";
+  var evidencePages2 = role2 ? buildEvidencePages(state.scores2, state.evidence2, dateStr) : "";
 
   const printHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8">
   <style>
@@ -1382,60 +1686,73 @@ function exportPDF() {
       <tr><th colspan="2">Partner Details</th></tr>
       <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b;width:40%">Partner Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${name||'—'}</td></tr>
       <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Industry / Account</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${focus||'—'}</td></tr>
-      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">C&amp;M Role</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.label:'—'}</td></tr>
-      ${role2 ? '<tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Second Role</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">'+role2.label+'</td></tr>' : ''}
-      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Title</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.dualPen:'—'}${role2?' / '+role2.dualPen:''}</td></tr>
-      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${dualPenName||'—'}</td></tr>
-      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Calibration Date</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">4 June 2026</td></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Primary Role</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.label:'—'} (Dual Pen: ${role?role.dualPen:'—'})</td></tr>
+      ${role2 ? '<tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Second Role</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">'+role2.label+' (Dual Pen: '+role2.dualPen+')</td></tr>' : ''}
+      <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${dualPenName||'—'}</td></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Calibration Date</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">4 June 2026</td></tr>
     </table>
-    <div style="background:#f0f7ff;border:2pt solid #0057a8;padding:16pt;display:inline-block;min-width:200pt;margin-bottom:20pt">
-      <div style="font-size:32pt;font-weight:bold;color:${ratingColor}">${pct}%</div>
-      <div style="font-size:13pt;color:${ratingColor};font-weight:bold">${ratingLabel}</div>
-      <div style="font-size:9pt;color:#64748b;margin-top:4pt">${total}/${max} points across all metrics</div>
+    <div style="display:flex;gap:16pt;flex-wrap:wrap;margin-bottom:20pt">
+      <div style="background:#f0f7ff;border:2pt solid #0057a8;padding:16pt;flex:1;min-width:160pt">
+        <div style="font-size:11pt;font-weight:bold;color:#0057a8;margin-bottom:4pt">${role?role.label:'Primary Role'}</div>
+        <div style="font-size:28pt;font-weight:bold;color:${rating1.color}">${pct1}%</div>
+        <div style="font-size:12pt;color:${rating1.color};font-weight:bold">${rating1.label}</div>
+        <div style="font-size:9pt;color:#64748b;margin-top:4pt">${total1}/${max} points</div>
+      </div>
+      ${role2 ? '<div style="background:#faf5ff;border:2pt solid #7c3aed;padding:16pt;flex:1;min-width:160pt"><div style="font-size:11pt;font-weight:bold;color:#7c3aed;margin-bottom:4pt">'+role2.label+'</div><div style="font-size:28pt;font-weight:bold;color:'+rating2.color+'">'+pct2+'%</div><div style="font-size:12pt;color:'+rating2.color+';font-weight:bold">'+rating2.label+'</div><div style="font-size:9pt;color:#64748b;margin-top:4pt">'+total2+'/'+max+' points</div></div>' : ''}
     </div>
     <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
   </div>
 
-  <!-- PAGE 2: SCORECARD -->
+  <!-- PAGE 2: PRIMARY ROLE SCORECARD -->
   <div class="page">
-    <h2>Scorecard Summary</h2>
+    <h2>${role?role.label:'Primary Role'} — Scorecard</h2>
     <table>
       <tr><th style="width:35%">Area</th><th style="width:30%">Self-Rating</th><th style="width:15%">Score</th><th style="width:20%">Stars</th></tr>
-      ${scoreRows}
+      ${scoreRows1}
     </table>
     <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
   </div>
 
-  <!-- EVIDENCE PAGES (one per pillar) -->
-  ${evidencePages}
+  <!-- PRIMARY ROLE EVIDENCE PAGES -->
+  ${evidencePages1}
+
+  ${role2 ? `
+  <!-- SECOND ROLE SCORECARD -->
+  <div class="page">
+    <div style="background:#7c3aed;color:white;padding:8pt 16pt;margin-bottom:16pt;border-radius:4pt;font-size:12pt;font-weight:bold">SECOND ROLE: ${role2.label}</div>
+    <h2>${role2.label} — Scorecard</h2>
+    <table>
+      <tr><th style="width:35%">Area</th><th style="width:30%">Self-Rating</th><th style="width:15%">Score</th><th style="width:20%">Stars</th></tr>
+      ${scoreRows2}
+    </table>
+    <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
+  </div>
+  ${evidencePages2}
+  ` : ''}
 
   <!-- LAST PAGE: DUAL PEN PREP -->
   <div class="page">
     <h2>Dual Pen Conversation Preparation</h2>
     <table style="margin-bottom:16pt;border:1pt solid #e2e8f0">
       <tr><th colspan="2">Key Information</th></tr>
-      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b;width:40%">Dual Pen Title</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.dualPen:'—'}</td></tr>
+      <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b;width:40%">Primary Role Dual Pen</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${role?role.dualPen:'—'}</td></tr>
+      ${role2?'<tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Second Role Dual Pen</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">'+role2.dualPen+'</td></tr>':''}
       <tr style="background:#f8fafc"><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Dual Pen Name</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">${dualPenName||'—'}</td></tr>
       <tr><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;color:#64748b">Calibration Meeting</td><td style="padding:8pt 12pt;border:1pt solid #e2e8f0;font-weight:bold">4 June 2026</td></tr>
     </table>
     <div style="font-weight:bold;font-size:11pt;color:#1e3a5f;margin-bottom:10pt">Key Talking Points</div>
-    ${[
-      "Lead with your strongest metric — revenue performance vs plan ($ and %)",
-      "Quantify everything: dollar amounts, percentages, client names where appropriate",
-      "Demonstrate cross-divisional perspective, not just your home division",
-      "Show market presence: thought leadership, forums, community roles",
-      "Address any underperforming areas proactively with context and forward plan"
-    ].map((t,i)=>`<div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">${i+1}.</span><span style="color:#374151">${t}</span></div>`).join("")}
+    <div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">1.</span><span style="color:#374151">Lead with your strongest metric — revenue performance vs plan ($ and %)</span></div>
+    <div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">2.</span><span style="color:#374151">Quantify everything: dollar amounts, percentages, client names where appropriate</span></div>
+    <div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">3.</span><span style="color:#374151">Demonstrate cross-divisional perspective, not just your home division</span></div>
+    <div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">4.</span><span style="color:#374151">Show market presence: thought leadership, forums, community roles</span></div>
+    <div style="margin-bottom:8pt;display:flex;gap:10pt"><span style="color:#f59e0b;font-weight:bold">5.</span><span style="color:#374151">Address any underperforming areas proactively with context and forward plan</span></div>
     <div class="footer">KPMG C&amp;M Partner Year-End Navigator &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; ${dateStr}</div>
   </div>
 
   </body></html>`;
 
-  const win = window.open("", "_blank");
-  if (!win) {
-    showToast("✗ Popup blocked — allow popups for this page then retry", true);
-    return;
-  }
+  var win = window.open("", "_blank");
+  if (!win) { showToast("✗ Popup blocked — allow popups then retry", true); return; }
   win.document.write(printHTML);
   win.document.close();
   win.focus();
@@ -1451,10 +1768,12 @@ function exportWord() {
   var role2 = findRole(state.selectedRole2);
   var name = state.profile.name||''; var focus = state.profile.focus||''; var dualPenName = state.profile.dualPenName||'';
   var all = []; METRIC_KEYS.forEach(function(k){ METRICS[k].submetrics.forEach(function(sm){ all.push(sm); }); });
-  var total = 0; all.forEach(function(sm){ total += (state.scores[sm.id]||0); });
   var max = all.length * 3;
-  var pct = max > 0 ? Math.round((total/max)*100) : 0;
-  var ratingLabel = getRating(pct).label;
+  var total1 = 0; all.forEach(function(sm){ total1 += (state.scores[sm.id]||0); });
+  var pct1 = max > 0 ? Math.round((total1/max)*100) : 0;
+  var total2 = 0; all.forEach(function(sm){ total2 += (state.scores2[sm.id]||0); });
+  var pct2 = max > 0 ? Math.round((total2/max)*100) : 0;
+  var ratingLabel = getRating(pct1).label;
   var dateStr = new Date().toLocaleDateString("en-AU",{day:"numeric",month:"long",year:"numeric"});
 
   // Build scorecard rows XML
@@ -1487,7 +1806,8 @@ function exportWord() {
     ["Dual Pen Title",     role?role.dualPen:"—"],
     ["Dual Pen Name",      dualPenName||"—"],
     ["Calibration Date",   "4 June 2026"],
-    ["Overall Score",      pct+"% — "+ratingLabel+" ("+total+"/"+max+" points)"]
+    ["Primary Role Score", pct1+"% — "+getRating(pct1).label+" ("+total1+"/"+max+" points)"],
+    ["Second Role Score",  role2 ? pct2+"% — "+getRating(pct2).label+" ("+total2+"/"+max+" points)" : "—"]
   ];
   var detailRows = "";
   detailData.forEach(function(r, i) {
