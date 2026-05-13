@@ -591,171 +591,6 @@
 
 </div><!-- /content -->
 
-<!-- ===== OVERVIEW ===== -->
-<div class="panel active" id="panel-overview">
-  <h2>Your Year-End Roadmap</h2>
-  <p class="subtitle">The three-stage C&amp;M performance process and what it takes to build a compelling case.</p>
-  <div class="timeline">
-    <div class="timeline-step">
-      <div class="ts-phase">NOW</div>
-      <div class="ts-title">Build Your Evidence</div>
-      <div class="ts-desc">Document achievements against each metric with specific numbers and outcomes</div>
-      <div class="timeline-arrow">›</div>
-    </div>
-    <div class="timeline-step">
-      <div class="ts-phase">PRE-JUNE</div>
-      <div class="ts-title">Dual Pen Review</div>
-      <div class="ts-desc">Your Dual Pen meets with you &amp; People Leader to review C&amp;M goals and agree indicative rating</div>
-      <div class="timeline-arrow">›</div>
-    </div>
-    <div class="timeline-step highlight">
-      <div class="ts-phase">4 JUNE 2026</div>
-      <div class="ts-title">Calibration Meeting</div>
-      <div class="ts-desc">IL &amp; Sector leads, Platinum/Priority CLPs, Growth Portfolio and Divisional C&amp;M reviewed</div>
-      <div class="timeline-arrow">›</div>
-    </div>
-    <div class="timeline-step">
-      <div class="ts-phase">POST-CALIBRATION</div>
-      <div class="ts-title">Markets Rating</div>
-      <div class="ts-desc">Formal Markets Ratings for significant C&amp;M roles (+20% time / $5M). Outcomes shared with Divisional NMPs</div>
-    </div>
-  </div>
-  <div class="grid-2" style="margin-bottom:20px">
-    <div class="card">
-      <div class="label">Divisional Focus</div>
-      <div style="font-size:13px;color:#cbd5e1;line-height:1.9">Client Delivery &nbsp;•&nbsp; Revenue Targets<br>People Leadership &nbsp;•&nbsp; Capability &amp; Proposition Development</div>
-    </div>
-    <div class="card card-blue">
-      <div class="label">C&amp;M Focus — Your Differentiator</div>
-      <div style="font-size:13px;color:#cbd5e1;line-height:1.9">Sector or Client Leadership &nbsp;•&nbsp; Sector Leadership &amp; Community<br>Client Service Team &nbsp;•&nbsp; Sales Enablement &amp; BD Support</div>
-    </div>
-  </div>
-  <div class="card card-gold">
-    <div class="label">💡 Key Principles to Evidence</div>
-    <div class="grid-2" style="gap:10px;margin-top:8px">
-      <div style="font-size:13px;color:#cbd5e1">› Whole of Firm revenue accountability</div>
-      <div style="font-size:13px;color:#cbd5e1">› Aligned to Partner's focus area in market</div>
-      <div style="font-size:13px;color:#cbd5e1">› Support sales pipeline/conversion in home division</div>
-      <div style="font-size:13px;color:#cbd5e1">› Synergies with market focus (time allocation)</div>
-      <div style="font-size:13px;color:#cbd5e1;grid-column:1/-1">› Balanced scorecard across Markets &amp; Divisional goals agreed with People Leader &amp; Dual Pen</div>
-    </div>
-  </div>
-  <button class="btn" style="margin-top:24px" onclick="switchTab('profile')">Start: Enter Your Profile →</button>
-</div>
-
-<!-- ===== PROFILE ===== -->
-<div class="panel" id="panel-profile">
-  <h2>My Profile</h2>
-  <p class="subtitle">This information appears on all your exports and keeps your documents personalised.</p>
-  <div class="card card-gold" style="max-width:600px">
-    <div class="label">Your Details</div>
-    <div class="form-group">
-      <label class="form-label">Full Name</label>
-      <input class="form-input" type="text" id="inputName" placeholder="e.g. Nicole Apostol" oninput="saveProfile()" />
-    </div>
-    <div class="form-group">
-      <label class="form-label">Industry or Account I Lead</label>
-      <input class="form-input" type="text" id="inputFocus" placeholder="e.g. Financial Services / Telstra Account" oninput="saveProfile()" />
-    </div>
-    <div class="form-group" style="margin-bottom:0">
-      <label class="form-label">My Dual Pen Name</label>
-      <input class="form-input" type="text" id="inputDualPenName" placeholder="e.g. James Smith" oninput="saveProfile()" />
-    </div>
-  </div>
-  <div style="margin-top:16px;padding:14px 20px;background:rgba(0,87,168,0.15);border:1px solid #0057a8;border-radius:10px;font-size:13px;color:#94a3b8;max-width:600px">
-    💡 These fields are optional but recommended. They will appear on the cover page of your PDF and Word exports.
-  </div>
-  <button class="btn" style="margin-top:24px" onclick="switchTab('role')">Next: Select Your Role →</button>
-</div>
-
-<!-- ===== ROLE ===== -->
-<div class="panel" id="panel-role">
-  <h2>Select Your C&amp;M Role</h2>
-  <p class="subtitle">Your role determines your Dual Pen and calibration lens. Select a second role if you hold more than one C&amp;M position.</p>
-
-  <div style="margin-bottom:10px">
-    <div class="label">Primary Role <span style="color:#e2e8f0;font-size:12px;text-transform:none;letter-spacing:0;font-weight:400">— required</span></div>
-  </div>
-  <div class="grid-3" id="roleGrid" style="margin-bottom:20px"></div>
-
-  <div style="margin-bottom:10px;margin-top:8px">
-    <div class="label">Second Role <span style="color:#94a3b8;font-size:12px;text-transform:none;letter-spacing:0;font-weight:400">— optional, if you hold a dual C&amp;M position</span></div>
-  </div>
-  <div class="grid-3" id="roleGrid2" style="margin-bottom:20px"></div>
-  <button class="btn btn-outline btn-sm" onclick="clearRole2()" id="clearRole2Btn" style="display:none;margin-bottom:20px">✕ Clear Second Role</button>
-
-  <div class="card card-blue" id="roleContextCard" style="display:none">
-    <div class="label">Calibration Notes for Your Role(s)</div>
-    <div id="roleContextText" style="font-size:14px;color:#cbd5e1;line-height:1.7"></div>
-  </div>
-  <button class="btn" id="roleNextBtn" onclick="switchTab('scorecard')" style="margin-top:20px;display:none">Next: Rate Your Performance →</button>
-</div>
-
-<!-- ===== SCORECARD ===== -->
-<div class="panel" id="panel-scorecard">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:24px">
-    <div>
-      <h2>Self-Assessment Scorecard</h2>
-      <p class="subtitle" style="margin-bottom:0">Rate yourself honestly — this frames your narrative with the Dual Pen.</p>
-    </div>
-    <div class="score-hero" id="scoreHero">
-      <div class="pct" id="scorePct" style="color:#2563eb">0%</div>
-      <div class="rating-lbl" id="scoreRating" style="color:#2563eb">Not Rated</div>
-      <div class="pts" id="scorePts">0/0 points</div>
-    </div>
-  </div>
-  <div class="metric-tabs" id="metricTabs"></div>
-  <div id="metricContent"></div>
-</div>
-
-<!-- ===== EVIDENCE ===== -->
-<div class="panel" id="panel-evidence">
-  <h2>Evidence Builder</h2>
-  <p class="subtitle">Guided prompts for every sub-metric. Be specific — your Dual Pen will probe each area.</p>
-  <div id="evidenceContent"></div>
-</div>
-
-<!-- ===== SUMMARY ===== -->
-<div class="panel" id="panel-summary">
-  <h2>Your Performance Summary</h2>
-  <p class="subtitle">Consolidated view for your Dual Pen conversation and calibration preparation.</p>
-  <div class="profile-banner" id="summaryProfileBanner"></div>
-  <div class="grid-4" id="summaryMetrics" style="margin-bottom:24px"></div>
-  <div class="card" id="summaryEvidenceCard">
-    <div class="label">Evidence Log</div>
-    <div id="evidenceLog" style="margin-top:12px"></div>
-  </div>
-  <div class="card card-blue" style="margin-top:20px">
-    <div class="label">Dual Pen Conversation Prep</div>
-    <div class="grid-2" style="margin-top:12px;gap:20px">
-      <div>
-        <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">KEY TALKING POINTS</div>
-        <div class="tp-item"><span class="tp-num">1.</span> Lead with your strongest metric — revenue performance vs plan ($ and %)</div>
-        <div class="tp-item"><span class="tp-num">2.</span> Quantify everything: dollar amounts, percentages, client names where appropriate</div>
-        <div class="tp-item"><span class="tp-num">3.</span> Demonstrate cross-divisional perspective, not just your home division</div>
-        <div class="tp-item"><span class="tp-num">4.</span> Show market presence: thought leadership, forums, community roles</div>
-        <div class="tp-item"><span class="tp-num">5.</span> Address any underperforming areas proactively with context and forward plan</div>
-      </div>
-      <div>
-        <div style="font-size:12px;color:#94a3b8;margin-bottom:10px">DUAL PEN &amp; KEY DATES</div>
-        <div style="background:#0a1628;border-radius:8px;padding:16px;margin-bottom:12px">
-          <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">DUAL PEN TITLE</div>
-          <div style="font-size:20px;font-weight:700;color:#fbbf24" id="summaryDualPenTitle">—</div>
-          <div style="font-size:11px;color:#94a3b8;margin-top:8px;margin-bottom:2px">DUAL PEN NAME</div>
-          <div style="font-size:16px;font-weight:600" id="summaryDualPenName">—</div>
-        </div>
-        <div style="background:#0a1628;border-radius:8px;padding:16px">
-          <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">CALIBRATION DATE</div>
-          <div style="font-size:20px;font-weight:700;color:#fbbf24">4 June 2026</div>
-          <div style="font-size:12px;color:#94a3b8;margin-top:4px">Formal Markets Ratings: +20% time / $5M threshold</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div><!-- /content -->
-
 <!-- ========== PRINT-ONLY LAYOUT ========== -->
 <div id="printContainer" style="display:none"></div>
 
@@ -983,17 +818,32 @@ function selectRole(id) {
 
 function selectRole2(id) {
   state.selectedRole2 = (state.selectedRole2 === id) ? null : id; // toggle
+  // Reset second role active state if cleared
+  if (!state.selectedRole2) {
+    state.activeScoreRole    = 1;
+    state.activeEvidenceRole = 1;
+    state.activeSummaryRole  = 1;
+  }
   renderRoles();
   updateRoleContext();
+  updateRoleSwitcherUI("scorecard");
+  updateRoleSwitcherUI("evidence");
+  updateRoleSwitcherUI("summary");
   var clearBtn = document.getElementById("clearRole2Btn");
   if (clearBtn) clearBtn.style.display = state.selectedRole2 ? "inline-block" : "none";
   updateHeaderBadge();
 }
 
 function clearRole2() {
-  state.selectedRole2 = null;
+  state.selectedRole2      = null;
+  state.activeScoreRole    = 1;
+  state.activeEvidenceRole = 1;
+  state.activeSummaryRole  = 1;
   renderRoles();
   updateRoleContext();
+  updateRoleSwitcherUI("scorecard");
+  updateRoleSwitcherUI("evidence");
+  updateRoleSwitcherUI("summary");
   var clearBtn = document.getElementById("clearRole2Btn");
   if (clearBtn) clearBtn.style.display = "none";
 }
@@ -1222,10 +1072,16 @@ function renderEvidenceContent() {
 }
 
 function togglePrompt(id) {
-  const el = document.getElementById("prompts-"+id);
-  const btn = el.previousElementSibling.querySelector(".prompt-toggle");
+  var el  = document.getElementById("prompts-" + id);
+  if (!el) return;
   el.classList.toggle("open");
-  btn.textContent = el.classList.contains("open") ? "Hide Prompts" : "Show Prompts";
+  var isOpen = el.classList.contains("open");
+  // Walk up to find the submetric container, then find its toggle button
+  var parent = el.parentElement;
+  if (parent) {
+    var btn = parent.querySelector(".prompt-toggle");
+    if (btn) btn.textContent = isOpen ? "Hide Prompts" : "Show Prompts";
+  }
 }
 
 function setEvidence(id, val) {
@@ -2048,7 +1904,7 @@ function xmlNumberedItem(n, text) {
 // ─────────── Build .docx zip in browser ───────────
 function buildDocx(docXML) {
   // Core document parts as strings
-  const contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  var contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
   <Default Extension="xml" ContentType="application/xml"/>
@@ -2056,17 +1912,17 @@ function buildDocx(docXML) {
   <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
 </Types>`;
 
-  const relsMain = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  var relsMain = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
 </Relationships>`;
 
-  const wordRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  var wordRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
 </Relationships>`;
 
-  const styles = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  var styles = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
   <w:docDefaults>
     <w:rPrDefault><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr></w:rPrDefault>
